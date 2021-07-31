@@ -12,13 +12,13 @@ module.exports = function ( app ) {
 
         setInterval(() => {
             prime+=2
-        }, 3000)
+        }, 1000)
         socket.emit('cart', prime)
 
         console.log(socket.id)
     })
 
-    http.listen(2000, function(){
-        console.log('Ws on port *:2000')
+    http.listen(3000, function(){
+        console.log('Ws on port *:3000')
     })
 }

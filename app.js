@@ -95,11 +95,3 @@ const game = allgame
 console.log(game)
 console.log(pessoa)
 
-
-//------------------------------------------------------------------------------------------------------------------------------//
-
-
-//Star server
-server.listen(3000,function(req,res){
-	console.log('Server on port *:3000')
- })
