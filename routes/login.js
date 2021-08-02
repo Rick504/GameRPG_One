@@ -3,6 +3,7 @@ module.exports = function ( app ) {
     //Login - /
     app.get("/",function(req,res){
         res.render('login',{layout: false})
+        req.session.destroy()
     })
     
     //Logged - Logado

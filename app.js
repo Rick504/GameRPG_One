@@ -4,7 +4,6 @@ const handlebars=require('express-handlebars')
 const urlencodeParser=bodyParser.urlencoded({extended:false})
 var app = require('express')()
 , session = require('express-session')
-, server = require('http').createServer(app)
 var allgame = require('./game')
 var { pessoa } = require('./game')
 
@@ -95,3 +94,9 @@ const game = allgame
 console.log(game)
 console.log(pessoa)
 
+app.get('/example/b', function (req, res, next) {
+	console.log('the response will be sent by the next function ...');
+	next();
+  }, function (req, res) {
+	res.send('Hello from B!');
+  });
