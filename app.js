@@ -61,12 +61,11 @@ app.post('/auth', function(req, res) {
 				t_name = req.session.name
 				res.redirect('/Logged')
 			} else {
-				res.send('Nome e / ou password incorretos!')
+				res.send("<script>alert('Nome e / ou password incorretos!'); history.back()</script>")
 			}			
 			res.end()
 		})
 	} else {
-		res.send('Por favor, insira o nome e a password!')
 		res.end()
 	}
 })
@@ -93,10 +92,3 @@ require('./routes')(app)
 const game = allgame
 console.log(game)
 console.log(pessoa)
-
-app.get('/example/b', function (req, res, next) {
-	console.log('the response will be sent by the next function ...');
-	next();
-  }, function (req, res) {
-	res.send('Hello from B!');
-  });

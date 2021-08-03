@@ -13,13 +13,7 @@ module.exports = function ( app ) {
             res.render('Logged', {layout: false, data:t_name })
             console.log(t_name)
         } else {
-            res.send('Por favor, faça o login para ver esta página!')
+            res.send("<script>alert('Por favor, insira o nome e a senha!'); history.back()</script>")
         }
     })
-
-
-    //exportando t_name para usar no logged
-    var nameLogged = ()=>{t_name}
-    module.exports = nameLogged
-
-}
+}   
