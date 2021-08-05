@@ -16,4 +16,10 @@ module.exports = function ( app ) {
             res.send("<script>alert('Por favor, insira o nome e a senha!'); history.back()</script>")
         }
     })
-}   
+
+    app.get("/LoggedGame/:id",function(req,res){
+        sql.query("select name from users where id=?",[req.params.id],function(err,results,fields) {
+            res.render('LoggedGame',{layout: false,data:results})
+        })
+    })
+}  
