@@ -7,7 +7,7 @@ module.exports = function ( app ) {
     })
     
     //Logged - Logado
-    app.get("/Logged",function(req,res){
+    app.get("/Logged/:id",function(req,res){
         if (req.session.loggedin == true) {
             t_name = {t_name}
             res.render('Logged', {layout: false, data:t_name })
@@ -15,11 +15,5 @@ module.exports = function ( app ) {
         } else {
             res.send("<script>alert('Por favor, insira o nome e a senha!'); history.back()</script>")
         }
-    })
-
-    app.get("/LoggedGame/:id",function(req,res){
-        sql.query("select name from users where id=?",[req.params.id],function(err,results,fields) {
-            res.render('LoggedGame',{layout: false,data:results})
-        })
     })
 }  

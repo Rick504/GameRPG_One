@@ -59,7 +59,9 @@ app.post('/auth', function(req, res) {
 				req.session.loggedin = true
 				req.session.name = name
 				t_name = req.session.name
-				res.redirect('/Logged')
+
+				user_id = results[0].id
+				res.redirect('/Logged/' + user_id)
 			} else {
 				res.send("<script>alert('Nome e / ou password incorretos!'); history.back()</script>")
 			}			
