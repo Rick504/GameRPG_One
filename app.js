@@ -49,17 +49,6 @@ app.post("/registrationPerformed",urlencodeParser,function(req,res){
     res.render('registrationPerformed', {layout: false , name:req.body.name})
 })
 
-//Update
-app.get("/update/:id",function(req,res){
-	sql.query("select * from users where id=?",[req.params.id],function(err,results,fields){
-		res.render('update',{layout: false,id:req.params.id,name:results[0].name,email:results[0].email,password:results[0].password})
-	})
-})
-app.post("/controllerUpdate",urlencodeParser,function(req,res){
-   sql.query("update users set name=?,email=?, password=? where id=?",[req.body.name,req.body.email,req.body.password,req.body.id])
-   res.send('<h1>Dados atualizados com sucesso!</h1>')
-})
-
 // /auth
 app.post('/auth', function(req, res) {
 	var name = req.body.name
@@ -82,6 +71,7 @@ app.post('/auth', function(req, res) {
 		res.end()
 	}
 })
+
 
 //------------------------------------------------------------------------------------------------------------------------------//
 
