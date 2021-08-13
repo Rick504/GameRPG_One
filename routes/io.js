@@ -9,13 +9,13 @@ module.exports = function ( app ) {
     var prime = null
 
     io.on('connection', function(socket){
-
+/*
         setInterval(() => {
             prime+=2
         }, 1000)
         socket.emit('cart', prime)
 
-        console.log(socket.id)
+        console.log(socket.id)*/
     })
 
     http.listen(3000, function(){

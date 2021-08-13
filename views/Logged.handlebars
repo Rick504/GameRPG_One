@@ -1,24 +1,62 @@
 <style>
-        body {
-            background-color: darkolivegreen;
-        }
+    body {background-color: darkolivegreen;color: cornsilk; position: absolute;}
+    #menu_superior {background-color: rgb(39, 43, 23);position: absolute;width: 900px;height: 200px; top: 50px;left: 260px;}
+    #info_menu_superior_1 {position: absolute;left: 100px;top: 100px;}
+    #info_menu_superior_2 {position: absolute;left: 800px;top: 100px;}
+    #ganhos_menu_superior {color: green; position: absolute;left: 150px;top: 100px;}
+    #footer_conifg {position:absolute; top: 550px; left: 50px;}
 </style>
+
+<!-- Socket.io -->
+<header>
+    <script src="/socket.io/socket.io.js"></script>
+
+        <div style="text-align: center; background-color: rgb(160, 151, 16); " id="res"></div>
+
+    <script>
+            const socket = io()
+
+            socket.on('cart', (prime) => {
+                const res = document.getElementById('res')
+                res.innerHTML = prime
+            })
+    </script>
+</header>
+<!-- Socket.io -->
+
 {{#data}}
 
-{{t_name}}
+<!-- Menu Superior -->
+<section id="menu_superior">
 
-    <h1>Bem-Vindo(a) você esta logado(a) com sucesso!</h1>
+    <div>{{t_name}}</div>
+    <div id="info_menu_superior_1">
+        <div>Ouro: 0 </div>
+        <div>Suprimentos: 0 </div>
+        <div>Madeira: 0 </div>
+        <div>Turno: 0 / 800</div>
+    </div>
+
+     <div id="ganhos_menu_superior">
+        <div>+ 30</div>
+        <div>+ 50</div>
+        <div>+ 110</div>
+    </div>
+
+     <div id="info_menu_superior_2">
+        <div>Clã: MeuClã</div>
+        <div>Ranging </div>
+        <div>Nivel: 1 </div>
+        <div>barra evolução</div>
+    </div>
+
+</section>
+
     
 {{/data}}
-<a href="/">Sair</a>
 
-<div id="res"></div>
-<script src="/socket.io/socket.io.js"></script>
- <script>
-        const socket = io()
+<footer id="footer_conifg">
+    <!-- Voltar Page login -->
+    <a href="/">Sair</a>
+</footer>
 
-        socket.on('cart', (prime) => {
-            const res = document.getElementById('res')
-            res.innerHTML = prime
-        })
-</script>

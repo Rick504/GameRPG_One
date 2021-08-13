@@ -12,4 +12,4 @@
 
 - formas de pagamento do produto no site
 
-- { uid }, session.store() ou local.store() e token
+- { uid }, session.store() ou local.store() ou express-session e token
