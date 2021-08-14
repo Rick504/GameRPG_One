@@ -2,6 +2,7 @@ const bodyParser=require('body-parser')
 const mysql=require('mysql2')
 const handlebars=require('express-handlebars')
 const urlencodeParser=bodyParser.urlencoded({extended:false})
+const path = require('path')
 var app = require('express')()
 , session = require('express-session')
 var allgame = require('./game')
@@ -37,16 +38,24 @@ app.set('view engine', 'handlebars')
 
 
 //------------------------------------------------------------------------------------------------------------------------------//
+//Login - /
+app.get('/',function(req,res) {
+   res.sendFile(path.join(__dirname+'/public/login.html'))
+   req.session.destroy()
+})
+
 
 //Cadastrar
-app.get("/register",function(req,res){
-	res.render("register",{layout: false})
-})
+app.get('/register',function(req,res) {
+	res.sendFile(path.join(__dirname+'/public/register.html'))
+ })
+
 
 //Cadastro Realizado
 app.post("/registrationPerformed",urlencodeParser,function(req,res){
     sql.query("insert into users values (?,?,?,?)",[req.body.id,req.body.name,req.body.email,req.body.password])
-    res.render('registrationPerformed', {layout: false , name:req.body.name})
+    /*res.render('registrationPerformed', {layout: false , name:req.body.name})*/
+	res.sendFile(path.join(__dirname+'/public/registrationPerformed.html'), {name:req.body.name})
 })
 
 // /auth

@@ -1,4 +1,5 @@
 module.exports = function ( app ) {
     require('./io')(app)
-    require('./login')(app)
+    require('./Logged')(app)
+    require('./Profile')(app)
 }

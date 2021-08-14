@@ -1,10 +1,47 @@
 <style>
-    body {background-color: darkolivegreen;color: cornsilk; position: absolute;}
-    #menu_superior {background-color: rgb(39, 43, 23);position: absolute;width: 900px;height: 200px; top: 50px;left: 260px;}
-    #info_menu_superior_1 {position: absolute;left: 100px;top: 100px;}
-    #info_menu_superior_2 {position: absolute;left: 800px;top: 100px;}
-    #ganhos_menu_superior {color: green; position: absolute;left: 150px;top: 100px;}
-    #footer_conifg {position:absolute; top: 550px; left: 50px;}
+    body {
+    background-color: darkolivegreen;
+    color: cornsilk;}
+    #menu_superior {
+        background-color: rgb(39, 43, 23);
+        position: absolute;
+        width: 900px;
+        height: 200px; 
+        top: 170px;
+        left: 40%;
+        transform: translate(-25%, -35%);
+        border-radius: 15px;}
+    .info_menu_superior {
+        background-color: rgb(35, 56, 35);
+        position: absolute;
+        left: 50px;
+        top: 40px;
+        width: 200px;
+        height: 140px;
+        border-radius: 15px;}
+    .ganhos_menu_superior_1 {
+        position: relative; 
+        top: 30px;
+        left: 30px;}
+    #ganhos_menu_superior_2 {
+        color: green; 
+        position: relative; 
+        top: -70px;
+        left: 120px;}
+    #info_sub_menu_1 {
+        position: relative;       
+        top: 40px;
+        left: 30px;}
+    .menu_barra_lateral{
+        background-color: rgb(39, 43, 23); 
+        color: cornsilk;
+        text-align: center;
+        position: absolute;
+        top: 100px;
+        width: 215px; 
+        height: 730px;
+        left: 40px;
+        border-radius: 15px;}
 </style>
 
 <!-- Socket.io -->
@@ -29,34 +66,55 @@
 <!-- Menu Superior -->
 <section id="menu_superior">
 
-    <div>{{t_name}}</div>
-    <div id="info_menu_superior_1">
-        <div>Ouro: 0 </div>
-        <div>Suprimentos: 0 </div>
-        <div>Madeira: 0 </div>
-        <div>Turno: 0 / 800</div>
+    <div style="text-align: center;">{{t_name}}</div>
+    <div class="info_menu_superior">
+        <div class="ganhos_menu_superior_1">
+            <div>Ouro: 0 </div>
+            <div>Suprimentos: 0 </div>
+            <div>Madeira: 0  </div>
+            <div>Turno: 0 / 800</div>
+        <div id="ganhos_menu_superior_2">
+                <div>+ 30</div>
+                <div>+ 50</div>
+                <div>+ 110</div>
+        </div>    
+        </div>
     </div>
 
-     <div id="ganhos_menu_superior">
-        <div>+ 30</div>
-        <div>+ 50</div>
-        <div>+ 110</div>
+     <div class="info_menu_superior" style="left: 650px;">
+         <div id="info_sub_menu_1">
+            <div>Clã: Meu Clã</div>
+            <div>Ranking: 10º </div>
+            <div>Nível: 1 </div>
+            <div>Barra evolução</div>
+         </div>
     </div>
 
-     <div id="info_menu_superior_2">
-        <div>Clã: MeuClã</div>
-        <div>Ranging </div>
-        <div>Nivel: 1 </div>
-        <div>barra evolução</div>
-    </div>
-
+    <div class="d-flex align-items-start">
 </section>
 
-    
-{{/data}}
+<section class="menu_barra_lateral">
+    <h3 >Menu Principal</h3>
+    <a href="">Diamantes</a><br><br>
+    <a href="">Inicil</a><br><br>
+    <a href="/Profile/{{user_id}}">Meu Perfil</a><br><br>
+    <a href="">Manual</a><br><br>
+    <a href="/">Sair</a><br><br>
+    <h3 >Ações</h3>
+    <a href="">Feudo</a><br><br>
+    <a href="">Comércio</a><br><br>
+    <a href="">Pesquisa</a><br><br>
+    <a href="">Exercito</a><br><br>
+    <a href="">Menssagens</a><br><br>
+    <h3 >Informações</h3>
+    <a href="">Clã</a><br><br>
+    <a href="">Ranking</a><br><br>
+    <a href="">Histórico de Guerra</a><br><br>
+    <a href="">Exercito</a><br><br>
+    <a href="">Suporte</a><br><br>
+</section>
 
-<footer id="footer_conifg">
-    <!-- Voltar Page login -->
-    <a href="/">Sair</a>
-</footer>
+      
+
+{{/data}}
 
