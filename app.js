@@ -5,72 +5,70 @@ const urlencodeParser=bodyParser.urlencoded({extended:false})
 const path = require('path')
 var app = require('express')()
 , session = require('express-session')
-var allgame = require('./game')
-var { pessoa } = require('./game')
+, allgame = require('./game')
+, { pessoa } = require('./game')
+, dataAtual = new Date()
 
-//------------------------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------------------//
 
-//settings
-
-//mysql
-const sql=mysql.createConnection({
-    host: 'localhost',
-    user: 'RWR', 
-    password: 'Password123#@!',
-    database: 'cadastro'
-})
+//MySql - settings
+const sql=mysql.createConnection({host: 'localhost', user: 'RWR', password: 'Password123#@!', database: 'cadastro'})
 sql.query("use cadastro")
 
-//session---------------------------------------
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}))
+//session - settings ---------------------------------------//
+app.use(session({secret: 'secret',resave: true,saveUninitialized: true}))
 
-//bodyParser-------------------------------------
+//bodyParser - settings -------------------------------------//
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
 
-//handlebars-------------------------------------
+//handlebars - settings -------------------------------------//
 app.engine('handlebars', handlebars({ extname: 'handlebars', defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts/' }))
 app.set('view engine', 'handlebars')
 
 
-//------------------------------------------------------------------------------------------------------------------------------//
-//Login - /
+//------------------------------------------------------------------------------------------------------------------------------------//
+//Login - / HTML - rota
 app.get('/',function(req,res) {
-   res.sendFile(path.join(__dirname+'/public/login.html'))
+   res.sendFile(path.join(__dirname+'/html/login.html'))
    req.session.destroy()
 })
 
 
-//Cadastrar
+//Cadastrar / HTML - rota 
 app.get('/register',function(req,res) {
-	res.sendFile(path.join(__dirname+'/public/register.html'))
- })
+	res.sendFile(path.join(__dirname+'/html/register.html'))
+})
 
 
-//Cadastro Realizado
+//Cadastro Realizado / HTML - api
 app.post("/registrationPerformed",urlencodeParser,function(req,res){
     sql.query("insert into users values (?,?,?,?)",[req.body.id,req.body.name,req.body.email,req.body.password])
     /*res.render('registrationPerformed', {layout: false , name:req.body.name})*/
-	res.sendFile(path.join(__dirname+'/public/registrationPerformed.html'), {name:req.body.name})
+	res.sendFile(path.join(__dirname+'/html/registrationPerformed.html'), {name:req.body.name})
 })
 
-// /auth
+// /auth - api -------------------------------------------------------------------------------------------------------------------------------
+
 app.post('/auth', function(req, res) {
 	var name = req.body.name
 	var password = req.body.password
 	if (name && password) {
 		sql.query('SELECT * FROM users WHERE name = ? AND password = ?', [name, password], function(error, results, fields) {
 			if (results.length > 0) {
+				//requisições do BD
 				req.session.loggedin = true
 				req.session.name = name
+				
+				//preparando para o handlebars usar
 				t_name = req.session.name
-
 				user_id = results[0].id
+
+				//redirecionar para logado com id
 				res.redirect('/Logged/' + user_id)
+				
+				//vizualizar quem logou data e hora
+				console.log('jogador logou: ' + t_name +' Logged '+ dataAtual)
 			} else {
 				res.send("<script>alert('Nome e / ou password incorretos!'); history.back()</script>")
 			}			
@@ -82,14 +80,14 @@ app.post('/auth', function(req, res) {
 })
 
 
-//------------------------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------------------//
 
 //Routes --- todas as rotas vem do index.js
 
 require('./routes')(app)
 
 
-//------------------------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------------------//
 
 
 //aplicação
@@ -97,7 +95,8 @@ require('./routes')(app)
 
 //*******/
 
-//------------------------------------------------------------------------------------------------------------------------------//
+
+//------------------------------------------------------------------------------------------------------------------------------------//
 
 //teste
 
