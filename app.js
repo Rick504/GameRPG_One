@@ -5,8 +5,6 @@ const urlencodeParser=bodyParser.urlencoded({extended:false})
 const path = require('path')
 var app = require('express')()
 , session = require('express-session')
-, allgame = require('./game')
-, { pessoa } = require('./game')
 , dataAtual = new Date()
 
 //------------------------------------------------------------------------------------------------------------------------------------//
@@ -63,12 +61,21 @@ app.post('/auth', function(req, res) {
 				//preparando para o handlebars usar
 				t_name = req.session.name
 				user_id = results[0].id
+				gold = results[0].gold
+				supplies = results[0].supplies
+				wood = results[0].wood
+				army = results[0].army
+				workers = results[0].workers
+				diamonds = results[0].diamonds
+				
 
 				//redirecionar para logado com id
 				res.redirect('/Logged/' + user_id)
 				
+				//console.log(results) para teste.
+				
 				//vizualizar quem logou data e hora
-				console.log('jogador logou: ' + t_name +' Logged '+ dataAtual)
+				console.log(' id Logado: ' + user_id  + ' Jogador: ' + t_name + ' ' + dataAtual)
 			} else {
 				res.send("<script>alert('Nome e / ou password incorretos!'); history.back()</script>")
 			}			
@@ -93,13 +100,11 @@ require('./routes')(app)
 //aplicação
 
 
-//*******/
+var game = require('./game')
 
 
 //------------------------------------------------------------------------------------------------------------------------------------//
 
 //teste
 
-const game = allgame
-console.log(game)
-console.log(pessoa)
+//console.log(game)

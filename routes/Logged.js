@@ -5,9 +5,18 @@ module.exports = function ( app ) {
         if (req.session.loggedin == true) {
 
             //eviando requisições do BD ao logar
-            name_e_id = { t_name,user_id }
+            dados_user = { 
+                t_name, 
+                user_id, 
+                gold, 
+                supplies, 
+                wood, 
+                army, 
+                workers, 
+                diamonds 
+            }
 
-            res.render('Logged', {layout: false, data: name_e_id })
+            res.render('Logged', {layout: false, data: dados_user })
         } else {
             res.send("<script>alert('Por favor, insira o nome e a senha!'); history.back()</script>")
         }

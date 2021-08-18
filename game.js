@@ -1,9 +1,21 @@
-function CreateGame () {obj = {valor:44}}
+class functionsGame {
+    constructor (num1,num2) {
+        this.num1 = num1
+        this.num2 = num2
+    }
+    soma() {
+        this.num1 + this.num2
+    }
+}
 
-pessoa = {valor : 66}
+var s = new functionsGame(55,44)
+s.soma()
+console.log(s)
 
-const all = {pessoa,CreateGame}
 
+
+//Exportando
+const all = {functionsGame}
 module.exports = all
  
 
