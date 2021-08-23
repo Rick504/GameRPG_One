@@ -4,18 +4,16 @@ class functionsGame {
         this.num2 = num2
     }
     soma() {
-        this.num1 + this.num2
+        return this.num1 + this.num2
     }
 }
 
-var s = new functionsGame(55,44)
-s.soma()
-console.log(s)
-
+var s = new functionsGame(54,44)
+r = s.soma()
+console.log(r)
 
 
 //Exportando
-const all = {functionsGame}
-module.exports = all
+module.exports = all = {r}
  
 

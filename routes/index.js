@@ -1,6 +1,7 @@
 module.exports = function ( app ) {
     //api
     require('./socke_io')(app)
+    require('./updateTest')(app)
 
     //Menu principal
     require('./Diamantes')(app)
