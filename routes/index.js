@@ -1,24 +1,25 @@
 module.exports = function ( app ) {
     //api
-    require('./socke_io')(app)
-    require('./updateTest')(app)
+    require('./API/socke_io')(app)
+    require('./API/updateTest')(app)
+    require('./API/auth')(app)
 
     //Menu principal
-    require('./Diamantes')(app)
-    require('./Logged')(app)
-    require('./Manual')(app)
-    require('./Profile')(app)
+    require('./PagesJS/Diamantes')(app)
+    require('./PagesJS/Logged')(app)
+    require('./PagesJS/Manual')(app)
+    require('./PagesJS/Profile')(app)
 
     //Ações
-    require('./Trabalhadores')(app)
-    require('./Comercio')(app)
-    require('./Tecnologia')(app)
-    require('./Exercito')(app)
-    require('./Menssagens')(app)
+    require('./PagesJS/Trabalhadores')(app)
+    require('./PagesJS/Comercio')(app)
+    require('./PagesJS/Tecnologia')(app)
+    require('./PagesJS/Exercito')(app)
+    require('./PagesJS/Menssagens')(app)
 
     //Informações
-    require('./Cla')(app)
-    require('./Ranking')(app)
-    require('./Historico')(app)
-    require('./Suporte')(app)
+    require('./PagesJS/Cla')(app)
+    require('./PagesJS/Ranking')(app)
+    require('./PagesJS/Historico')(app)
+    require('./PagesJS/Suporte')(app)
 }

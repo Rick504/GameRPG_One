@@ -19,6 +19,6 @@ module.exports = function ( app ) {
 
     //Start Server -------------------------------
     http.listen(3000, function(){
-        console.log('Player on port *:3000')
+        console.log('Game on port localhost:3000')
     })
 }
