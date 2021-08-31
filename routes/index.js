@@ -1,8 +1,9 @@
 module.exports = function ( app ) {
     //api
-    require('./API/socke_io')(app)
-    require('./API/updateTest')(app)
     require('./API/auth')(app)
+    require('./API/socke_io')(app)
+    require('./API/updateDiamonds')(app)
+    require('./API/updateArmy')(app)
 
     //Menu principal
     require('./PagesJS/Diamantes')(app)

@@ -26,6 +26,18 @@ module.exports = function ( app ) {
                     res.redirect('/Logged/' + user_id)
                     
                     //console.log(results) para teste.
+
+                       //eviando requisições do BD ao logar
+                        dados_user = { 
+                            t_name, 
+                            user_id, 
+                            gold, 
+                            supplies, 
+                            wood, 
+                            army, 
+                            workers, 
+                            diamonds 
+                        }
                     
                     //vizualizar quem logou data e hora
                     console.log(' id Logado: ' + user_id  + ' Jogador: ' + t_name + ' ' + dataAtual)
