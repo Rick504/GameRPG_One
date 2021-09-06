@@ -4,7 +4,7 @@ module.exports = function ( app ) {
     app.get("/Logged/:id",function(req,res){
         if (req.session.loggedin == true) {
 
-            res.render('Logged', {layout: false, data: dados_user })
+            res.render('Logged', { data: dados_user })
         } else {
             res.send("<script>alert('Por favor, insira o nome e a senha!'); history.back()</script>")
         }

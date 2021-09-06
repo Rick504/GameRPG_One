@@ -2,14 +2,24 @@
 
 <style>
     body {
-    background-color: darkolivegreen;
+    background-color: rgb(114, 110, 62);
     color: cornsilk;}
+
+    #elementos_turno{
+        background-color: rgb(174, 136, 10);
+        position: absolute;
+        top: 100px;
+        left: 0px;
+        width: 1400px;
+        height: 30px;
+    }
+
     #menu_superior {
         background-color: rgb(39, 43, 23);
         position: absolute;
         width: 900px;
         height: 200px; 
-        top: 170px;
+        top: 200px;
         left: 40%;
         transform: translate(-25%, -35%);
         border-radius: 15px;}
@@ -39,7 +49,7 @@
         color: rgb(226, 216, 172);
         text-align: center;
         position: absolute;
-        top: 100px;
+        top: 130px;
         width: 215px; 
         height: 730px;
         left: 40px;
@@ -48,13 +58,29 @@
     .links{
         color: rgb(186, 169, 101);
         margin: 3px;}
+
+    .section_actions {
+        background-color: rgb(39, 43, 23);
+        margin-top: 10px;
+        position: absolute;
+        top: 350px;
+        left: 315px;
+        width: 900px;
+        height: 600px;
+        border-radius: 15px;
+    }
 </style>
 
 <!-- Socket.io -->
 <header>
     <script src="/socket.io/socket.io.js"></script>
 
-        <div id="res"></div>
+        <div id="elementos_turno">
+          
+            <div id="tempo_turno" style="position: absolute; left: 600px; margin-top: 5px;"></div>
+            <div style="position: absolute; left: 622px; margin-top: 5px;">minutos para o próximo turno.</div>
+            <div id="res"></div>
+        </div>
 
     <script>
             const socket = io()
@@ -63,6 +89,26 @@
                 const res = document.getElementById('res')
                 res.innerHTML = prime
             })
+
+            var count = new Number();
+            var count = 60;
+
+            function start(){
+
+                if ((count - 1) >= 0){
+                count -= 1;
+                if (count == 0) {
+                    count = "Atualize a Pagina";
+                }else if(count < 10){
+                    count = "0"+count;
+                }
+                tempo_turno.innerText=count;
+                setTimeout('start();', 5000);
+
+                }
+            }
+
+            start()
     </script>
 </header>
 <!-- Socket.io -->
@@ -118,6 +164,10 @@
     <a class="links" href="/Ranking/{{user_id}}">Rancking</a> <br><br>
     <a class="links" href="/Historico/{{user_id}}">Histórico de Guerra</a> <br><br>
     <a class="links" href="/Suporte/{{user_id}}">Suporte</a> <br><br>
+</section>
+
+<section class="section_actions">
+    <h1 style="text-align: center;">Ações</h1>
 </section>
 
 {{/data}}

@@ -3,10 +3,15 @@ const mysql=require('mysql2')
 const handlebars=require('express-handlebars')
 const urlencodeParser=bodyParser.urlencoded({extended:false})
 const path = require('path')
-var app = require('express')()
+const express = require('express')
+const app = express()
 , session = require('express-session')
 
+
 //------------------------------------------------------------------------------------------------------------------------------------//
+
+//modulo que carrega variaveis de ambiente em arquivo .env
+require('dotenv').config()
 
 //MySql - settings
 global.sql=mysql.createConnection({host: 'localhost', user: 'RWR', password: 'Password123#@!', database: 'cadastro'})
@@ -21,11 +26,16 @@ app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
 
 //handlebars - settings -------------------------------------//
-app.engine('handlebars', handlebars({ extname: 'handlebars', defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts/' }))
-app.set('view engine', 'handlebars')
 
+app.set('view engine', 'handlebars')
+app.engine('handlebars', handlebars({
+    layoutsDir: __dirname + '/views/layouts',
+}))
+
+app.use(express.static('public'))
 
 //------------------------------------------------------------------------------------------------------------------------------------//
+
 //Login - / HTML - rota
 app.get('/',function(req,res) {
    res.sendFile(path.join(__dirname+'/html/login.html'))
