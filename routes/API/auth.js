@@ -1,7 +1,5 @@
 module.exports = function ( app ) {
 
-    var dataAtual = new Date()
-
     app.post('/auth', function(req, res) {
         var name = req.body.name
         var password = req.body.password
@@ -40,7 +38,7 @@ module.exports = function ( app ) {
                     }
 
                     //visualizar quem logou data e hora
-                    console.log(' id Logado: ' + user_id  + ' Jogador: ' + t_name + ' ' + dataAtual)
+                    console.log(' id Logado: ' + user_id  + ' Jogador: ' + t_name)
                 } else {
                     res.send("<script>alert('Nome e / ou password incorretos!'); history.back()</script>")
                 }

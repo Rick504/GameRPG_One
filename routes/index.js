@@ -4,8 +4,10 @@ module.exports = function ( app ) {
     require('./API/socke_io')(app)
     require('./API/updateDiamonds')(app)
     require('./API/updateArmy')(app)
+    require('./API/updateWorkers')(app)
 
     //Menu principal
+    require('./PagesJS/Escolhendo_Origem')(app)
     require('./PagesJS/Diamantes')(app)
     require('./PagesJS/Logged')(app)
     require('./PagesJS/Manual')(app)
