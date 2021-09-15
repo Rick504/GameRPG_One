@@ -1,10 +1,10 @@
 
 
-* TRABALHADORES: - Produzem recursos do reino como Ouro, Madeira e Suprimentos (podendo ser dividido para que cada um produza recursos escolhidos pelo 			   jogador)
+* TRABALHADORES: - Produzem recursos do reino como Ouro, Madeira e Suprimentos (podendo ser dividido para que cada um produza recursos escolhidos pelo jogador)
 		 - cada trabalhador produz 1 ouro por turno;
-		 - cada trabalhador produz 29 Suprimentos por turno;
-		 - cada trabalhador produz 12 Madeiras por turno.
-		 (custo de cada trabalhador: 5 ouros, 50 suprimentos) 
+		 - cada trabalhador produz 8 Suprimentos por turno;
+		 - cada trabalhador produz 5 Madeiras por turno.
+		 (custo de cada trabalhador: 2 ouros, 13 suprimentos) 
 		 (limite de trabalhadores será aumenta 100 por nivel podendo ser roubado em vitórias de combate)
  		
 

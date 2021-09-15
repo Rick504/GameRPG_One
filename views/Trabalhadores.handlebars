@@ -5,24 +5,22 @@
 <section class="section_actions">
 <h1 style="text-align: center;">Trabalhadores</h1>
 
-<p>Total de Trabalhadores Disponiveis: {{workers}}</p>
+<p style="color: darkcyan;">Compre 1 trabalhador, custo 2 ouros e 13 suprimentos </p>
+<p>Compre Trabalhadores:<a href="/purchase_gold"> <button> Comprar trabalhador </button></a></p>
 
-<input type="number" name="" id="">
+<p>Total de Trabalhadores Disponiveis: <p style="background-color: black; width: 20px; text-align:center" >{{workers}}</p></p>
 
-<a href="/updateWorkersGold"><button>Produzir Ouro</button></a><br><br>
-<a href="/updateWorkersSupplies"><button>Produzir Suprimentos</button></a><br><br>
-<a href="/updateWorkersWood"><button>Produzir Madeira</button></a><br><br>
+<p>Coloque Trabalhadores para produzir ouro, cada trabalhador produz 1 ouro por turno.
+<a href="/updateWorkers_gold"> <button> Produzir Ouro </button></a></p>
 
-<p>Trabalhadores produzindo Ouro: </p>
-<p>Trabalhadores produzindo Suprimentos: </p>
-<p>Trabalhadores produzindo Madeira: </p>
+<p>Coloque Trabalhadores para produzir suprimentos, cada trabalhador produz 8 suprimentos por turno.
+<a href="/updateWorkers_supplies"><button> Produzir Suprimentos </button></a></p>
+
+<p>Coloque Trabalhadores para produzir madeira, cada trabalhador produz 5 madeiras por turno.
+<a href="/updateWorkers_wood"><button> Produzir Madeira </button></a></p>
 
 </section>
 {{!-- section --}}
 
 {{/data}}
-
-
-
-
 

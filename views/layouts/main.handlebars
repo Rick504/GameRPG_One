@@ -25,11 +25,6 @@
     <script>
             const socket = io()
 
-            socket.on('cart', (prime) => {
-                const res = document.getElementById('res')
-                res.innerHTML = prime
-            })
-
             var count = new Number();
             var count = 60;
 
@@ -63,23 +58,22 @@
         <div class="ganhos_menu_superior_1">
             <div>Ouro: {{gold}} </div>
             <div>Suprimentos: {{supplies}} </div>
-            <div>Madeira: {{wood}}  </div>
-            <div>Turno: 0 / 800</div>
+            <div>Madeira: {{wood}}</div>
+            <div>Turno: --</div>
         <div id="ganhos_menu_superior_2">
-                <div>+ 30</div>
-                <div>+ 50</div>
-                <div>+ 10</div>
+                <div style="background-color: black; height: 17px; width: 45px; border-radius: 5px;"> + {{worker_producing_gold}}</div>
+                <div style="background-color: black; height: 17px; width: 45px; border-radius: 5px;"> + {{worker_producing_supplies}}</div>
+                <div style="background-color: black; height: 17px; width: 45px; border-radius: 5px;"> + {{worker_producing_wood}}</div>
         </div>    
         </div>
     </div>
 
      <div class="info_menu_superior" style="left: 650px;">
          <div id="info_sub_menu_1">
-             <div>Diamantes: {{diamonds}}</div>
-            <div>Clã: Meu Clã</div>
-            <div>Ranking: 10º </div>
-            <div>Nível: 1 </div>
-            <div>Barra evolução</div>
+            <div>Diamantes: {{diamonds}}</div>
+            <div>Clã: {{cla}}</div>
+            <div>Ranking: -- </div>
+            <div>Nível: {{level}} </div>
          </div>
     </div>
 
@@ -88,22 +82,22 @@
 
 <section class="menu_barra_lateral">
     <h3 >Menu Principal</h3>
-    <a class="links" href="/Diamantes/{{user_id}}">Diamantes</a> <br><br>
-    <a class="links" href="/Logged/{{user_id}}">Início</a>  <br><br>
-    <a class="links"  href="/Profile/{{user_id}}">Meu Perfil</a><br><br>
-    <a class="links" href="/Manual/{{user_id}}">Manual</a><br><br>
-    <a class="links" href="/">Sair</a>
+    <a style="text-decoration: none;" class="links" href="/Diamantes/{{user_id}}">Diamantes</a> <br><br>
+    <a style="text-decoration: none;" class="links" href="/Logged/{{user_id}}">Início</a>  <br><br>
+    <a style="text-decoration: none;" class="links"  href="/Profile/{{user_id}}">Meu Perfil</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/Manual/{{user_id}}">Manual</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/">Sair</a>
     <h3 >Ações</h3>
-    <a class="links" href="/Trabalhadores/{{user_id}}">Trabalhadores</a><br><br>
-    <a class="links" href="/Comercio/{{user_id}}">Comércio</a><br><br>
-    <a class="links" href="/Tecnologia/{{user_id}}">Tecnologia</a><br><br>
-    <a class="links" href="/Exercito/{{user_id}}">Exército</a><br><br>
-    <a class="links" href="/Menssagens/{{user_id}}">Mensagens</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/Trabalhadores/{{user_id}}">Trabalhadores</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/Comercio/{{user_id}}">Comércio</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/Tecnologia/{{user_id}}">Tecnologia</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/Exercito/{{user_id}}">Exército</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/Menssagens/{{user_id}}">Mensagens</a><br><br>
     <h3 >Informações</h3>
-    <a class="links" href="/Cla/{{user_id}}">Clã</a><br><br>
-    <a class="links" href="/Ranking/{{user_id}}">Rancking</a> <br><br>
-    <a class="links" href="/Historico/{{user_id}}">Histórico de Guerra</a> <br><br>
-    <a class="links" href="/Suporte/{{user_id}}">Suporte</a> <br><br>
+    <a style="text-decoration: none;" class="links" href="/Cla/{{user_id}}">Clã</a><br><br>
+    <a style="text-decoration: none;" class="links" href="/Ranking/{{user_id}}">Rancking</a> <br><br>
+    <a style="text-decoration: none;" class="links" href="/Historico/{{user_id}}">Histórico de Guerra</a> <br><br>
+    <a style="text-decoration: none;" class="links" href="/Suporte/{{user_id}}">Suporte</a> <br><br>
 </section>
 
 {{/data}}

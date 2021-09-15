@@ -4,7 +4,11 @@ module.exports = function ( app ) {
     require('./API/socke_io')(app)
     require('./API/updateDiamonds')(app)
     require('./API/updateArmy')(app)
-    require('./API/updateWorkers')(app)
+    require('./API/updateWorkers/updateWorkers_gold')(app)
+    require('./API/updateWorkers/updateWorkers_supplies')(app)
+    require('./API/updateWorkers/updateWorkers_wood')(app)
+    require('./API/updateWorkers/purchase_gold')(app)
+    
 
     //Menu principal
     require('./PagesJS/Escolhendo_Origem')(app)

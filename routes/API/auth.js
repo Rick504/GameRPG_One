@@ -1,6 +1,8 @@
 module.exports = function ( app ) {
 
-    app.post('/auth', function(req, res) {
+    apiSecret = process.env.API_ROTA_URL_AUTHENTICATION
+
+    app.post(apiSecret, function(req, res) {
         var name = req.body.name
         var password = req.body.password
         if (name && password) {
@@ -10,16 +12,26 @@ module.exports = function ( app ) {
                     req.session.loggedin = true
                     req.session.name = name
 
-                    //preparando para o handlebars usar
-                    t_name = req.session.name
+                    //trazendo do mysql
                     user_id = results[0].id
+                    t_name = req.session.name
+                    
+                    diamonds = results[0].diamonds
+
+                    //Ouro / Suprimetos / Madseira
                     gold = results[0].gold
                     supplies = results[0].supplies
                     wood = results[0].wood
+                    worker_producing_gold = results[0].worker_producing_gold
+                    worker_producing_supplies = results[0].worker_producing_supplies
+                    worker_producing_wood = results[0].worker_producing_wood
+
+                    cla = results[0].clã
+                    level = results[0].level                    
+                    //Exercito / Trabalhadores
                     army = results[0].army
                     workers = results[0].workers
-                    diamonds = results[0].diamonds
-
+                    
                     //redirecionar para logado com id
                     res.redirect('/Logged/' + user_id)
 
@@ -29,12 +41,17 @@ module.exports = function ( app ) {
                     dados_user = {
                         t_name,
                         user_id,
+                        level,
+                        cla,
                         gold,
                         supplies,
                         wood,
                         army,
                         workers,
-                        diamonds
+                        diamonds,
+                        worker_producing_gold,
+                        worker_producing_supplies,
+                        worker_producing_wood
                     }
 
                     //visualizar quem logou data e hora
