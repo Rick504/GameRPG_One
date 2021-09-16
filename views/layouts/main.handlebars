@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
+{{#data}}
 
   
 
 <!-- Socket.io -->
 <header>
+    <div style="color: aliceblue; text-align:right">Diamantes: {{diamonds}}</div>
     <script src="/socket.io/socket.io.js"></script>
 
         <div id="elementos_turno">
@@ -47,8 +49,6 @@
     </script>
 </header>
 <!-- Socket.io -->
-    
-    {{#data}}
 
 <!-- Menu Superior -->
 <section id="menu_superior">
@@ -70,7 +70,7 @@
 
      <div class="info_menu_superior" style="left: 650px;">
          <div id="info_sub_menu_1">
-            <div>Diamantes: {{diamonds}}</div>
+            <div>Origem: {{origin}} </div>
             <div>Clã: {{cla}}</div>
             <div>Ranking: -- </div>
             <div>Nível: {{level}} </div>

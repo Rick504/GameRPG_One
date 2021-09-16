@@ -51,9 +51,8 @@ app.get('/register',function(req,res) {
 
 //Cadastro Realizado / HTML - api
 app.post("/registrationPerformed",urlencodeParser,function(req,res){
-    sql.query("INSERT INTO users values (?,?,?,?)",[req.body.id, req.body.name, req.body.email, req.body.password])
-	res.send('Cadastro Realizado')
-	// res.sendFile(path.join(__dirname+'/html/registrationPerformed.html'))
+    sql.query("INSERT INTO users (id,name,email,password,origin) values (?,?,?,?,?) ",[req.body.id, req.body.name, req.body.email, req.body.password, req.body.origin])
+    res.sendFile(path.join(__dirname+'/html/registrationPerformed.html'))
 })
 
 //------------------------------------------------------------------------------------------------------------------------------------//

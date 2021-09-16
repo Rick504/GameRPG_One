@@ -28,6 +28,8 @@ module.exports = function ( app ) {
 
                     cla = results[0].clã
                     level = results[0].level                    
+                    origin = results[0].origin
+
                     //Exercito / Trabalhadores
                     army = results[0].army
                     workers = results[0].workers
@@ -41,6 +43,7 @@ module.exports = function ( app ) {
                     dados_user = {
                         t_name,
                         user_id,
+                        origin,
                         level,
                         cla,
                         gold,
