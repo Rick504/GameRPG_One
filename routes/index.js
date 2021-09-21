@@ -6,8 +6,9 @@ module.exports = function ( app ) {
     require('./APIs main/auth')(app)
     require('./APIs main/socke_io')(app)
 
-    //APIs - Page Diamons
+    //APIs - Page Diamonds
     require('./PagesJS/Page_Diamonds/APIs_Diamonds/updateDiamonds')(app)
+
     //APIs - Page Army
     require('./PagesJS/Page_Army/APIs_Army/updateArmy')(app)
 

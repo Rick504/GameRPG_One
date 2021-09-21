@@ -14,9 +14,9 @@ const app = express()
 require('dotenv').config()
 
 //MySql - settings
-global.sql=mysql.createConnection({host: 'localhost', user: 'RWR', password: 'Password123#@!', database: 'cadastro'})
+global.sql=mysql.createConnection({host: 'localhost', user: 'RWR', password: 'Password123#@!', database: 'First_game'})
 module.exports = sql
-sql.query("use cadastro")
+sql.query("use First_game")
 
 //session - settings ---------------------------------------//
 app.use(session({secret: 'secret',resave: true,saveUninitialized: true}))

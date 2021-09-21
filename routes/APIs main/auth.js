@@ -33,7 +33,7 @@ module.exports = function ( app ) {
                     //Exercito / Trabalhadores
                     army = results[0].army
                     workers = results[0].workers
-                    
+
                     //redirecionar para logado com id
                     res.redirect('/Logged/' + user_id)
 
