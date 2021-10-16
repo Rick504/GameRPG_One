@@ -1,8 +1,6 @@
 module.exports = function ( app ) {
-
-    apiSecret = process.env.API_ROTA_URL_AUTHENTICATION
-
-    app.post(apiSecret, function(req, res) {
+    
+    app.post("/auth", function(req, res) {
         var name = req.body.name
         var password = req.body.password
         if (name && password) {

@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  node:
+    build: .
+    ports:
+     - "3000:3000"
+    depends_on:
+     - db
+    environment:
+     - DATABASE_HOST=db
+    volumes:
+     - .:/app/api
+  db:
+    build: ./mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3318:3306

@@ -1,8 +1,6 @@
 module.exports =  function ( app ) {
-
-    apiSecret = process.env.API_ROTA_URL_UPDATE_WORKERS_PURCHASE_GOLD
     
-    app.get(apiSecret, function(req,res){
+    app.get("/purchase_gold", function(req,res){
       if (workers >= 0 && gold >= 2 && supplies >= 13) {
       
           //variaveis de atualização

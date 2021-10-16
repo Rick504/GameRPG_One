@@ -3,6 +3,9 @@ module.exports = function ( app ) {
     var http = require('http').Server(app)
     var io = require('socket.io')(http)
 
+    const PORT = 3000
+    const HOST = '0.0.0.0'
+
     // /io - rota - api -------------------------
     app.get('/socke_io', function (req, res) {
         res.send('Hello socket !!')
@@ -40,7 +43,7 @@ module.exports = function ( app ) {
     // })
 
     //Start Server -------------------------------
-    http.listen(3000, function(){
+    http.listen(PORT, HOST, function(){
         console.log('Game on port localhost:3000')
     })
 }

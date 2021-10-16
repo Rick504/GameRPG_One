@@ -1,8 +1,6 @@
 module.exports =  function ( app ) {
 
-    apiSecret = process.env.API_ROTA_URL_DIAMONDS
-
-     app.get(apiSecret, function(req,res){
+     app.get("/updateDiamonds", function(req,res){
             const addDiamantes = 20
             const diamantesAtual = parseInt(diamonds)  +  parseInt(addDiamantes)
 

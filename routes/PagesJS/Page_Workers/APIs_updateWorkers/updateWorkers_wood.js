@@ -1,8 +1,6 @@
 module.exports =  function ( app ) {
-
-    apiSecret = process.env.API_ROTA_URL_UPDATE_WORKERS_WOOD
     
-    app.get(apiSecret, function(req,res){
+    app.get("/updateWorkers_wood", function(req,res){
       if (workers > 0) {
       
           //variaveis de atualização

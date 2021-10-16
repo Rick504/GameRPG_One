@@ -11,10 +11,10 @@ const app = express()
 //------------------------------------------------------------------------------------------------------------------------------------//
 
 //modulo que carrega variaveis de ambiente em arquivo .env
-require('dotenv').config()
+// require('dotenv').config()
 
 //MySql - settings
-global.sql=mysql.createConnection({host: 'localhost', user: 'RWR', password: 'Password123#@!', database: 'First_game'})
+global.sql=mysql.createConnection({host: 'localhost', user: 'root', password: '123', database: 'First_game'})
 module.exports = sql
 sql.query("use First_game")
 
