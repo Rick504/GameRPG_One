@@ -14,7 +14,13 @@ const app = express()
 // require('dotenv').config()
 
 //MySql - settings
-global.sql=mysql.createConnection({host: 'localhost', user: 'root', password: '123', database: 'First_game'})
+global.sql=mysql.createConnection({
+    host: '127.0.0.1',
+    user: 'root',
+    password: '123',
+    database: 'First_game',
+    port: 3306
+})
 module.exports = sql
 sql.query("use First_game")
 

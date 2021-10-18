@@ -10,7 +10,3 @@ chmod +x /app/api/node_modules/.bin/nodemon
 
 cd /app/api
 npm start
-
-cd /app/api
-node app
-
