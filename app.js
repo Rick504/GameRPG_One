@@ -1,44 +1,41 @@
-// const bodyParser=require('body-parser')
-// const mysql=require('mysql2')
-// const handlebars=require('express-handlebars')
-// const urlencodeParser=bodyParser.urlencoded({extended:false})
+const handlebars=require('express-handlebars')
+const bodyParser=require('body-parser')
+const urlencodeParser=bodyParser.urlencoded({extended:false})
 const path = require('path')
 const express = require('express')
 const app = express()
 const port = 3000
-// , session = require('express-session')
-
+const session = require('express-session')
 
 // //------------------------------------------------------------------------------------------------------------------------------------//
 
-// //modulo que carrega variaveis de ambiente em arquivo .env
-// // require('dotenv').config()
+//modulo que carrega variaveis de ambiente em arquivo .env
+// require('dotenv').config()
 
-// //MySql - settings
-// global.sql=mysql.createConnection({
-//     host: 'db',
-//     user: 'root',
-//     password: '',
-//     database: 'First_game'
-// })
-// module.exports = sql
-// sql.query("use First_game")
+const Pool = require('pg').Pool
+const pool = new Pool({
+  user: 'postgres',
+  host: 'db',
+  database: 'First_game',
+  password: '123',
+  port: 5432,
+})
 
-// //session - settings ---------------------------------------//
-// app.use(session({secret: 'secret',resave: true,saveUninitialized: true}))
+//session - settings ---------------------------------------//
+app.use(session({secret: 'secret',resave: true,saveUninitialized: true}))
 
 // //bodyParser - settings -------------------------------------//
-// app.use(bodyParser.urlencoded({extended : true}))
-// app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json())
 
 // //handlebars - settings -------------------------------------//
 
-// app.set('view engine', 'handlebars')
-// app.engine('handlebars', handlebars({
-//     layoutsDir: __dirname + '/views/layouts',
-// }))
+app.set('view engine', 'handlebars')
+app.engine('handlebars', handlebars({
+    layoutsDir: __dirname + '/views/layouts',
+}))
 
-// app.use(express.static('public'))
+app.use(express.static('public'))
 
 // //------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -49,16 +46,27 @@ app.get('/',function(req,res) {
   })
   
   //Cadastrar / HTML - rota 
-  app.get('/register',function(req,res) {
+app.get('/register',function(req,res) {
    res.sendFile(path.join(__dirname+'/html/register.html'))
-  })
+})
 
+// API para ver resultados do Banco
+app.get('/psql', async(req, res) => {
+  const { rows } = await pool.query('select * from users')
+  res.send(rows)
+})
 
-// //Cadastro Realizado / HTML - api
-// app.post("/registrationPerformed",urlencodeParser,function(req,res){
-//     sql.query("INSERT INTO users (id,name,email,password,origin) values (?,?,?,?,?) ",[req.body.id, req.body.name, req.body.email, req.body.password, req.body.origin])
-//     res.sendFile(path.join(__dirname+'/html/registrationPerformed.html'))
-// })
+//Cadastro Realizado / HTML - api
+app.post("/registrationPerformed",urlencodeParser,function(req,res){
+  const { u_name, email, password, origin } = req.body
+
+  pool.query(`INSERT INTO users(u_name, email, password, origin) VALUES ($1, $2, $3, $4) RETURNING id;`,
+  [u_name,email,password,origin]), (error, results) => {
+    if (error) {
+      throw error
+    }}
+    res.sendFile(path.join(__dirname+'/html/registrationPerformed.html'))
+})
 
 // //------------------------------------------------------------------------------------------------------------------------------------//
 

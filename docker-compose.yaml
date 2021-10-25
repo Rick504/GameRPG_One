@@ -8,7 +8,6 @@ services:
     - "5432:5432"
     environment:
       POSTGRES_PASSWORD: 123
-      POSTGRES_USER: RWR
 #NODE
   node:
     build: .
@@ -20,13 +19,3 @@ services:
      - DATABASE_HOST=db
     volumes:
      - .:/app/api
-
-
-#  db:
-#    image: mysql:5.7
-#    command: --default-authentication-plugin=mysql_native_password
-#    restart: always
-#    environment:
-#      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-#    volumes:
-#      - ./mysql/setup.sql:/docker-entrypoint-initdb.d/init.sql

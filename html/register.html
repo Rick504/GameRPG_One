@@ -7,25 +7,28 @@
     <title>Document</title>
     <style>
          body {
-        background-color: rgb(77, 50, 18);
+        background-color: rgb(129, 151, 124);
     }
     </style>
 </head>
 <body>
     <form name='form1' action='registrationPerformed' method='post'>
-        <input type='text' id="name" name='name' placeholder='Name:'><br>
+        <input type='text' id="u_name" name='u_name' placeholder='Name:'><br>
         <input type='text' id="email" name='email' placeholder='E-mail:'><br>
         <input type="password" name="password" placeholder="Password:">
 
-        <h2>Magia</h2>
-        <input type="radio" name="origin" value="Magia">
-        <h2>Pesquisador</h2>
-        <input type="radio" name="origin" value="Pesquisador">
-        <h2>Guerra</h2>
-        <input type="radio" name="origin" value="Guerra">
+        <section style="display:flex">
+            <h2>Magia</h2>
+            <input type="radio" name="origin" value="Magia">
+            <h2>Pesquisador</h2>
+            <input type="radio" name="origin" value="Pesquisador">
+            <h2>Guerra</h2>
+            <input type="radio" name="origin" value="Guerra">
+    
+            <input type='submit' name='btnSubmit' value='Register'><br>
+            <br><br>
+        </section>
 
-        <input type='submit' name='btnSubmit' value='Register'><br>
-        <br><br>
     </form>
 </body>
 </html>
