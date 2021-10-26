@@ -9,7 +9,7 @@ module.exports =  function ( app ) {
                 const current_gold = parseInt(gold)  -  parseInt(lessGold)
                 const current_army = parseInt(army)  +  parseInt(addArmy)
 
-                pool.query("UPDATE users SET army = " + current_army +", gold = "+ current_gold +"  WHERE id = $1",[user_id])
+                conn.query("UPDATE users SET army = " + current_army +", gold = "+ current_gold +"  WHERE id = $1",[user_id])
 
                 //atualizando results do BD
                 army = current_army
@@ -20,7 +20,7 @@ module.exports =  function ( app ) {
                 dados_user.gold = current_gold
 
                 res.redirect('/Exercito/'+ user_id)
-            } 
+            }
 
         })
-}  
+}

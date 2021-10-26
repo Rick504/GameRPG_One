@@ -8,7 +8,7 @@ module.exports = function ( app ) {
     app.get('/socke_io', function (req, res) {
         res.send('Hello socket !!')
     })
-    
+
 
     // AUMENTA RECURSOS DO JOGADOR POR TURNO AO DESCOMENTAR -------------------------------------------//
 
@@ -20,10 +20,10 @@ module.exports = function ( app ) {
     //         const currint_gold = parseInt(gold)  +  parseInt(worker_producing_gold)
     //         const currint_supplies = parseInt(supplies)  +  parseInt(worker_producing_supplies)
     //         const currint_wood = parseInt(wood)  +  parseInt(worker_producing_wood)
-            
-    
-    //         pool.query("UPDATE users SET gold = " + currint_gold +", supplies = "+ currint_supplies + ", wood = " + currint_wood + "  WHERE id = $1",[user_id])
-            
+
+
+    //         conn.query("UPDATE users SET gold = " + currint_gold +", supplies = "+ currint_supplies + ", wood = " + currint_wood + "  WHERE id = $1",[user_id])
+
     //         //atualizando results do BD
     //         gold = currint_gold
     //         supplies = currint_supplies
@@ -48,5 +48,5 @@ module.exports = function ( app ) {
 
     //Start Server
     http.listen(PORT, function(){console.log('Socket.io on port localhost:' + PORT)})
-  
+
   }

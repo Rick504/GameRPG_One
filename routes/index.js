@@ -16,10 +16,16 @@ module.exports = function ( app ) {
     require('./PagesJS/Page_Workers/APIs_updateWorkers/purchase_gold')(app)
     require('./PagesJS/Page_Workers/APIs_updateWorkers/updateWorkers_gold')(app)
     require('./PagesJS/Page_Workers/APIs_updateWorkers/updateWorkers_supplies')(app)
-    require('./PagesJS/Page_Workers/APIs_updateWorkers/updateWorkers_wood')(app)    
+    require('./PagesJS/Page_Workers/APIs_updateWorkers/updateWorkers_wood')(app)
+
+    //===================================================   Auth   =========================================================//
+    require('./APIs main/login')(app)
+    require('./APIs main/register')(app)
+    require('./APIs main/registerperformed')(app)
+
 
     //===================================================  Pages  ==========================================================//
-    
+
     //Menu principal
     require('./PagesJS/Page_Diamonds/Diamonds')(app)
     require('./PagesJS/Page_Logged/Logged')(app)

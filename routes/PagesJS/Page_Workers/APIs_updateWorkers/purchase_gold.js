@@ -1,8 +1,8 @@
 module.exports =  function ( app ) {
-    
+
     app.get("/purchase_gold", function(req,res){
       if (workers >= 0 && gold >= 2 && supplies >= 13) {
-      
+
           //variaveis de atualização
           const less_gold = 2
           const less_supplies = 13
@@ -14,7 +14,7 @@ module.exports =  function ( app ) {
 
 
           //Update Mysql
-          pool.query("UPDATE users SET workers="+current_worker+", gold="+current_gold+", supplies ="+current_supplies+"  WHERE id = $1",[user_id])
+          conn.query("UPDATE users SET workers="+current_worker+", gold="+current_gold+", supplies ="+current_supplies+"  WHERE id = $1",[user_id])
 
 
           // variaveis do Banco
@@ -26,7 +26,7 @@ module.exports =  function ( app ) {
           dados_user.workers = current_worker
           dados_user.gold = current_gold
           dados_user.supplies = current_supplies
-          
+
           res.redirect('/Trabalhadores/'+ user_id)
 
         } else {
@@ -34,6 +34,6 @@ module.exports =  function ( app ) {
             gold = gold
             supplies= supplies
         }
-  
+
       })
 }
