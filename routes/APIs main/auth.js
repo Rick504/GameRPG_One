@@ -1,11 +1,9 @@
 module.exports = function ( app ) {
-    
     app.post("/auth", function(req, res) {
-
         let { u_name, password } = req.body
-        
+
         if (u_name && password) {
-            pool.query('SELECT * FROM users WHERE u_name = $1 AND password = $2', [u_name, password], function(error, results, fields) {
+            conn.query('SELECT * FROM users WHERE u_name = $1 AND password = $2', [u_name, password], function(error, results, fields) {
                 if (results.rows.length > 0) {
                     //requisições do BD
                     req.session.loggedin = true
@@ -22,7 +20,7 @@ module.exports = function ( app ) {
                     worker_producing_supplies = results.rows[0].worker_producing_supplies
                     worker_producing_wood = results.rows[0].worker_producing_wood
                     cla = results.rows[0].cla
-                    level = results.rows[0].level                    
+                    level = results.rows[0].level
                     origin = results.rows[0].origin
                     army = results.rows[0].army
                     workers = results.rows[0].workers
@@ -39,7 +37,7 @@ module.exports = function ( app ) {
                         origin,
                         level,
                         cla,
-                        gold, 
+                        gold,
                         supplies,
                         wood,
                         army,
