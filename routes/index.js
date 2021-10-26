@@ -7,5 +7,6 @@ module.exports = function (app) {
     require("./socket_io")(app);
 
     // Pages
+    require("./pages")(app);
     require("./private_pages")(app);
 };

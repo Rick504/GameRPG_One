@@ -4,11 +4,6 @@ const express = require("express");
 const urlencodeParser = express.urlencoded({ extended: false });
 
 module.exports = function (app) {
-    app.get("/", function (req, res) {
-        res.sendFile(path.join(__dirname + "../../../html/login.html"));
-        // req.session.destroy()
-    });
-
     app.post("/auth", function (req, res) {
         let { u_name, password } = req.body;
 
@@ -77,10 +72,6 @@ module.exports = function (app) {
         } else {
             res.end();
         }
-    });
-
-    app.get("/register", function (req, res) {
-        res.sendFile(path.join(__dirname + "../../../html/register.html"));
     });
 
     app.post("/registrationPerformed", urlencodeParser, function (req, res) {
