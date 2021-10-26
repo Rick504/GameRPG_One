@@ -2,15 +2,16 @@ module.exports = function ( app ) {
 
     var http = require('http').Server(app)
     var io = require('socket.io')(http)
-
     const PORT = 3000
-    const HOST = '0.0.0.0'
 
-    // /io - rota - api -------------------------
+    // /io - rota - api - RERIFICAR FUNCIONAMENTO DA API -------------------------
     app.get('/socke_io', function (req, res) {
         res.send('Hello socket !!')
     })
     
+
+    // AUMENTA RECURSOS DO JOGADOR POR TURNO AO DESCOMENTAR -------------------------------------------//
+
     // var prime = null
     // io.on('connection', function(socket){
 
@@ -21,7 +22,7 @@ module.exports = function ( app ) {
     //         const currint_wood = parseInt(wood)  +  parseInt(worker_producing_wood)
             
     
-    //         sql.query("UPDATE users SET gold = " + currint_gold +", supplies = "+ currint_supplies + ", wood = " + currint_wood + "  WHERE id = ?",[user_id])
+    //         pool.query("UPDATE users SET gold = " + currint_gold +", supplies = "+ currint_supplies + ", wood = " + currint_wood + "  WHERE id = $1",[user_id])
             
     //         //atualizando results do BD
     //         gold = currint_gold
@@ -36,14 +37,16 @@ module.exports = function ( app ) {
     //     }, 10000)
 
 
-    //     // setInterval(() => {
-    //     //     prime+=2
-    //     // }, 5000)
-    //     // socket.emit('cart', prime)
+    //     setInterval(() => {
+    //         prime+=2
+    //     }, 5000)
+    //     socket.emit('cart', prime)
     // })
 
-    //Start Server -------------------------------
-    http.listen(PORT, HOST, function(){
-        console.log('Game on port localhost:3000')
-    })
-}
+    //------------------------------------------------------------------------------------------------//
+
+
+    //Start Server
+    http.listen(PORT, function(){console.log('Socket.io on port localhost:' + PORT)})
+  
+  }

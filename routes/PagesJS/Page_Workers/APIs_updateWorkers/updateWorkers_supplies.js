@@ -12,13 +12,11 @@ module.exports =  function ( app ) {
 
 
           //Update Mysql
-          sql.query("UPDATE users SET workers = " + current_worker + ", worker_producing_supplies = " + current_supplies + " WHERE id = ?",[user_id])
-
+          pool.query("UPDATE users SET workers = " + current_worker + ", worker_producing_supplies = " + current_supplies + " WHERE id = $1",[user_id])
 
           // variaveis do Banco
           worker_producing_supplies = current_supplies
           workers = current_worker
-
 
           //handlebars
           dados_user.worker_producing_supplies = current_supplies
@@ -28,7 +26,7 @@ module.exports =  function ( app ) {
         } else {
           const zero = 0
 
-          sql.query("UPDATE users SET workers = " + zero + " WHERE id = ?",[user_id])
+          pool.query("UPDATE users SET workers = " + zero + " WHERE id = $1",[user_id])
         }
   
       })

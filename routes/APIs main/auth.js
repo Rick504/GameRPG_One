@@ -1,41 +1,36 @@
 module.exports = function ( app ) {
     
     app.post("/auth", function(req, res) {
-        var name = req.body.name
-        var password = req.body.password
-        if (name && password) {
-            sql.query('SELECT * FROM users WHERE name = ? AND password = ?', [name, password], function(error, results, fields) {
-                if (results.length > 0) {
+
+        let { u_name, password } = req.body
+        
+        if (u_name && password) {
+            pool.query('SELECT * FROM users WHERE u_name = $1 AND password = $2', [u_name, password], function(error, results, fields) {
+                if (results.rows.length > 0) {
                     //requisições do BD
                     req.session.loggedin = true
-                    req.session.name = name
+                    req.session.u_name = u_name
+                    t_name = req.session.u_name
 
-                    //trazendo do mysql
-                    user_id = results[0].id
-                    t_name = req.session.name
-                    
-                    diamonds = results[0].diamonds
-
-                    //Ouro / Suprimetos / Madseira
-                    gold = results[0].gold
-                    supplies = results[0].supplies
-                    wood = results[0].wood
-                    worker_producing_gold = results[0].worker_producing_gold
-                    worker_producing_supplies = results[0].worker_producing_supplies
-                    worker_producing_wood = results[0].worker_producing_wood
-
-                    cla = results[0].clã
-                    level = results[0].level                    
-                    origin = results[0].origin
-
-                    //Exercito / Trabalhadores
-                    army = results[0].army
-                    workers = results[0].workers
+                    //trazendo do Banco
+                    user_id = results.rows[0].id
+                    diamonds = results.rows[0].diamonds
+                    gold = results.rows[0].gold
+                    supplies = results.rows[0].supplies
+                    wood = results.rows[0].wood
+                    worker_producing_gold = results.rows[0].worker_producing_gold
+                    worker_producing_supplies = results.rows[0].worker_producing_supplies
+                    worker_producing_wood = results.rows[0].worker_producing_wood
+                    cla = results.rows[0].cla
+                    level = results.rows[0].level                    
+                    origin = results.rows[0].origin
+                    army = results.rows[0].army
+                    workers = results.rows[0].workers
 
                     //redirecionar para logado com id
                     res.redirect('/Logged/' + user_id)
 
-                    //console.log(results) para teste.
+                    //console.log(rows) para teste.
 
                     //eviando requisições do BD ao logar
                     dados_user = {
@@ -44,7 +39,7 @@ module.exports = function ( app ) {
                         origin,
                         level,
                         cla,
-                        gold,
+                        gold, 
                         supplies,
                         wood,
                         army,

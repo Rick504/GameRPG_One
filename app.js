@@ -4,7 +4,6 @@ const urlencodeParser=bodyParser.urlencoded({extended:false})
 const path = require('path')
 const express = require('express')
 const app = express()
-const port = 3000
 const session = require('express-session')
 
 // //------------------------------------------------------------------------------------------------------------------------------------//
@@ -13,13 +12,14 @@ const session = require('express-session')
 // require('dotenv').config()
 
 const Pool = require('pg').Pool
-const pool = new Pool({
+global.pool = new Pool({
   user: 'postgres',
   host: 'db',
   database: 'First_game',
   password: '123',
   port: 5432,
 })
+module.exports = pool
 
 //session - settings ---------------------------------------//
 app.use(session({secret: 'secret',resave: true,saveUninitialized: true}))
@@ -72,8 +72,4 @@ app.post("/registrationPerformed",urlencodeParser,function(req,res){
 
 // //Tudo que vem do routers
 
-// require('./routes')(app)
-
-app.listen(port, () => {
-    console.log(`Executando na porta: ${port}`)
-})
+require('./routes')(app)

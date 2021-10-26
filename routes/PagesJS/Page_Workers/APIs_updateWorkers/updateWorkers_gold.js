@@ -13,7 +13,7 @@ module.exports =  function ( app ) {
           
 
           //Update Mysql
-          sql.query("UPDATE users SET workers = " + current_worker + ", worker_producing_gold = " + current_gold + " WHERE id = ?",[user_id])
+          pool.query("UPDATE users SET workers = " + current_worker + ", worker_producing_gold = " + current_gold + " WHERE id = $1",[user_id])
 
                 
           // variaveis do Banco
@@ -31,7 +31,7 @@ module.exports =  function ( app ) {
         } else {
           const zero = 0
 
-          sql.query("UPDATE users SET workers = " + zero + " WHERE id = ?",[user_id])
+          pool.query("UPDATE users SET workers = " + zero + " WHERE id = $1",[user_id])
         }
     })
 }

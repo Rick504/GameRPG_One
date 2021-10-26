@@ -1,3 +1,5 @@
+const { Pool } = require("pg/lib")
+
 module.exports =  function ( app ) {
 
      app.get("/updateArmy", function(req,res){
@@ -7,7 +9,7 @@ module.exports =  function ( app ) {
                 const current_gold = parseInt(gold)  -  parseInt(lessGold)
                 const current_army = parseInt(army)  +  parseInt(addArmy)
 
-                sql.query("UPDATE users SET army = " + current_army +", gold = "+ current_gold +"  WHERE id = ?",[user_id])
+                pool.query("UPDATE users SET army = " + current_army +", gold = "+ current_gold +"  WHERE id = $1",[user_id])
 
                 //atualizando results do BD
                 army = current_army

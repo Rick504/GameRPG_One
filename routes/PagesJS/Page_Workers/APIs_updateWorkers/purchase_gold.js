@@ -14,7 +14,7 @@ module.exports =  function ( app ) {
 
 
           //Update Mysql
-          sql.query("UPDATE users SET workers="+current_worker+", gold="+current_gold+", supplies ="+current_supplies+"  WHERE id = ?",[user_id])
+          pool.query("UPDATE users SET workers="+current_worker+", gold="+current_gold+", supplies ="+current_supplies+"  WHERE id = $1",[user_id])
 
 
           // variaveis do Banco
