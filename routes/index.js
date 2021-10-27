@@ -1,5 +1,8 @@
 module.exports = function ( app ) {
 
+    //TESTES
+    require('../tests/psql')(app)
+
     //===================================================   APIs   =========================================================//
 
     //APIs main
@@ -18,7 +21,8 @@ module.exports = function ( app ) {
     require('./PagesJS/Page_Workers/APIs_updateWorkers/updateWorkers_supplies')(app)
     require('./PagesJS/Page_Workers/APIs_updateWorkers/updateWorkers_wood')(app)
 
-    //===================================================   Auth   =========================================================//
+    //===================================================   HTML   =========================================================//
+    
     require('./APIs main/login')(app)
     require('./APIs main/register')(app)
     require('./APIs main/registerperformed')(app)
