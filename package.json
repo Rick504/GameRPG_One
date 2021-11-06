@@ -24,6 +24,7 @@
     "socketio": "^1.0.0"
   },
   "devDependencies": {
+    "@types/pg": "^8.6.1",
     "nodemon": "^1.11.0"
   }
 }
