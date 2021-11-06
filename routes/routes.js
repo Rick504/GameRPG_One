@@ -1,6 +1,4 @@
 const path = require("path")
-var diamondsController = require('../controllers/diamondsController')
-var armyController = require('../controllers/armyController')
 const workersController = require("../controllers/workersController")
 
 
@@ -16,8 +14,6 @@ module.exports = function ( app ) {
     //**********************  APIS  ***************************** */
 
  
-    app.get("/updateDiamonds", diamondsController.diamonds_update)
-    app.get("/updateArmy", armyController.armys_update)
     app.get("/purchase_gold", workersController.workers_purchase_gold)
     app.get("/updateWorkers_gold", workersController.updateWorkers_gold)
     app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)

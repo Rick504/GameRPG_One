@@ -22,7 +22,6 @@ module.exports = function ( app ) {
                     cla = results.rows[0].cla
                     level = results.rows[0].level
                     origin = results.rows[0].origin
-                    army = results.rows[0].army
                     workers = results.rows[0].workers
 
                     //redirecionar para logado com id
@@ -40,7 +39,6 @@ module.exports = function ( app ) {
                         gold,
                         supplies,
                         wood,
-                        army,
                         workers,
                         diamonds,
                         worker_producing_gold,
