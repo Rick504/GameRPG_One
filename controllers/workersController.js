@@ -41,33 +41,33 @@ const workers_purchase_gold = (req,res,next) => {
 const updateWorkers_gold = (req,res) => {
   if (workers > 0) {
 
-      const less_worker = 1
-      const add_wood = 5
+      add_gold = '1'
 
-      const current_worker = parseInt(workers)  -  parseInt(less_worker)
-      const current_wood = parseInt(worker_producing_wood)  +  parseInt(add_wood)
+      const current_worker = parseInt(workers)  -  parseInt(1)
+      const current_gold = parseInt(worker_producing_gold)  +  parseInt(add_gold)
 
 
       conn.query(
         "UPDATE users SET workers = " + current_worker + 
-        ", worker_producing_wood = " + current_wood +
+        ", worker_producing_gold = " + current_gold +
         " WHERE id = $1",[user_id])
 
 
       // variaveis do Banco
-      worker_producing_wood = current_wood
+      worker_producing_gold = current_gold
       workers = current_worker
 
       //handlebars
-      dados_user.worker_producing_wood = current_wood
+      dados_user.worker_producing_gold = current_gold
       dados_user.workers = current_worker
 
       res.redirect('/Trabalhadores/'+ user_id)
 
     } else {
       workers = workers
-
-      res.redirect('/Trabalhadores/'+ user_id)
+      gold = gold
+      supplies = supplies
+      wood = wood
     }
 
 }
@@ -75,10 +75,9 @@ const updateWorkers_gold = (req,res) => {
 const updateWorkers_supplies = (req,res) => {
   if (workers > 0) {
 
-      const less_worker = 1
-      const add_supplies = 8
+      add_supplies = '8'
 
-      const current_worker = parseInt(workers)  -  parseInt(less_worker)
+      const current_worker = parseInt(workers)  -  parseInt(1)
       const current_supplies = parseInt(worker_producing_supplies)  +  parseInt(add_supplies)
 
 
@@ -99,8 +98,9 @@ const updateWorkers_supplies = (req,res) => {
       res.redirect('/Trabalhadores/'+ user_id)
     } else {
       workers = workers
-
-      res.redirect('/Trabalhadores/'+ user_id)
+      gold = gold
+      supplies = supplies
+      wood = wood
     }
 
 }
@@ -108,10 +108,9 @@ const updateWorkers_supplies = (req,res) => {
 const updateWorkers_wood = (req,res) => {
   if (workers > 0) {
 
-      const less_worker = 1
-      const add_wood = 5
+      add_wood = '5'
 
-      const current_worker = parseInt(workers)  -  parseInt(less_worker)
+      const current_worker = parseInt(workers)  -  parseInt(1)
       const current_wood = parseInt(worker_producing_wood)  +  parseInt(add_wood)
 
 
@@ -133,8 +132,9 @@ const updateWorkers_wood = (req,res) => {
 
     } else {
       workers = workers
-
-      res.redirect('/Trabalhadores/'+ user_id)
+      gold = gold
+      supplies = supplies
+      wood = wood
     }
 
 }
