@@ -2,22 +2,27 @@
 {{#data}}
 
 {{!-- section --}}
+
 <section class="section_actions">
 <h1 style="text-align: center;">Trabalhadores</h1>
 
-<p style="color: rgb(240, 240, 240);">Comprar trabalhador, custo 2 ouros e 13 suprimentos </p>
-<a href="/purchase_gold" id="my-checkbox"> <button> Comprar trabalhador </button></a>
+    <div style="margin-top: 100px; margin-left: 100px;">
+        <a href="/purchase_gold" id="my-checkbox"> <button> Comprar trabalhador </button></a>
+        <p >Custo do trabalhador: 2 Ouro, 13 Suprimentos. </p>
 
-<p>Total de Trabalhadores Disponiveis: <p style="background-color: black; width: 20px; text-align:center" >{{workers}}</p></p>
+        <p>Total de Trabalhadores Parados: </p>
+        <div style="color: cornsilk;">{{workers}}</div>
 
-<p>Coloque Trabalhadores para produzir ouro, cada trabalhador produz 1 ouro por turno.
-<a href="/updateWorkers_gold" id="my-checkbox"> <button > Produzir Ouro </button></a></p>
+        <a href="/updateWorkers_gold" id="my-checkbox"> <br><br> <button > Produzir Ouro </button></a></p>
+        <p>Coloque Trabalhadores para produzir Ouro, cada trabalhador produz 1 Ouro por turno.
 
-<p>Coloque Trabalhadores para produzir suprimentos, cada trabalhador produz 8 suprimentos por turno.
-<a href="/updateWorkers_supplies" id="my-checkbox"><button> Produzir Suprimentos </button></a></p>
+        <a href="/updateWorkers_supplies" id="my-checkbox"><br><br> <button> Produzir Suprimentos </button></a></p>
+        <p>Coloque Trabalhadores para produzir Suprimentos, cada trabalhador produz 8 Suprimentos por turno.
 
-<p>Coloque Trabalhadores para produzir madeira, cada trabalhador produz 5 madeiras por turno.
-<a href="/updateWorkers_wood" id="my-checkbox"><button id="myAnchor"> Produzir Madeira </button></a></p>
+        <a href="/updateWorkers_wood" id="my-checkbox"> <br><br> <button id="myAnchor"> Produzir Madeira </button></a></p>
+        <p>Coloque Trabalhadores para produzir Madeira, cada trabalhador produz 5 Madeira por turno.
+    </div>
+
 
 </section>
 {{!-- section --}}

@@ -1,6 +1,115 @@
+<style>
+    
+    .icons_left {
+        position: absolute;
+        width: 30px;
+        line-height: 9;
+        right: 150px;
+    }
+
+    .text_left {
+        position: absolute;
+        width: 30px;
+        line-height: 8.3;
+        left: 100px;
+    }
+
+    .radio_left {
+        position: absolute;
+        width: 30px;
+        line-height: 9;
+        left: 200px;
+    }
+
+    .icons_rigth {
+        position: absolute;
+        width: 30px;
+        line-height: 9;
+        left: 50px;
+    }
+
+    .text_rigth {
+        position: absolute;
+        width: 30px;
+        line-height: 8.3;
+        right: 100px;
+    }
+
+    .radio_rigth {
+        position: absolute;
+        width: 30px;
+        line-height: 9;
+        right: 200px;
+    }
+
+    .buttons_input {
+        position: absolute;
+        line-height: 4.3;
+        align-items: center;
+        left: 330px;
+        margin-top: 100px;
+    }
+
+    #button_to_replace {
+        margin-top: 20px;
+        padding: 20px 50px;
+    }
+
+</style>
+
 <section class="section_actions">
-    <h1>Comércio</h1>
+        <h1 style="text-align: center;">Comércio</h1>
+        
+        <ol>
+            <li>É permitido somente trocas com ouro acima de 10, madeira acima de 30 e suprimentos acima de 80.</li>
+            <li>As trocas feitas terão perdas de 20% do produto.</li>
+            <li>Exemplo: 1 ouro equivale à 5 madeiras e 8 suprimentos, em uma troca de 10 ouros por 30 madeiras, o retorno seria 24 madeiras.</li>        
+        </ol>
 
+
+        <form name='form_1_to_replace' action='to_replace' method='post'>
+
+            <!--lado esquerdo-->
+            <ul class="icons_left">
+                <img src="/icones/gold.png">
+                <img src="/icones/supplies.png">
+                <img src="/icones/wood.png">
+            </ul>
+            <ul class="text_left">
+                <p>Gold</p>
+                <p>Supplies</p>
+                <p>Wood</p>
+            </ul>
+            <ul class="radio_left">
+                <input type="radio" name="to_replace_1" value="Gold" style="width: 20px; height: 20px;">
+                <input type="radio" name="to_replace_1" value="Supplies" style="width: 20px; height: 20px;">
+                <input type="radio" name="to_replace_1" value="Wood" style="width: 20px; height: 20px;">
+            </ul>
+
+            <!--lado direito-->
+            <ul class="icons_rigth">
+                <img src="/icones/gold.png">
+                <img src="/icones/supplies.png">
+                <img src="/icones/wood.png">
+            </ul>
+            <ul class="text_rigth">
+                <p>Gold</p>
+                <p>Supplies</p>
+                <p>Wood</p>
+            </ul>
+            <ul class="radio_rigth">
+                <input type="radio" name="to_replace_2" value="Gold" style="width: 20px; height: 20px;">
+                <input type="radio" name="to_replace_2" value="Supplies" style="width: 20px; height: 20px;">
+                <input type="radio" name="to_replace_2" value="Wood" style="width: 20px; height: 20px;">
+            </ul>
+
+
+            <!--buttons-->
+            <ul class="buttons_input">
+                <input type='number' name='value' placeholder='value:' style="height: 25px;"><br>
+                <input type='number' name='result' placeholder='result:' style="height: 25px;"><br>
+                <input id="button_to_replace" type='submit' name='btnSubmit' value='to replace'><br>
+            </ul>
+
+        </form>
 </section>
-
-
