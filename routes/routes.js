@@ -45,24 +45,24 @@ module.exports = function ( app ) {
         }
     })
 
-    //Workers
-    app.get("/Trabalhadores/:id",function(req,res){
+    //Trabalhadores
+    app.get("/Workers/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Trabalhadores', { data: dados_user })
+            res.render('Workers', { data: dados_user })
         } 
     })
 
-    //Technology
-    app.get("/Tecnologia/:id",function(req,res){
+    //Tecnologia
+    app.get("/Technology/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Tecnologia', { layout: false, data: dados_user })
+            res.render('Technology', { layout: false, data: dados_user })
         } 
     })
 
-    //Support
-    app.get("/Suporte/:id",function(req,res){
+    //Suporte
+    app.get("/Support/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Suporte', { data: dados_user })
+            res.render('Support', { data: dados_user })
         } 
     })
 
@@ -80,10 +80,10 @@ module.exports = function ( app ) {
         } 
     })
 
-    //Menssages
-    app.get("/Menssagens/:id",function(req,res){
+    //Menssagens
+    app.get("/Menssages/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Menssagens', { data: dados_user })
+            res.render('Menssages', { data: dados_user })
         } 
     })
 
@@ -94,38 +94,38 @@ module.exports = function ( app ) {
         } 
     })
 
-    //Históric
-    app.get("/Historico/:id",function(req,res){
+    //Histórico
+    app.get("/Historic/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Historico', { data: dados_user })
+            res.render('Historic', { data: dados_user })
         } 
     })
 
-    //Clan
-    app.get("/Cla/:id",function(req,res){
+    //Clã
+    app.get("/Clan/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Cla', { data: dados_user })
+            res.render('Clan', { data: dados_user })
         } 
     })
 
     //Comercio
-    app.get("/Comercio/:id",function(req,res){
+    app.get("/Business/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Comercio', { data: dados_user })
+            res.render('Business', { data: dados_user })
         } 
     })
 
-    //Diamonds
-    app.get("/Diamantes/:id",function(req,res){
+    //Diamantes
+    app.get("/Diamonds/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Diamantes', { data: dados_user})
+            res.render('Diamonds', { data: dados_user})
         }
     })    
     
-    //Armys
-    app.get("/Exercito/:id",function(req,res){
+    //Exercito
+    app.get("/Armys/:id",function(req,res){
         if (req.session.loggedin == true) {
-            res.render('Exercito', { data: dados_user })
+            res.render('Armys', { data: dados_user })
         } 
     })
 }  
