@@ -1,12 +1,17 @@
+
+const express = require("express")
+const urlencodeParser = express.urlencoded({ extended: false })
 const path = require("path")
+
 const workersController = require("../controllers/workersController")
+const businessController = require("../controllers/businessController")
 
 
 module.exports = function ( app ) {
 
     //**********************  TESTES  ***************************** */
 
-    app.get('/psql', async(req, res) => {
+    app.get('/psql', async (req, res) => {
         const { rows } = await conn.query('select * from users')
         res.send(rows)
       })
@@ -19,24 +24,26 @@ module.exports = function ( app ) {
     app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)
     app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
 
+    app.post("/Business/to_replace", urlencodeParser, businessController.exchange)
+
     
     //**********************  Rotas  ***************************** */
 
     //Login - / HTML - rota
-    app.get("/", function (req, res) {
+    app.get("/", async (req, res) => {
         res.sendFile(path.join(__dirname + '../../views/html/login.html'))
-        req.session.destroy()
+        await req.session.destroy()
     })
     
 
     //Cadastrar / HTML - rota
-    app.get("/register", function (req, res) {
+    app.get("/register",  (req, res) => {
         res.sendFile(path.join(__dirname + "../../views/html/register.html"))
     })
 
 
     //Logged
-    app.get("/Logged/:id",function(req,res){
+    app.get("/Logged/:id",(req,res) => {
         if (req.session.loggedin == true) {
 
             res.render('Logged', { data: dados_user })
@@ -46,84 +53,84 @@ module.exports = function ( app ) {
     })
 
     //Trabalhadores
-    app.get("/Workers/:id",function(req,res){
+    app.get("/Workers/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Workers', { data: dados_user })
         } 
     })
 
     //Tecnologia
-    app.get("/Technology/:id",function(req,res){
+    app.get("/Technology/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Technology', { layout: false, data: dados_user })
         } 
     })
 
     //Suporte
-    app.get("/Support/:id",function(req,res){
+    app.get("/Support/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Support', { data: dados_user })
         } 
     })
 
     //Ranking
-    app.get("/Ranking/:id",function(req,res){
+    app.get("/Ranking/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Ranking', { data: dados_user })
         } 
     })
 
     //Profile
-    app.get("/Profile/:id",function(req,res){
+    app.get("/Profile/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Profile', { data: dados_user })
         } 
     })
 
     //Menssagens
-    app.get("/Menssages/:id",function(req,res){
+    app.get("/Menssages/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Menssages', { data: dados_user })
         } 
     })
 
     //Manual
-    app.get("/Manual/:id",function(req,res){
+    app.get("/Manual/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Manual', { data: dados_user })
         } 
     })
 
     //Histórico
-    app.get("/Historic/:id",function(req,res){
+    app.get("/Historic/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Historic', { data: dados_user })
         } 
     })
 
     //Clã
-    app.get("/Clan/:id",function(req,res){
+    app.get("/Clan/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Clan', { data: dados_user })
         } 
     })
 
     //Comercio
-    app.get("/Business/:id",function(req,res){
+    app.get("/Business/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Business', { data: dados_user })
         } 
     })
 
     //Diamantes
-    app.get("/Diamonds/:id",function(req,res){
+    app.get("/Diamonds/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Diamonds', { data: dados_user})
         }
     })    
     
     //Exercito
-    app.get("/Armys/:id",function(req,res){
+    app.get("/Armys/:id",(req,res) => {
         if (req.session.loggedin == true) {
             res.render('Armys', { data: dados_user })
         } 

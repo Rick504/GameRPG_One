@@ -1,14 +1,14 @@
 const express = require("express")
 const path = require("path")
 
-module.exports = function ( app ) {
+module.exports = ( app ) => {
     const urlencodeParser = express.urlencoded({ extended: false })
 
     //Cadastro Realizado / HTML - api
-    app.post("/registrationPerformed", urlencodeParser, function (req, res) {
+    app.post("/registrationPerformed", urlencodeParser, async (req, res) => {
         const { u_name, email, password, origin } = req.body
 
-        conn.query(
+        await conn.query(
             `INSERT INTO users(u_name, email, password, origin) VALUES ($1, $2, $3, $4) RETURNING id`,
             [u_name, email, password, origin]
         ),

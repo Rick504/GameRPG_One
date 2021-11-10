@@ -1,4 +1,4 @@
-const workers_purchase_gold = (req,res,next) => {
+const workers_purchase_gold = async (req,res,next) => {
       if (workers >= 0 && gold >= 2 && supplies >= 13) {
 
           const less_gold = 2
@@ -9,7 +9,7 @@ const workers_purchase_gold = (req,res,next) => {
           const current_gold = parseInt(gold)  -  parseInt(less_gold)
           const current_supplies = parseInt(supplies)  -  parseInt(less_supplies)
 
-          conn.query(
+          await conn.query(
           "UPDATE users SET workers = " + current_worker + 
           ", gold = " + current_gold + 
           ", supplies = " + current_supplies + 
@@ -26,7 +26,7 @@ const workers_purchase_gold = (req,res,next) => {
           dados_user.gold = current_gold
           dados_user.supplies = current_supplies
 
-          res.redirect('/Trabalhadores/'+ user_id)
+          res.redirect('/Workers/'+ user_id)
 
         } else {
             workers = workers
@@ -38,7 +38,7 @@ const workers_purchase_gold = (req,res,next) => {
 
 }
 
-const updateWorkers_gold = (req,res) => {
+const updateWorkers_gold = async (req,res) => {
   if (workers > 0) {
 
       add_gold = '1'
@@ -47,7 +47,7 @@ const updateWorkers_gold = (req,res) => {
       const current_gold = parseInt(worker_producing_gold)  +  parseInt(add_gold)
 
 
-      conn.query(
+      await conn.query(
         "UPDATE users SET workers = " + current_worker + 
         ", worker_producing_gold = " + current_gold +
         " WHERE id = $1",[user_id])
@@ -61,7 +61,7 @@ const updateWorkers_gold = (req,res) => {
       dados_user.worker_producing_gold = current_gold
       dados_user.workers = current_worker
 
-      res.redirect('/Trabalhadores/'+ user_id)
+      res.redirect('/Workers/'+ user_id)
 
     } else {
       workers = workers
@@ -72,7 +72,7 @@ const updateWorkers_gold = (req,res) => {
 
 }
 
-const updateWorkers_supplies = (req,res) => {
+const updateWorkers_supplies = async (req,res) => {
   if (workers > 0) {
 
       add_supplies = '8'
@@ -81,7 +81,7 @@ const updateWorkers_supplies = (req,res) => {
       const current_supplies = parseInt(worker_producing_supplies)  +  parseInt(add_supplies)
 
 
-      conn.query(
+      await conn.query(
         "UPDATE users SET workers = " + current_worker + 
         ", worker_producing_supplies = " + current_supplies + 
         " WHERE id = $1",[user_id])
@@ -95,7 +95,7 @@ const updateWorkers_supplies = (req,res) => {
       dados_user.worker_producing_supplies = current_supplies
       dados_user.workers = current_worker
 
-      res.redirect('/Trabalhadores/'+ user_id)
+      res.redirect('/Workers/'+ user_id)
     } else {
       workers = workers
       gold = gold
@@ -105,7 +105,7 @@ const updateWorkers_supplies = (req,res) => {
 
 }
 
-const updateWorkers_wood = (req,res) => {
+const updateWorkers_wood = async (req,res) => {
   if (workers > 0) {
 
       add_wood = '5'
@@ -114,7 +114,7 @@ const updateWorkers_wood = (req,res) => {
       const current_wood = parseInt(worker_producing_wood)  +  parseInt(add_wood)
 
 
-      conn.query(
+      await conn.query(
         "UPDATE users SET workers = " + current_worker + 
         ", worker_producing_wood = " + current_wood + 
         " WHERE id = $1",[user_id])
@@ -128,7 +128,7 @@ const updateWorkers_wood = (req,res) => {
       dados_user.worker_producing_wood = current_wood
       dados_user.workers = current_worker
 
-      res.redirect('/Trabalhadores/'+ user_id)
+      res.redirect('/Workers/'+ user_id)
 
     } else {
       workers = workers

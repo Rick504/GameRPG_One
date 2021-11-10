@@ -1,9 +1,11 @@
-module.exports = function ( app ) {
-    app.post("/auth", function(req, res) {
+module.exports = ( app ) => {
+
+    app.post("/auth", async (req, res) => {
+        
         let { u_name, password } = req.body
 
         if (u_name && password) {
-            conn.query('SELECT * FROM users WHERE u_name = $1 AND password = $2', [u_name, password], function(error, results, fields) {
+            await conn.query('SELECT * FROM users WHERE u_name = $1 AND password = $2', [u_name, password], function(error, results, fields) {
                 if (results.rows.length > 0) {
                     //requisições do BD
                     req.session.loggedin = true
