@@ -26,14 +26,12 @@ const workers_purchase_gold = async (req,res,next) => {
           dados_user.gold = current_gold
           dados_user.supplies = current_supplies
 
-          res.redirect('/Workers/'+ user_id)
 
         } else {
             workers = workers
             gold = gold
             supplies= supplies
 
-          res.redirect('/Trabalhadores/'+ user_id)
         }
 
 }
@@ -61,7 +59,7 @@ const updateWorkers_gold = async (req,res) => {
       dados_user.worker_producing_gold = current_gold
       dados_user.workers = current_worker
 
-      res.redirect('/Workers/'+ user_id)
+
 
     } else {
       workers = workers
@@ -95,7 +93,7 @@ const updateWorkers_supplies = async (req,res) => {
       dados_user.worker_producing_supplies = current_supplies
       dados_user.workers = current_worker
 
-      res.redirect('/Workers/'+ user_id)
+
     } else {
       workers = workers
       gold = gold
@@ -128,7 +126,7 @@ const updateWorkers_wood = async (req,res) => {
       dados_user.worker_producing_wood = current_wood
       dados_user.workers = current_worker
 
-      res.redirect('/Workers/'+ user_id)
+
 
     } else {
       workers = workers

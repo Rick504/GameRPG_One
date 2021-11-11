@@ -7,7 +7,7 @@ const workersController = require("../controllers/workersController")
 const businessController = require("../controllers/businessController")
 
 
-module.exports = function ( app ) {
+module.exports = ( app ) => {
 
     //**********************  TESTES  ***************************** */
 
@@ -23,7 +23,6 @@ module.exports = function ( app ) {
     app.get("/updateWorkers_gold", workersController.updateWorkers_gold)
     app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)
     app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
-
     app.post("/Business/to_replace", urlencodeParser, businessController.exchange)
 
     
@@ -35,7 +34,6 @@ module.exports = function ( app ) {
         await req.session.destroy()
     })
     
-
     //Cadastrar / HTML - rota
     app.get("/register",  (req, res) => {
         res.sendFile(path.join(__dirname + "../../views/html/register.html"))

@@ -25,6 +25,7 @@ module.exports = ( app ) => {
                     level = results.rows[0].level
                     origin = results.rows[0].origin
                     workers = results.rows[0].workers
+                    tech_points = results.rows[0].tech_points
 
                     //redirecionar para logado com id
                     res.redirect('/Logged/' + user_id)
@@ -45,7 +46,8 @@ module.exports = ( app ) => {
                         diamonds,
                         worker_producing_gold,
                         worker_producing_supplies,
-                        worker_producing_wood
+                        worker_producing_wood,
+                        tech_points
                     }
 
                     //visualizar quem logou data e hora

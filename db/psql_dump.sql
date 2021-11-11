@@ -10,11 +10,12 @@ CREATE TABLE IF NOT EXISTS users (
     supplies varchar(10) DEFAULT 5 NOT NULL,
     workers varchar(10) DEFAULT 0 NOT NULL,
     diamonds varchar(10) DEFAULT 100 NOT NULL,
-    worker_producing_gold varchar(4) DEFAULT 1 NOT NULL,
-    worker_producing_supplies varchar(4) DEFAULT 1 NOT NULL,
-    worker_producing_wood varchar(4) DEFAULT 1 NOT NULL,
+    worker_producing_gold varchar(4) DEFAULT 5 NOT NULL,
+    worker_producing_supplies varchar(4) DEFAULT 11 NOT NULL,
+    worker_producing_wood varchar(4) DEFAULT 2 NOT NULL,
     level varchar(2) DEFAULT 1 NOT NULL,
     cla varchar(30),
+    tech_points varchar(2) DEFAULT 2 NOT NULL,
     PRIMARY KEY (id)
 );
 
