@@ -18,6 +18,6 @@ module.exports = ( app ) => {
             }
         }
 
-        res.sendFile(path.join(__dirname + "../../../views/html/registrationPerformed.html"))
+        res.render('registrationPerformed', { layout: false })
     })
 }
