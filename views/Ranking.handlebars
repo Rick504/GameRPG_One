@@ -1,25 +1,13 @@
-
-
+{{#data}}
 <section class="section_actions">
-        <h1>Ranking</h1>
+    
+    <h1>Ranking</h1>
 
     <table>
         <tr>
-            <td>Name</td>
-            <td>Ouro</td>
+            <td>{{ranking}}</td>
         </tr>
-
-        {{#data}}
-            <tr>
-                <td>{{t_name}}</td>
-                <td>{{gold}}</td>
-                <td>{{ranking}}</td>
-                
-            </tr>
-        {{/data}}
     </table>
+
 </section>
-
-
-
-
+{{/data}}

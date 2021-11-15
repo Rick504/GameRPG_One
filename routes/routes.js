@@ -1,17 +1,19 @@
 
 const express = require("express")
 const urlencodeParser = express.urlencoded({ extended: false })
+const knex = require('../models/config/conn_knex')
 
 const workersController = require("../controllers/workersController")
 const businessController = require("../controllers/businessController")
+const rankingController = require("../controllers/rankingController")
 
 
 module.exports = (app) => {
 
     //**********************  TESTES  ***************************** */
 
-    app.get('/psql', async (req, res) => {
-        const { rows } = await conn.query('select * from users')
+    app.get('/psql',async (req, res) => {
+        const rows = await knex.table('users')
         res.send(rows)
     })
 
@@ -77,11 +79,7 @@ module.exports = (app) => {
     })
 
     //Ranking
-    app.get("/Ranking/:id", (req, res) => {
-        if (req.session.loggedin == true) {
-            res.render('Ranking', { data: dados_user })
-        }
-    })
+    app.get("/Ranking/:id", rankingController.allPlayers)
 
     //Profile
     app.get("/Profile/:id", (req, res) => {

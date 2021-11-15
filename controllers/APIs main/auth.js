@@ -5,7 +5,7 @@ module.exports = ( app ) => {
         let { u_name, password } = req.body
 
         if (u_name && password) {
-            await conn.query('SELECT * FROM users WHERE u_name = $1 AND password = $2', [u_name, password], function(error, results, fields) {
+            await conn.query('SELECT * FROM users WHERE u_name = $1 AND password = $2', [u_name, password], (error, results, fields) => {
                 if (results.rows.length > 0) {
                     //requisições do BD
                     req.session.loggedin = true
@@ -29,8 +29,6 @@ module.exports = ( app ) => {
 
                     //redirecionar para logado com id
                     res.redirect('/Logged/' + user_id)
-
-                    //console.log(rows) para teste.
 
                     //eviando requisições do BD ao logar
                     dados_user = {
