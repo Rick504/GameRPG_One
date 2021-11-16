@@ -3,6 +3,8 @@ const express = require("express")
 const urlencodeParser = express.urlencoded({ extended: false })
 const knex = require('../models/config/conn_knex')
 
+const insertAPI = require("../controllers/APIs main/registration_performed")
+const deleteAPI = require("../controllers/APIs main/delete")
 const workersController = require("../controllers/workersController")
 const businessController = require("../controllers/businessController")
 const rankingController = require("../controllers/rankingController")
@@ -12,7 +14,7 @@ module.exports = (app) => {
 
     //**********************  TESTES  ***************************** */
 
-    app.get('/psql',async (req, res) => {
+    app.get('/psql', async (req, res) => {
         const rows = await knex.table('users')
         res.send(rows)
     })
@@ -25,6 +27,8 @@ module.exports = (app) => {
     app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)
     app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
     app.post("/Business/to_replace", urlencodeParser, businessController.exchange)
+    app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
+    app.post("/registration_performed", urlencodeParser, insertAPI.insert_user)
 
 
     //**********************  Rotas  ***************************** */
@@ -41,10 +45,11 @@ module.exports = (app) => {
         await req.session.destroy()
     })
 
-    //registrationPerformed
-    app.get("/registrationPerformed", async (req, res) => {
-        res.render('registrationPerformed', { layout: false })
-        await req.session.destroy()
+    //delete    
+    app.get("/delete/:id", (req, res) => {
+        if (req.session.loggedin == true) {
+            res.render('delete', { layout: false, data: dados_user })
+        }
     })
 
     //Logged

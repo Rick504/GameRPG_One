@@ -8,7 +8,5 @@ module.exports = ( app ) => {
 
     require('../controllers/APIs main/auth')(app)
     require('../controllers/APIs main/socke_io')(app)
-    require('../controllers/APIs main/registerperformed')(app)
-
 }
 

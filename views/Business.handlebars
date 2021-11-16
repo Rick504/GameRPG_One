@@ -1,60 +1,15 @@
 <style>
     
-    .icons_left {
-        position: absolute;
-        width: 30px;
-        line-height: 9;
-        right: 150px;
-    }
-
-    .text_left {
-        position: absolute;
-        width: 30px;
-        line-height: 8.3;
+    .business {
+        position: relative;
+        top: 100px;
         left: 100px;
+        width: 700px;
+        height: 300px;
+        background-color: black;
+        justify-content: center;
     }
-
-    .radio_left {
-        position: absolute;
-        width: 30px;
-        line-height: 9;
-        left: 200px;
-    }
-
-    .icons_rigth {
-        position: absolute;
-        width: 30px;
-        line-height: 9;
-        left: 50px;
-    }
-
-    .text_rigth {
-        position: absolute;
-        width: 30px;
-        line-height: 8.3;
-        right: 100px;
-    }
-
-    .radio_rigth {
-        position: absolute;
-        width: 30px;
-        line-height: 9;
-        right: 250px;
-    }
-
-    .buttons_input {
-        position: absolute;
-        line-height: 4.3;
-        align-items: center;
-        left: 330px;
-        margin-top: 100px;
-    }
-
-    #button_to_replace {
-        margin-top: 20px;
-        padding: 20px 50px;
-    }
-
+ 
 </style>
 
 <section class="section_actions">
@@ -69,47 +24,23 @@
 
         <form name='form_to_replace' action='to_replace' method='post'>
 
-            <!--lado esquerdo-->
-            <ul class="icons_left">
+            <div class="business">
                 <img src="/icones/gold.png">
                 <img src="/icones/supplies.png">
-                <img src="/icones/wood.png">
-            </ul>
-            <ul class="text_left">
-                <p>Gold</p>
-                <p>Supplies</p>
-                <p>Wood</p>
-            </ul>
-            <ul class="radio_left">
+                <img src="/icones/wood.png"><br>
                 <input type="radio" name="to_replace_1" value="Gold_replace_1" style="width: 30px; height: 30px;">
                 <input type="radio" name="to_replace_1" value="Supplies_replace_1" style="width: 30px; height: 30px;">
-                <input type="radio" name="to_replace_1" value="Wood_replace_1" style="width: 30px; height: 30px;">
-            </ul>
-
-            <!--lado direito-->
-            <ul class="icons_rigth">
+                <input type="radio" name="to_replace_1" value="Wood_replace_1" style="width: 30px; height: 30px;"><br>
                 <img src="/icones/gold.png">
                 <img src="/icones/supplies.png">
-                <img src="/icones/wood.png">
-            </ul>
-            <ul class="text_rigth">
-                <p>Gold</p>
-                <p>Supplies</p>
-                <p>Wood</p>
-            </ul>
-            <ul class="radio_rigth">
+                <img src="/icones/wood.png"><br>
                 <input type="radio" name="to_replace_2" value="Gold_replace_2" style="width: 30px; height: 30px;">
                 <input type="radio" name="to_replace_2" value="Supplies_replace_2" style="width: 30px; height: 30px;">
-                <input type="radio" name="to_replace_2" value="Wood_replace_2" style="width: 30px; height: 30px;">
-            </ul>
-
-
-            <!--buttons-->
-            <ul class="buttons_input">
+                <input type="radio" name="to_replace_2" value="Wood_replace_2" style="width: 30px; height: 30px;"><br>
                 <input type='number' name='value' placeholder='value:' style="height: 25px;"><br>
                 <input type='number' name='result' placeholder='result:' style="height: 25px;"><br>
                 <input id="button_to_replace" type='submit' name='btnSubmit' value='to replace'><br>
-            </ul>
+            </div>
 
         </form>
 </section>

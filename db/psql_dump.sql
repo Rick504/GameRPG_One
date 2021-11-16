@@ -1,8 +1,8 @@
 -- table users
 CREATE TABLE IF NOT EXISTS users (
     id serial NOT NULL,
-    u_name varchar(45) NOT NULL,
-    email varchar(45) NOT NULL,
+    u_name varchar(45) UNIQUE NOT NULL,
+    email varchar(45) UNIQUE NOT NULL,
     password varchar(150) NOT NULL,
     origin varchar(20) NOT NULL,
     gold varchar(10) DEFAULT 1 NOT NULL,
