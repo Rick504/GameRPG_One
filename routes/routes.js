@@ -8,6 +8,7 @@ const deleteAPI = require("../controllers/APIs main/delete")
 const workersController = require("../controllers/workersController")
 const businessController = require("../controllers/businessController")
 const rankingController = require("../controllers/rankingController")
+const auth = require("../controllers/APIs main/auth")
 
 
 module.exports = (app) => {
@@ -28,6 +29,7 @@ module.exports = (app) => {
     app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
     app.post("/Business/to_replace", urlencodeParser, businessController.exchange)
     app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
+    app.post("/auth", auth.auth_user)
     app.post("/registration_performed", urlencodeParser, insertAPI.insert_user)
 
 

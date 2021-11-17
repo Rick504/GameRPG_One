@@ -15,8 +15,11 @@ module.exports = ( app ) => {
     //         const currint_supplies = parseInt(supplies)  +  parseInt(worker_producing_supplies)
     //         const currint_wood = parseInt(wood)  +  parseInt(worker_producing_wood)
 
-
-    //         await conn.query("UPDATE users SET gold = " + currint_gold +", supplies = "+ currint_supplies + ", wood = " + currint_wood + "  WHERE id = $1",[user_id])
+    //         await conn.query("UPDATE users SET gold = " 
+    //                         + currint_gold +", supplies = "
+    //                         + currint_supplies + ", wood = " 
+    //                         + currint_wood + "  WHERE id = $1",[user_id]
+    //                         )
 
     //         //atualizando results do BD
     //         gold = currint_gold
@@ -44,3 +47,10 @@ module.exports = ( app ) => {
     http.listen(PORT, function(){console.log('Socket.io on port localhost:' + PORT)})
 
   }
+
+              // await knex.where({id: user_id})
+            //             .update({
+            //                 gold: currint_gold,
+            //                 supplies: currint_supplies,
+            //                 wood:currint_wood
+            //             }).table('users')

@@ -1,3 +1,5 @@
+const knex = require('../models/config/conn_knex')
+
 //comprar trabalhadores
 const workers_purchase_gold = async (req,res,next) => {
 
@@ -11,12 +13,12 @@ const workers_purchase_gold = async (req,res,next) => {
           const current_gold     =  parseInt(gold)      -  parseInt(less_gold)
           const current_supplies =  parseInt(supplies)  -  parseInt(less_supplies)
 
-          await conn.query(
-          "UPDATE users SET workers = " + current_worker + 
-          ", gold = " + current_gold + 
-          ", supplies = " + current_supplies + 
-          "  WHERE id = $1",[user_id]
-          )
+          await knex.where({id: user_id})
+                    .update({
+                        workers: current_worker,
+                        gold: current_gold,
+                        supplies: current_supplies
+                    }).table('users')
 
           // variaveis do Banco e handlebars
           workers   = current_worker
@@ -47,11 +49,12 @@ const updateWorkers_gold = async (req,res) => {
       const current_gold   =  parseInt(worker_producing_gold)  +  parseInt(add_gold)
 
 
-      await conn.query(
-        "UPDATE users SET workers = " + current_worker + 
-        ", worker_producing_gold = " + current_gold +
-        " WHERE id = $1",[user_id]
-        )
+      await knex.where({id: user_id})
+                .update({
+                    workers: current_worker,
+                    worker_producing_gold: current_gold
+                }).table('users')
+
 
       // variaveis do Banco e handlebars
       worker_producing_gold  = current_gold
@@ -79,13 +82,12 @@ const updateWorkers_supplies = async (req,res) => {
       const current_worker   = parseInt(workers)  -  parseInt(1)
       const current_supplies = parseInt(worker_producing_supplies)  +  parseInt(add_supplies)
 
-
-      await conn.query(
-        "UPDATE users SET workers = " + current_worker + 
-        ", worker_producing_supplies = " + current_supplies + 
-        " WHERE id = $1",[user_id]
-      )
-
+      await knex.where({id: user_id})
+                .update({
+                    workers: current_worker,
+                    worker_producing_supplies: current_supplies
+                }).table('users')
+      
 
       // variaveis do Banco e handlebars
       worker_producing_supplies = current_supplies
@@ -115,12 +117,11 @@ const updateWorkers_wood = async (req,res) => {
       const current_worker = parseInt(workers)  -  parseInt(1)
       const current_wood   = parseInt(worker_producing_wood)  +  parseInt(add_wood)
 
-
-      await conn.query(
-        "UPDATE users SET workers = " + current_worker + 
-        ", worker_producing_wood = " + current_wood + 
-        " WHERE id = $1",[user_id]
-      )
+      await knex.where({id: user_id})
+                .update({
+                    workers: current_worker,
+                    worker_producing_wood: current_wood
+                }).table('users')
 
 
       // variaveis do Banco

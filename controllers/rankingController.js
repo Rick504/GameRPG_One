@@ -6,12 +6,15 @@ const allPlayers = async (req, res) => {
         const columns = await knex.column('u_name', 'gold').select().from('users').orderBy('gold')
 
         const c = columns.map((columns, indice) => {
-            return indice + 1 + '  -  ' + columns.u_name + '  Pontos: ' + columns.gold
+            
+            return `${indice + 1} - ${columns.u_name} Gold: ${columns.gold} \n`
         })
 
-        dados_user.ranking = c.join('\t')
+        dados_user.ranking = c.join('')
 
         res.render('Ranking', { data: dados_user })
+        console.log(dados_user.ranking)
+
     }
 }
 

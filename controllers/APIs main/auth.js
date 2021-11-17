@@ -1,6 +1,4 @@
-module.exports = ( app ) => {
-
-    app.post("/auth", async (req, res) => {
+const auth_user = async (req, res) => {
         
         let { u_name, password } = req.body
 
@@ -58,5 +56,6 @@ module.exports = ( app ) => {
         } else {
             res.end()
         }
-    })
-}
+    }
+
+module.exports = { auth_user }
