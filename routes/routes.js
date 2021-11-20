@@ -31,6 +31,7 @@ module.exports = (app) => {
     app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
     app.post("/auth", auth.auth_user)
     app.post("/registration_performed", urlencodeParser, insertAPI.insert_user)
+    app.get("/ranking_users", rankingController.allPlayers)
 
 
     //**********************  Rotas  ***************************** */
@@ -86,7 +87,11 @@ module.exports = (app) => {
     })
 
     //Ranking
-    app.get("/Ranking/:id", rankingController.allPlayers)
+    app.get("/Ranking/:id", (req, res) => {
+        if (req.session.loggedin == true) {
+            res.render('Ranking', { data: dados_user })
+        }
+    })
 
     //Profile
     app.get("/Profile/:id", (req, res) => {

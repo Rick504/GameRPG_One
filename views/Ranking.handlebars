@@ -1,13 +1,43 @@
 {{#data}}
 <section class="section_actions">
-    
+
     <h1>Ranking</h1>
 
-    <table>
-        <tr>
-            <td>{{ranking}}</td>
-        </tr>
-    </table>
+    <div id="raking"></div>
 
 </section>
+
+<script>
+
+    async function getContent() {
+        try {
+            const response = await fetch('http://localhost:3000/ranking_users')
+
+            const data = await response.json()
+
+            show(data)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    getContent()
+
+    function show(users) {
+        
+        let output = ''
+
+        for (let user of users) {
+            output += `<table>
+                            <td> - </td>
+                            <td> ${user.u_name}</td>
+                            <td> Gold: ${user.gold}</td>
+                        </table>`
+        }
+
+        document.querySelector('#raking').innerHTML = output
+    }
+
+</script>
 {{/data}}
