@@ -1,8 +1,10 @@
 const express = require("express")
 const session = require("express-session")
 const handlebars = require("express-handlebars")
-
 const app = express()
+const server = require('http').createServer(app)
+const PORT = 3000
+
 
 // Session - settings ---------------------------------------//
 app.use(session({ secret: "secret", resave: true, saveUninitialized: true }))
@@ -25,3 +27,7 @@ app.use(express.static("public"))
 
 require("./models/config/database")
 require("./routes")(app)
+
+//Start Server
+server.listen(PORT,  () => { console.log('Server on Port:' + PORT) })
+

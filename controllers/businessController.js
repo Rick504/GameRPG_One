@@ -1,6 +1,7 @@
 const exchange = async (req, res, next) => {
 
     const { to_replace_1, to_replace_2 } = await req.body
+    
 
     console.log(to_replace_1);
     console.log(to_replace_2);
