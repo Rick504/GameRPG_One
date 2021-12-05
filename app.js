@@ -24,6 +24,7 @@ app.engine(
 )
 
 app.use(express.static("public"))
+app.use(express.static("public/css"))
 
 require("./models/config/database")
 require("./routes")(app)

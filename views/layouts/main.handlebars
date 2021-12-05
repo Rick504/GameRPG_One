@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
     <title>Fierst Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/main.css">
   </head>
   <body>
 {{#data}}  
@@ -16,110 +16,81 @@
     <button> Sair </button>
 </a> 
 
-<!-- Socket.io -->
 <header>
-
-    <script src="/socket.io/socket.io.js"></script>
-
     <div class="shift_elements">
-        <div id="shift_time_minutes"></div>
         <div id="shift_time_text"> minutos para o próximo turno. </div>
     </div>
-
-    <script>
-            const socket = io()
-
-            var count = new Number();
-            var count = 60;
-
-            function start(){
-
-                if ((count - 1) >= 0){
-                count -= 1;
-                if (count == 0) {
-                    count = "Atualize a Pagina";
-                }else if(count < 10){
-                    count = "0"+count;
-                }
-                shift_time_minutes.innerText=count;
-                setTimeout('start();', 5000);
-
-                }
-            }
-
-            start()
-    </script>
-
 </header>
-<!-- Socket.io -->
 
-<!-- Menu Superior -->
-<section id="top_menu">
 
-    <div style="text-align: center;"> {{t_name}} </div>
-    <div class="info_top_menu">
-        <div class="top_menu_earnings_1">
+<section class="top_menu">
+
+    <h3> {{t_name}} </h3>
+
+    <div id="opcion_1">
+        <div id="earnings_1">
             <div> Ouro: {{gold}} </div>
             <div> Suprimentos: {{supplies}} </div>
             <div> Madeira: {{wood}} </div>
             <div> Turno: -- </div>
-        <div class="top_menu_earnings_2">
+
+        <div id="earnings_2">
                 <div class="workers_producing"> + {{worker_producing_gold}} </div>
                 <div class="workers_producing"> + {{worker_producing_supplies}} </div>
                 <div class="workers_producing"> + {{worker_producing_wood}} </div>
-        </div>    
+        </div>  
     </div>
-    </div>
+    
 
-     <div class="info_top_menu" style="left: 650px;">
-         <div id="info_sub_menu">
+    <div class="opcion_2">
+        <div id="sub_text">
             <div> Origem: {{origin}} </div>
             <div> Clã: {{cla}} </div>
             <div> Ranking: -- </div>
             <div> Nível: {{level}} </div>
-         </div>
+        </div>
     </div>
+
 </section>
 
 <section class="sidebar_menu">
     
     <h3 >Menu Principal</h3>
-    <a class="links" href="/Diamonds/{{user_id}}">Diamantes</a> 
+    <a class="links" href="/Diamonds/{{user_id}}"><button> Diamantes </button></a>
     <br><br>
-    <a class="links" href="/Logged/{{user_id}}">Início</a>  
+    <a class="links" href="/Logged/{{user_id}}"><button> Início </button></a>  
     <br><br>
-    <a class="links"  href="/Profile/{{user_id}}">Meu Perfil</a>
+    <a class="links"  href="/Profile/{{user_id}}"><button> Meu Perfil </button></a> 
     <br><br>
-    <a class="links" href="/Manual/{{user_id}}">Manual</a>
+    <a class="links" href="/Manual/{{user_id}}"><button> Manual </button></a> 
     <br><br>
     
     <h3 >Ações</h3>
-    <a class="links" href="/Workers/{{user_id}}">Trabalhadores</a>
+    <a class="links" href="/Workers/{{user_id}}"><button> Trabalhadores </button></a> 
     <br><br>
-    <a class="links" href="/Business/{{user_id}}">Comércio</a>
+    <a class="links" href="/Business/{{user_id}}"><button> Comércio </button></a> 
     <br><br>
-    <a class="links" href="/Technology/{{user_id}}">Tecnologia</a>
+    <a class="links" href="/Technology/{{user_id}}"><button> Tecnologia </button></a> 
     <br><br>
-    <a class="links" href="/Armys/{{user_id}}">Exército</a>
+    <a class="links" href="/Armys/{{user_id}}"><button> Exército </button></a> 
     <br><br>
-    <a class="links" href="/Menssages/{{user_id}}">Mensagens</a>
+    <a class="links" href="/Menssages/{{user_id}}"><button> Menssages </button></a> 
     <br><br>
     
     <h3 >Informações</h3>
-    <a class="links" href="/Clan/{{user_id}}">Clã</a>
+    <a class="links" href="/Clan/{{user_id}}"><button> Clã </button></a> 
     <br><br>
-    <a class="links" href="/Ranking/{{user_id}}">Ranking</a> 
+    <a class="links" href="/Ranking/{{user_id}}"><button> Ranking </button></a> 
     <br><br>
-    <a class="links" href="/Historic/{{user_id}}">Histórico de Guerra</a> 
+    <a class="links" href="/Historic/{{user_id}}"><button> Histórico </button></a> 
     <br><br>
-    <a class="links" href="/Support/{{user_id}}">Suporte</a> 
+    <a class="links" href="/Support/{{user_id}}"><button> Suporte </button></a> 
     <br><br>
 
 </section>
-
 {{/data}}
 
 {{{body}}}
 
-  </body>
+</body>
 </html>

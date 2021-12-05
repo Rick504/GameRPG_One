@@ -1,0 +1,68 @@
+@mixin sub_menu () {
+    background-color: $color_1;
+    position: absolute;    
+    padding: 10px;
+    border-radius: 15px; 
+    width: 200px;
+    height: 140px;
+    top: 10px;
+}
+
+.top_menu {
+    background-color: rgb(19, 16, 5);
+    position: absolute;
+    width: 900px;
+    height: 200px; 
+    top: 200px;
+    left: 39%;
+    transform: translate(-25%, -35%);
+    border-radius: 15px;
+
+    #opcion_1 {
+        @include sub_menu();
+        left: 50px;
+
+        #earnings_1 {
+            position: relative; 
+            top: 30px;
+            left: 30px;
+        }
+        
+        #earnings_2 {
+            color: rgb(42, 172, 16); 
+            position: relative; 
+            top: -70px;
+            left: 120px;
+
+            .workers_producing {
+                background-color: black; 
+                height: 17px; 
+                width: 45px; 
+                border-radius: 5px;
+            }
+        }
+    }
+
+}
+
+.opcion_2 {
+    @include sub_menu();
+    left: 600px;
+
+    #sub_text {
+        position: relative; 
+        top: 30px;
+        left: 30px;
+    }
+}
+  
+
+
+
+
+
+
+
+
+
+

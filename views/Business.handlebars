@@ -1,46 +1,94 @@
 <style>
-    
-    .business {
-        position: relative;
-        top: 100px;
-        left: 100px;
-        width: 700px;
-        height: 300px;
-        background-color: black;
-        justify-content: center;
+    input[type="radio"] {
+        width: 30px;
+        height: 30px;
     }
- 
+
+    h1 {
+        text-align: center;
+    }
+
+    input[type="number"] {
+        height: 25px;
+    }
+
+    .icons_1 {
+        position: absolute;
+        top: 200px;
+        left: 80px;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .icons_2 {
+        position: absolute;
+        top: 200px;
+        left: 600px;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .inputs_number {
+        position: absolute;
+        top: 300px;
+        left: 350px;
+    }
+
+    #button_to_replace {
+        position: absolute;
+        top: 400px;
+        left: 350px;
+    }
 </style>
 
 <section class="section_actions">
-        <h1 style="text-align: center;">Comércio</h1>
-        
-        <ol>
-            <li>É permitido somente trocas com ouro acima de 10, madeira acima de 30 e suprimentos acima de 80.</li>
-            <li>As trocas feitas terão perdas de 30% do produto.</li>
-            <li>Exemplo: 1 ouro equivale à 5 madeiras e 8 suprimentos, em uma troca de 10 ouros por 30 madeiras, o retorno seria 24 madeiras.</li>        
-        </ol>
+
+    <h1> Comércio </h1>
+    <ol>
+        <li>É permitido somente trocas com ouro acima de 10, madeira acima de 30 e suprimentos acima de 80.</li>
+        <li>As trocas feitas terão perdas de 30% do produto.</li>
+        <li>Exemplo: 1 ouro equivale à 5 madeiras e 8 suprimentos, em uma troca de 10 ouros por 30 madeiras, o retorno
+            seria 24 madeiras.</li>
+    </ol>
 
 
-        <form name='form_to_replace' action='to_replace' method='post'>
+    <form name='form_to_replace' action='to_replace' method='post'>
 
-            <div class="business">
-                <img src="/icones/gold.png">
-                <img src="/icones/supplies.png">
-                <img src="/icones/wood.png"><br>
-                <input type="radio" name="to_replace_1" value="Gold_replace_1" style="width: 30px; height: 30px;">
-                <input type="radio" name="to_replace_1" value="Supplies_replace_1" style="width: 30px; height: 30px;">
-                <input type="radio" name="to_replace_1" value="Wood_replace_1" style="width: 30px; height: 30px;"><br>
-                <img src="/icones/gold.png">
-                <img src="/icones/supplies.png">
-                <img src="/icones/wood.png"><br>
-                <input type="radio" name="to_replace_2" value="Gold_replace_2" style="width: 30px; height: 30px;">
-                <input type="radio" name="to_replace_2" value="Supplies_replace_2" style="width: 30px; height: 30px;">
-                <input type="radio" name="to_replace_2" value="Wood_replace_2" style="width: 30px; height: 30px;"><br>
-                <input type='number' name='value' placeholder='value:' style="height: 25px;"><br>
-                <input type='number' name='result' placeholder='result:' style="height: 25px;"><br>
-                <input id="button_to_replace" type='submit' name='btnSubmit' value='to replace'><br>
-            </div>
+        <div class="icons_1">
+            <img src="/icones/gold.png">
+            <img src="/icones/supplies.png">
+            <img src="/icones/wood.png">
+                                        <br>
 
-        </form>
+            <input type="radio" name="to_replace_1" value="Gold_replace_1">
+            <input type="radio" name="to_replace_1" value="Supplies_replace_1">
+            <input type="radio" name="to_replace_1" value="Wood_replace_1">
+                                                                        <br>
+        </div>
+
+        <div class="icons_2">
+            <img src="/icones/gold.png">
+            <img src="/icones/supplies.png">
+            <img src="/icones/wood.png">
+                                    <br>
+
+            <input type="radio" name="to_replace_2" value="Gold_replace_2">
+            <input type="radio" name="to_replace_2" value="Supplies_replace_2">
+            <input type="radio" name="to_replace_2" value="Wood_replace_2">
+                                                                        <br>
+        </div>
+
+        <div class="inputs_number">
+            <input type='number' name='value' placeholder='value:'>
+                                                            <br><br>
+            <input type='number' name='result' placeholder='result:'>
+        </div>
+
+        <input id="button_to_replace" type='submit' name='btnSubmit' value='to replace'>
+
+    </form>
 </section>
