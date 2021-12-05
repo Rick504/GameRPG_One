@@ -7,7 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="stylesheet" href="/main.css">
   </head>
-  <body>
+<body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+
+
 {{#data}}  
 
 <div id="diamonds"> Diamantes: {{diamonds}} </div>
