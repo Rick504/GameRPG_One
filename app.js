@@ -32,9 +32,17 @@ require("./models/config/database")
 require("./routes")(app)
 
 
+User = require('./models/all_players/select_users_data')
+
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+
+    socket.emit('shipping_features', 
+                User.gold, 
+                User.supplies,
+                User.wood
+    )
+
 })
   
 

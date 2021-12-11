@@ -1,4 +1,4 @@
-const knex = require('./models/config/conn_knex')
+const knex = require('../config/conn_knex')
 
 module.exports = (app) => {
 

@@ -1,15 +1,14 @@
--------------------------------------------------------------------------------------------------------------------------------------------------------								
 
 								      Etapas game1.0
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- bloquear usuario de voltar a pagina
 
-- cadastrar tudo com maiusculas sem espaços no mysql
+# bloquear usuario de voltar a pagina
 
-- esqueceu sua senha na pagina de login
+# cadastrar tudo com maiusculas sem espaços no mysql
 
-- formas de pagamento do produto no site
+# esqueceu sua senha na pagina de login
 
-- { uid }, session.store() ou local.store() ou express-session e token
+# formas de pagamento do produto no site
+
+# { uid }, session.store() ou local.store() ou express-session e token

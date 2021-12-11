@@ -11,11 +11,25 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io();
+  var socket = io()
+
+   socket.on('shipping_features', (gold, supplies, wood) => {
+
+            var res_gold = document.getElementById('gold_io')
+            var res_supplies = document.getElementById('supplies_io')
+            var res_wood = document.getElementById('wood_io')
+            
+            res_wood.innerHTML = wood
+            res_supplies.innerHTML = supplies
+            res_gold.innerHTML = gold
+    })
+
+
 </script>
 
-
 {{#data}}  
+
+
 
 <div id="diamonds"> Diamantes: {{diamonds}} </div>
 
@@ -36,9 +50,17 @@
 
     <div id="opcion_1">
         <div id="earnings_1">
-            <div> Ouro: {{gold}} </div>
-            <div> Suprimentos: {{supplies}} </div>
-            <div> Madeira: {{wood}} </div>
+
+            <div> Ouro: 
+                <div id="gold_io"></div>    
+            </div>
+
+            <div> Suprimentos: 
+                <div id="supplies_io"></div>     
+            </div>
+            <div> Madeira: 
+                 <div id="wood_io"></div> 
+            </div>
             <div> Turno: -- </div>
 
         <div id="earnings_2">

@@ -3,12 +3,12 @@ const express = require("express")
 const urlencodeParser = express.urlencoded({ extended: false })
 const knex = require('../models/config/conn_knex')
 
-const insertAPI = require("../controllers/APIs main/registration_performed")
-const deleteAPI = require("../controllers/APIs main/delete")
+const insertAPI = require("../controllers/authentication_crud/registration_performed")
+const deleteAPI = require("../controllers/authentication_crud/delete")
 const workersController = require("../controllers/workersController")
 const businessController = require("../controllers/businessController")
 const rankingController = require("../controllers/rankingController")
-const auth = require("../controllers/APIs main/auth")
+const auth = require("../controllers/authentication_crud/auth")
 
 
 module.exports = (app) => {

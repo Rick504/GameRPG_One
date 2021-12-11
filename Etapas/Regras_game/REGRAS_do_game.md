@@ -1,6 +1,7 @@
 
 
-* TRABALHADORES: - Produzem recursos do reino como Ouro, Madeira e Suprimentos (podendo ser dividido para que cada um produza recursos escolhidos pelo jogador)
+# TRABALHADORES: 
+		- Produzem recursos do reino como Ouro, Madeira e Suprimentos (podendo ser dividido para que cada um produza recursos escolhidos pelo jogador)
 		 - cada trabalhador produz 1 ouro por turno;
 		 - cada trabalhador produz 8 Suprimentos por turno;
 		 - cada trabalhador produz 5 Madeiras por turno.
@@ -8,24 +9,27 @@
 		 (limite de trabalhadores será aumenta 100 por nivel podendo ser roubado em vitórias de combate)
  		
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
 
-* RECURSOS:	- O que posso fazer com os recursos: comprar trabalhadores, comprar Exército, desbloquear tecnologias, trocar no comércio;	
+# RECURSOS:	
+		- O que posso fazer com os recursos: comprar trabalhadores, comprar Exército, desbloquear tecnologias, trocar no comércio;	
 		- Os Recursos podem ser usados para comprar exército; 
 		- Poderá ser negociado no comércio a partir do nivel 3.
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
-* COMÉRCIO: 	- O comércio permitirá a troca de recursos a partir do nível 3;
+# COMÉRCIO: 	
+		- O comércio permitirá a troca de recursos a partir do nível 3;
 		- As trocas serão realizadas em um tempo de 1 hora por solicitação de troca, podendo efetuar o limite de 3 solicitações, porém ao 			  liberar uma das 3 solicitações o jogador poderá efetuar outras em seguida;
 		- A cada troca efetuada, o jogador perde 20% do produto trocado, ou seja, se ele trocar 100 por 100, ele receberá 80 do novo produto;
 		- 1 Ouro equivale à 12 madeiras e 29 suprimentos / 12 madeiras equivale à 1 Ouro e 29 suprimentos / 29 suprimentos equivale à 1 Ouro 	               e 12  madeiras (+ perda de 20% na troca) (Minimo permitido na troca são esses valores).
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
-* EXÉRCITO:	- São liberados 2 unidades a cada nível com força de ataque, defesa diferenciados e tempo de treino diferenciados, porém com custos 			  maiores.
+# EXÉRCITO:	
+		- São liberados 2 unidades a cada nível com força de ataque, defesa diferenciados e tempo de treino diferenciados, porém com custos 			  maiores.
 
 		- Nível 1  Primeiro Soldado atk: 10 Def: 5  
 			   Segundo  Soldado atk: 5  Def: 10
@@ -68,15 +72,17 @@
 		(custo desbloqueio da unidade: ... ouro , ... suprimentos, ... madeira) (Tempo de unidade pronta: 3h)
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
 
-* RANKING e ATAQUES:	- Só poderá atacar um jogador no alcance do ranking com diferença de 50 posições acima e 50 posições abaixo e jogadores que 				  reseberam ataques recentes não poderão ser atacados por um tempo determinado de 36 horas;
+# RANKING e ATAQUES:	
+			- Só poderá atacar um jogador no alcance do ranking com diferença de 50 posições acima e 50 posições abaixo e jogadores que 				  reseberam ataques recentes não poderão ser atacados por um tempo determinado de 36 horas;
 			- ataques iniciados serão efetuados 3h (horas) após o envio das tropas, e retornam a cada 3h com o relatório da batalha.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
-* ESTRUTUAS		- cada nivel uma estrutura com seu custo e vantagem
+# ESTRUTUAS		
+			- cada nivel uma estrutura com seu custo e vantagem
 			- Estrutura nivel 1: Ja fica tudo liberado de exemplo 	
 			- Estrutura nivel 2: libera 2 novos soldados do nivel e limite de trabalhadores aumenta em 100
 			- Estrutura nivel 3: libera 2 novos soldados do nivel , limite de trabalhadores aumenta em 100 e comércio
@@ -90,7 +96,8 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-* TECNOLOGIA 	- Tecnologia aborda alguns pontos estratégicos onde o jogador poderá escolher na sua tragetória da tecnologia, cada ponto 				  possue sua vantagem, porem ele não poderá desbloquear todas, ele terá sua escolha em qual deve liberar com seus pontos 				  disponivel a cada nivel
+# TECNOLOGIA 	
+				- Tecnologia aborda alguns pontos estratégicos onde o jogador poderá escolher na sua tragetória da tecnologia, cada ponto possue sua vantagem, porem ele não poderá desbloquear todas, ele terá sua escolha em qual deve liberar com seus pontos 		disponivel a cada nivel
 				- Nivel 1: 2 pontos
 				- Nivel 2: 1 ponto
 				- Nivel 3: 1 ponto
@@ -102,4 +109,4 @@
 				- Nivel 9: 3 pontos
 				- Nivel 10: 4 pontos
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
