@@ -1,54 +1,14 @@
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+
 {{#data}}
-
-{{!-- section --}}
-
 <section class="section_actions">
-    <h1 style="text-align: center;">Trabalhadores</h1>
+    <h1>Trabalhadores</h1>
 
-    <div style="margin-top: 100px; margin-left: 100px;">
-
-        <a href="/purchase_gold" id="my-checkbox">
-            <button onclick="btnReload()"> Comprar trabalhador </button>
-        </a>
-
-        <p>Custo do trabalhador: 2 Ouro, 13 Suprimentos. </p>
-
-        <p>Total de Trabalhadores Parados: </p>
-
-        <div style="color: cornsilk;">{{workers}}</div>
-
-        <a href="/updateWorkers_gold" id="my-checkbox">
-            <br><br>
-            <button onclick="btnReload()"> Produzir Ouro </button>
-        </a>
-
-        <p> Coloque Trabalhadores para produzir Ouro, cada trabalhador produz 1 Ouro por turno.
-            <a href="/updateWorkers_supplies" id="my-checkbox">
-                <br><br>
-                <button onclick="btnReload()"> Produzir Suprimentos </button>
-            </a>
-
-        <p> Coloque Trabalhadores para produzir Suprimentos, cada trabalhador produz 8 Suprimentos por turno.
-
-            <a href="/updateWorkers_wood" id="my-checkbox">
-                <br><br>
-                <button onclick="btnReload()"> Produzir Madeira </button>
-            </a>
-
-        <p> Coloque Trabalhadores para produzir Madeira, cada trabalhador produz 5 Madeira por turno.
-
-    </div>
 
 </section>
-{{!-- section --}}
-
 {{/data}}
 
-<script>
-    const btnReload = () => {
-        setTimeout(() => {
-            window.location.reload(true)
-        }, 500)
-    }
-
-</script>

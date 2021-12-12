@@ -5,7 +5,7 @@ const del_user = async (req, res) => {
 
         const id = req.params.id
 
-        await knex.where({id: id}).del().table('users')
+        await knex('users').where({id: id}).del()
 
         res.redirect('/')
     }

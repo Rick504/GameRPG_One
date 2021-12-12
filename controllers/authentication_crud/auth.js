@@ -13,17 +13,6 @@ const auth_user = async (req, res) => {
                     //trazendo do Banco
                     user_id = results.rows[0].id
                     diamonds = results.rows[0].diamonds
-                    gold = results.rows[0].gold
-                    supplies = results.rows[0].supplies
-                    wood = results.rows[0].wood
-                    worker_producing_gold = results.rows[0].worker_producing_gold
-                    worker_producing_supplies = results.rows[0].worker_producing_supplies
-                    worker_producing_wood = results.rows[0].worker_producing_wood
-                    cla = results.rows[0].cla
-                    level = results.rows[0].level
-                    origin = results.rows[0].origin
-                    workers = results.rows[0].workers
-                    tech_points = results.rows[0].tech_points
 
                     //redirecionar para logado com id
                     res.redirect('/Logged/' + user_id)
@@ -32,18 +21,7 @@ const auth_user = async (req, res) => {
                     dados_user = {
                         t_name,
                         user_id,
-                        origin,
-                        level,
-                        cla,
-                        gold,
-                        supplies,
-                        wood,
-                        workers,
                         diamonds,
-                        worker_producing_gold,
-                        worker_producing_supplies,
-                        worker_producing_wood,
-                        tech_points
                     }
 
                     //visualizar quem logou data e hora

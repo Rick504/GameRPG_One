@@ -30,20 +30,6 @@ app.use(express.static("public/css"))
 
 require("./models/config/database")
 require("./routes")(app)
-
-
-User = require('./models/all_players/select_users_data')
-
-
-io.on('connection', (socket) => {
-
-    socket.emit('shipping_features', 
-                User.gold, 
-                User.supplies,
-                User.wood
-    )
-
-})
   
 
 server.listen(3000, () => {

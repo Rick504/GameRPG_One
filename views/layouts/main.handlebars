@@ -9,29 +9,8 @@
   </head>
 <body>
 
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io()
-
-   socket.on('shipping_features', (gold, supplies, wood) => {
-
-            var res_gold = document.getElementById('gold_io')
-            var res_supplies = document.getElementById('supplies_io')
-            var res_wood = document.getElementById('wood_io')
-            
-            res_wood.innerHTML = wood
-            res_supplies.innerHTML = supplies
-            res_gold.innerHTML = gold
-    })
-
-
-</script>
-
 {{#data}}  
 
-
-
-<div id="diamonds"> Diamantes: {{diamonds}} </div>
 
 <a href="/">
     <button> Sair </button>
@@ -51,32 +30,25 @@
     <div id="opcion_1">
         <div id="earnings_1">
 
-            <div> Ouro: 
-                <div id="gold_io"></div>    
-            </div>
-
-            <div> Suprimentos: 
-                <div id="supplies_io"></div>     
-            </div>
-            <div> Madeira: 
-                 <div id="wood_io"></div> 
-            </div>
+            <div> Ouro: <div id="gold"></div></div>
+            <div> Suprimentos: <div id="supplies"></div></div>
+            <div> Madeira:<div id="wood"></div></div>
             <div> Turno: -- </div>
 
         <div id="earnings_2">
-                <div class="workers_producing"> + {{worker_producing_gold}} </div>
-                <div class="workers_producing"> + {{worker_producing_supplies}} </div>
-                <div class="workers_producing"> + {{worker_producing_wood}} </div>
+                <div id="worker_producing_gold"></div>
+                <div id="worker_producing_supplies"> </div>
+                <div id="worker_producing_wood"> </div>
         </div>  
     </div>
     
 
     <div class="opcion_2">
         <div id="sub_text">
-            <div> Origem: {{origin}} </div>
-            <div> Clã: {{cla}} </div>
+            <div> Origem: <div id="origin"></div> </div>
+            <div> Clã: </div>
             <div> Ranking: -- </div>
-            <div> Nível: {{level}} </div>
+            <div> Nível: </div>
         </div>
     </div>
 
@@ -120,6 +92,55 @@
 {{/data}}
 
 {{{body}}}
+
+
+
+<script>
+
+    async function MainGetContent() {
+
+        try {
+            const response = await fetch('http://localhost:3000/main_users')
+
+            const data = await response.json()
+
+            MainShow(data)
+
+        } catch (error) {
+
+            console.log(error)
+
+        }
+    }
+
+    MainGetContent()
+
+    function MainShow(users) {
+
+        var gold, supplies, wood, origin
+        var worker_producing_gold, worker_producing_supplies, worker_producing_wood
+
+        users.map((item) => {
+            return gold = item.gold,
+                   supplies = item.supplies,
+                   wood = item.wood,
+                   origin = item.origin,
+                   worker_producing_gold = item.worker_producing_gold,
+                   worker_producing_supplies = item.worker_producing_supplies,
+                   worker_producing_wood = item.worker_producing_wood
+        })
+
+
+        document.querySelector('#gold').innerHTML = gold
+        document.querySelector('#supplies').innerHTML = supplies
+        document.querySelector('#wood').innerHTML = wood
+        document.querySelector('#origin').innerHTML = origin
+        document.querySelector('#worker_producing_gold').innerHTML = worker_producing_gold
+        document.querySelector('#worker_producing_supplies').innerHTML = worker_producing_supplies
+        document.querySelector('#worker_producing_wood').innerHTML = worker_producing_wood
+    }
+
+</script>
 
 </body>
 </html>

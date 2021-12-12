@@ -1,12 +1,14 @@
-model = require('../models/ranking')
+const knex = require('../models/config/conn_knex')
 
-const allPlayers = async (req, res) => {
+const rakingFunc = async (req, res) => {
 
-    await model.rows.sort((a, b) => {
+    var rows = await knex('users').column('u_name', 'gold')
+
+    await rows.sort((a, b) => {
         return b.gold - a.gold
      })
 
-     await res.send(model.rows)
+    await res.send(rows)
 }
 
-module.exports = { allPlayers }
+module.exports = { rakingFunc }

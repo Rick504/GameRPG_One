@@ -3,19 +3,19 @@ const express = require("express")
 const urlencodeParser = express.urlencoded({ extended: false })
 const knex = require('../models/config/conn_knex')
 
+const auth = require("../controllers/authentication_crud/auth")
 const insertAPI = require("../controllers/authentication_crud/registration_performed")
 const deleteAPI = require("../controllers/authentication_crud/delete")
-const workersController = require("../controllers/workersController")
 const businessController = require("../controllers/businessController")
 const rankingController = require("../controllers/rankingController")
-const auth = require("../controllers/authentication_crud/auth")
+const mainController = require("../controllers/mainController")
 
 
 module.exports = (app) => {
 
     //**********************  TESTES  ***************************** */
 
-    app.get('/psql', async (req, res) => {
+    app.get('/psql', async (req, res) => {y
         const rows = await knex.table('users')
         res.send(rows)
     })
@@ -23,15 +23,12 @@ module.exports = (app) => {
     //**********************  APIS  ***************************** */
 
 
-    app.get("/purchase_gold", workersController.workers_purchase_gold)
-    app.get("/updateWorkers_gold", workersController.updateWorkers_gold)
-    app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)
-    app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
     app.post("/Business/to_replace", urlencodeParser, businessController.exchange)
     app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
     app.post("/auth", auth.auth_user)
     app.post("/registration_performed", urlencodeParser, insertAPI.insert_user)
-    app.get("/ranking_users", rankingController.allPlayers)
+    app.get("/ranking_users", rankingController.rakingFunc)
+    app.get("/main_users", mainController.mainFunc)
 
 
     //**********************  Rotas  ***************************** */

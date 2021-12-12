@@ -8,22 +8,24 @@
 
 <script>
 
-    async function getContent() {
+    async function rankingGetContent() {
+        
         try {
             const response = await fetch('http://localhost:3000/ranking_users')
 
             const data = await response.json()
 
-            show(data)
+            rankingShow(data)
 
         } catch (error) {
+
             console.log(error)
         }
     }
 
-    getContent()
+    rankingGetContent()
 
-    function show(users) {
+    function rankingShow(users) {
         
         let output = ''
 
