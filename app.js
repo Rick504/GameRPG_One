@@ -4,31 +4,34 @@ const handlebars = require("express-handlebars")
 const app = express()
 const http = require('http')
 const server = http.createServer(app)
-const { Server } = require("socket.io")
-const io = new Server(server)
+
+require('./fetch_axios/ranking_fetch')
+
+
+// Connection Knex - settings ---------------------------------------//
+require("./models/config/database")
 
 
 // Session - settings ---------------------------------------//
 app.use(session({ secret: "secret", resave: true, saveUninitialized: true }))
 
+
 // Express - settings -------------------------------------//
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+
 // Handlebars - settings -------------------------------------//
 app.set("view engine", "handlebars")
+app.engine("handlebars", handlebars({ layoutsDir: __dirname + "/views/layouts", }))
 
-app.engine(
-    "handlebars",
-    handlebars({
-        layoutsDir: __dirname + "/views/layouts",
-    })
-)
 
+// Express Static -------------------------------------//
 app.use(express.static("public"))
 app.use(express.static("public/css"))
 
-require("./models/config/database")
+
+// Routers -------------------------------------//
 require("./routes")(app)
   
 
