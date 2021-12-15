@@ -28,9 +28,11 @@
     function rankingShow(users) {
         
         let output = ''
+        var indice = 1
 
         for (let user of users) {
             output += `<table>
+                            <td> ${indice++} </td>
                             <td> - </td>
                             <td> ${user.u_name}</td>
                             <td> Gold: ${user.gold}</td>

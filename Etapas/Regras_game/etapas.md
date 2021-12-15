@@ -5,7 +5,7 @@
 
 # bloquear usuario de voltar a pagina
 
-# cadastrar tudo com maiusculas sem espaços no mysql
+# cadastrar tudo com maiusculas sem espaços no Banco
 
 # esqueceu sua senha na pagina de login
 
