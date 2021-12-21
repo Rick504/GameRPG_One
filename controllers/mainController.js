@@ -3,6 +3,7 @@ const knex = require('../models/config/conn_knex')
 const mainFunc = async (req, res) => {
 
     var rows = await knex('users')
+                        .where({id: user_id})
                         .column(
                             'u_name', 
                             'gold', 

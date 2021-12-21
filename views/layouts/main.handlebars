@@ -28,24 +28,27 @@
     <h3> {{t_name}} </h3>
 
     <div id="opcion_1">
+     
         <div id="earnings_1">
-
-            <div> Ouro: <div id="gold"></div></div>
-            <div> Suprimentos: <div id="supplies"></div></div>
-            <div> Madeira:<div id="wood"></div></div>
+            <div id="gold"></div>
+            <div id="supplies"></div>
+            <div id="wood"></div>
             <div> Turno: -- </div>
 
-        <div id="earnings_2">
+            <div class="add_workers">
                 <div id="worker_producing_gold"></div>
-                <div id="worker_producing_supplies"> </div>
-                <div id="worker_producing_wood"> </div>
-        </div>  
+                <div id="worker_producing_supplies"></div>
+                <div id="worker_producing_wood"></div>
+            </div>
+        </div>
+
+        <div id="earnings_2"></div>  
     </div>
     
 
     <div class="opcion_2">
         <div id="sub_text">
-            <div> Origem: <div id="origin"></div> </div>
+             <div id="origin"></div>
             <div> Clã: </div>
             <div> Ranking: -- </div>
             <div> Nível: </div>
@@ -131,13 +134,13 @@
         })
 
 
-        document.querySelector('#gold').innerHTML = gold
-        document.querySelector('#supplies').innerHTML = supplies
-        document.querySelector('#wood').innerHTML = wood
-        document.querySelector('#origin').innerHTML = origin
-        document.querySelector('#worker_producing_gold').innerHTML = worker_producing_gold
-        document.querySelector('#worker_producing_supplies').innerHTML = worker_producing_supplies
-        document.querySelector('#worker_producing_wood').innerHTML = worker_producing_wood
+        document.querySelector('#gold').innerHTML = 'Ouro: ' + gold
+        document.querySelector('#supplies').innerHTML = 'Suprimentos: ' + supplies
+        document.querySelector('#wood').innerHTML = 'Madeira: ' + wood
+        document.querySelector('#origin').innerHTML = 'Origem: ' + origin
+        document.querySelector('#worker_producing_gold').innerHTML = '+ ' + worker_producing_gold
+        document.querySelector('#worker_producing_supplies').innerHTML = '+ ' + worker_producing_supplies
+        document.querySelector('#worker_producing_wood').innerHTML = '+ ' + worker_producing_wood
     }
 
 </script>

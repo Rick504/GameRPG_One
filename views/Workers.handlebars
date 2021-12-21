@@ -2,13 +2,96 @@
     h1 {
         text-align: center;
     }
+
+    .btns_workers {
+        margin-top: 60px; 
+        margin-left: 100px;
+    }
+
+    #w_workes {
+        text-align: center;
+        background-color: black;
+        color: blanchedalmond;
+        width: 30px;
+    }
 </style>
 
 {{#data}}
 <section class="section_actions">
     <h1>Trabalhadores</h1>
 
+    <div class="btns_workers">
 
-</section>
+        <a href="/purchase_gold">
+            <button  onclick="btnReload()"> Comprar trabalhador </button>
+        </a>
+
+        <p>Custo do trabalhador: 2 Ouro, 13 Suprimentos. </p>
+
+        <p>Total de Trabalhadores Parados: </p>
+
+        <div id="w_workes"></div>
+
+        <a href="/updateWorkers_gold">
+            <br><br>
+            <button onclick="btnReload()"> Produzir +1 Ouro </button>
+        </a>
+
+        <p> Coloque Trabalhadores para produzir Ouro, cada trabalhador produz 1 Ouro por turno.
+            <a href="/updateWorkers_supplies">
+                <br><br>
+                <button onclick="btnReload()"> Produzir +8 Suprimentos </button>
+            </a>
+
+        <p> Coloque Trabalhadores para produzir Suprimentos, cada trabalhador produz 8 Suprimentos por turno.
+
+            <a href="/updateWorkers_wood">
+                <br><br>
+                <button onclick="btnReload()"> Produzir +5 Madeira </button>
+            </a>
+
+        <p> Colque Trabalhadores para produzir Madeira, cada trabalhador produz 5 Madeira por turno.
+
+    </div>
 {{/data}}
+
+<script>
+
+    async function w_MainGetContent() {
+
+        try {
+            const response = await fetch('http://localhost:3000/main_users')
+
+            const data = await response.json()
+
+            w_MainShow(data)
+
+        } catch (error) {
+
+            console.log(error)
+
+        }
+    }
+
+    w_MainGetContent()
+
+    function w_MainShow(users) {
+
+        var workers
+
+        users.map((item) => {
+            return workers = item.workers
+        })
+
+        document.querySelector('#w_workes').innerHTML = workers
+
+    }
+
+    const btnReload = () => {
+        setTimeout(() => {
+            window.location.reload(true)
+        }, 500)
+    }
+
+</script>
 

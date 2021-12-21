@@ -34,13 +34,16 @@
             top: -70px;
             left: 120px;
 
-            .workers_producing {
-                background-color: black; 
-                height: 17px; 
-                width: 45px; 
-                border-radius: 5px;
-            }
         }
+
+        .add_workers {
+            background-color: black;
+            width: 30px;
+            position: relative;
+            top: -73px;
+            left: 130px;
+        }
+        
     }
 
 }

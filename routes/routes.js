@@ -10,6 +10,7 @@ const deleteAPI = require("../controllers/authentication_crud/delete")
 const businessController = require("../controllers/businessController")
 const rankingController = require("../controllers/rankingController")
 const mainController = require("../controllers/mainController")
+const workersController = require("../controllers/workersController")
 
 
 module.exports = (app) => {
@@ -84,6 +85,11 @@ module.exports = (app) => {
             res.render('Workers', { data: dados_user })
         }
     })
+
+    app.get("/purchase_gold", workersController.workers_purchase_gold)
+    app.get("/updateWorkers_gold", workersController.updateWorkers_gold)
+    app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)
+    app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
 
 
     //************************************************************** */

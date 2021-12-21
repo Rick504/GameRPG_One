@@ -92,13 +92,6 @@ button:active {
   left: 120px;
 }
 
-.top_menu #opcion_1 #earnings_2 .workers_producing {
-  background-color: black;
-  height: 17px;
-  width: 45px;
-  border-radius: 5px;
-}
-
 .opcion_2 {
   background-color: #0e0a05;
   position: absolute;
@@ -114,6 +107,14 @@ button:active {
   position: relative;
   top: 30px;
   left: 30px;
+}
+
+.add_workers {
+  background-color: black;
+  width: 30px;
+  position: relative;
+  top: -73px;
+  left: 130px;
 }
 
 .sidebar_menu {
