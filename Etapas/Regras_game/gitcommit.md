@@ -1,0 +1,1 @@
+- editei o nomes das APIs de workersController, coloquei a função de recarregamento da pagina que estava na pagina workers no main, criei a regra de trocas na pagina de comércio com trocas com perdas em torno de 25%, com valor minimo ouro acima de 15, madeira acima de 10 e suprimentos acima de 20.

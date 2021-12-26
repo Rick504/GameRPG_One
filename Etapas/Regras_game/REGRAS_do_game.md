@@ -22,9 +22,7 @@
 
 # COMÉRCIO: 	
 		- O comércio permitirá a troca de recursos a partir do nível 3;
-		- As trocas serão realizadas em um tempo de 1 hora por solicitação de troca, podendo efetuar o limite de 3 solicitações, porém ao 			  liberar uma das 3 solicitações o jogador poderá efetuar outras em seguida;
-		- A cada troca efetuada, o jogador perde 20% do produto trocado, ou seja, se ele trocar 100 por 100, ele receberá 80 do novo produto;
-		- 1 Ouro equivale à 12 madeiras e 29 suprimentos / 12 madeiras equivale à 1 Ouro e 29 suprimentos / 29 suprimentos equivale à 1 Ouro 	               e 12  madeiras (+ perda de 20% na troca) (Minimo permitido na troca são esses valores).
+		- As trocas serão realizadas em um tempo de 1 hora por solicitação de troca, podendo efetuar o limite de 3 solicitações, porém ao liberar uma das 3 solicitações o jogador poderá efetuar outras em seguida;
 
 ----------------------------------------------------------------------------------------------------------
 

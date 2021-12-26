@@ -1,9 +1,9 @@
 const knex = require('../models/config/conn_knex')
 
 //comprar trabalhadores
-const workers_purchase_gold = async (req,res,next) => {
+const buy_workers = async (req,res,next) => {
 
-   var user = await knex('users').where({id: user_id}).column('gold', 'supplies','workers')
+    var user = await knex('users').where({id: user_id}).column('gold', 'supplies','workers')
 
     var gold = user[0].gold
     var supplies = user[0].supplies
@@ -30,7 +30,7 @@ const workers_purchase_gold = async (req,res,next) => {
 }
 
 //usar em gold
-const updateWorkers_gold = async (req,res) => {
+const buy_worker_producing_gold = async (req,res,next) => {
 
     var user = await knex('users').where({id: user_id}).column('workers', 'worker_producing_gold')
 
@@ -55,7 +55,7 @@ const updateWorkers_gold = async (req,res) => {
 }
 
 // //usar em supplies
-const updateWorkers_supplies = async (req,res) => {
+const buy_updateWorkers_supplies = async (req,res,next) => {
 
     var user = await knex('users').where({id: user_id}).column('workers', 'worker_producing_supplies')
 
@@ -79,7 +79,7 @@ const updateWorkers_supplies = async (req,res) => {
 }
 
 // //usar em wood
-const updateWorkers_wood = async (req,res) => {
+const buy_updateWorkers_wood = async (req,res,next) => {
 
     var user = await knex('users').where({id: user_id}).column('workers', 'worker_producing_wood')
 
@@ -103,8 +103,8 @@ const updateWorkers_wood = async (req,res) => {
 
 //exportar tudo
 module.exports = {
-  workers_purchase_gold, 
-  updateWorkers_gold,
-  updateWorkers_supplies,
-  updateWorkers_wood
+    buy_workers, 
+    buy_worker_producing_gold,
+    buy_updateWorkers_supplies,
+    buy_updateWorkers_wood
 }

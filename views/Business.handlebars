@@ -43,15 +43,25 @@
         top: 400px;
         left: 350px;
     }
+
+    #percentage {
+        color: red;
+        margin: 200px 530px;
+    }
+
+    #text1 {
+        position: absolute;
+        top: 240px;
+        left: 380px;
+    }
 </style>
 
 <section class="section_actions">
 
     <h1> Comércio </h1>
     <ol>
-        <li>É permitido somente trocas com ouro acima de 10, madeira acima de 30 e suprimentos acima de 80.</li>
-        <li>As trocas feitas terão perdas de 30% do produto.</li>
-        <li>Exemplo: 1 ouro equivale à 5 madeiras e 8 suprimentos, em uma troca de 10 ouros sairiam 35 madeiras.</li>
+        <li>É permitido somente trocas com ouro acima de 15, madeira acima de 10 e suprimentos acima de 20.</li>
+        <li>As trocas feitas terão perdas em torno de 25% do produto.</li>
     </ol>
 
 
@@ -63,9 +73,9 @@
             <img src="/icones/wood.png">
                                         <br>
 
-            <input type="radio" name="to_replace_1" value="Gold_replace_1">
-            <input type="radio" name="to_replace_1" value="Supplies_replace_1">
-            <input type="radio" name="to_replace_1" value="Wood_replace_1">
+            <input type="radio" name="to_replace_1" value="Gold_replace">
+            <input type="radio" name="to_replace_1" value="Supplies_replace">
+            <input type="radio" name="to_replace_1" value="Wood_replace">
                                                                         <br>
         </div>
 
@@ -75,19 +85,24 @@
             <img src="/icones/wood.png">
                                     <br>
 
-            <input type="radio" name="to_replace_2" value="Gold_replace_2">
-            <input type="radio" name="to_replace_2" value="Supplies_replace_2">
-            <input type="radio" name="to_replace_2" value="Wood_replace_2">
+            <input type="radio" name="to_replace_2" value="Gold_replace">
+            <input type="radio" name="to_replace_2" value="Supplies_replace">
+            <input type="radio" name="to_replace_2" value="Wood_replace">
                                                                         <br>
         </div>
 
         <div class="inputs_number">
-            <input type='number' name='value' placeholder='value:'>
+            <input type='number' name='value' placeholder='value:' required>
                                                             <br><br>
-            <input type='number' name='result' placeholder='result:'>
+
+            <div id="result"></div>
         </div>
 
+        
         <input id="button_to_replace" type='submit' name='btnSubmit' value='to replace'>
 
+        <div id="text1">Valor 1 / Valor 2</div>
+        <div id="percentage"> -25%  </div>
+        
     </form>
 </section>

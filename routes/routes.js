@@ -86,10 +86,10 @@ module.exports = (app) => {
         }
     })
 
-    app.get("/purchase_gold", workersController.workers_purchase_gold)
-    app.get("/updateWorkers_gold", workersController.updateWorkers_gold)
-    app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)
-    app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
+    app.get("/purchase_gold", workersController.buy_workers)
+    app.get("/updateWorkers_gold", workersController.buy_worker_producing_gold)
+    app.get("/updateWorkers_supplies", workersController.buy_updateWorkers_supplies)
+    app.get("/updateWorkers_wood", workersController.buy_updateWorkers_wood)
 
 
     //************************************************************** */

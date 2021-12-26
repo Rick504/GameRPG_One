@@ -1,20 +1,153 @@
+const knex = require('../models/config/conn_knex')
+
 const exchange = async (req, res, next) => {
 
-    const { to_replace_1, to_replace_2 } = await req.body
-    
+        radio_1 = req.body.to_replace_1
+        radio_2 = req.body.to_replace_2
+        value = req.body.value
 
-    console.log(to_replace_1);
-    console.log(to_replace_2);
+        var user = await knex('users').where({id: user_id})
+                                        .column('gold', 'supplies','wood')
 
-        if (to_replace_1 === to_replace_2) {
-            
-                res.send("<script>alert('Valores iguais não podem ser trocados!'); history.back()</script>")
+        var gold = parseInt( user[0].gold ) 
+        var supplies = parseInt( user[0].supplies ) 
+        var wood = parseInt( user[0].wood ) 
+
+        if (typeof radio_1 === "undefined" || typeof radio_2 === "undefined") {
+
+            res.send("<script> alert('preencha o campo'); history.back()</script>")
+
         }
-        // res.redirect('/Business/'+ user_id)
+         
+      
+        if (radio_1 === radio_2) {
+            res.send("<script>alert('Valores iguais não podem ser trocados!'); history.back()</script>")
+        } 
 
-        res.end()
-      } 
 
+        // Gold for Supplies 
+        else if (radio_1 === 'Gold_replace' && radio_2 === 'Supplies_replace') {
+
+                if (gold >= 15) {
+
+                    gold -= value
+                    supplies += value/4 * 3
+    
+                    await knex('users').where({id: user_id}).update({ 
+                        supplies: supplies.toFixed(0),
+                        gold: gold.toFixed(0)
+                    })
+    
+                    res.send(" <script> alert('Ouro trocados em suprimentos !!'); history.back() </script> ")
+
+                } else {
+                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                }
+
+        } 
+        
+        // Gold for Wood
+        else if (radio_1 === 'Gold_replace' && radio_2 === 'Wood_replace') {
+
+                if (gold >= 15) {
+
+                    gold -= value
+                    wood += value/4 * 3
+
+                    await knex('users').where({id: user_id}).update({ 
+                        wood: wood.toFixed(0),
+                        gold: gold.toFixed(0)
+                    })
+
+                    res.send(" <script> alert('Ouro trocados em madeira !!'); history.back() </script> ")
+                    
+                } else {
+                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                }
+        } 
+        
+        // Supplies for Wood 
+        else if (radio_1 === 'Supplies_replace' && radio_2 === 'Wood_replace') {
+
+                if (supplies >= 20) {
+
+                    supplies -= value
+                    wood += value/4 * 3
+
+                    await knex('users').where({id: user_id}).update({ 
+                        supplies: supplies.toFixed(0),
+                        wood: wood.toFixed(0)
+                    })
+
+                    res.send(" <script> alert('Suprimentos trocados em madeira !!'); history.back() </script> ")
+                    
+                } else {
+                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                }
+        }
+        
+        // Supplies for Gold 
+        else if (radio_1 === 'Supplies_replace' && radio_2 === 'Gold_replace' ) {
+
+                if (supplies >= 20) {
+
+                    supplies -= value
+                    gold += value/4 * 3
+        
+                    await knex('users').where({id: user_id}).update({ 
+                        supplies: supplies.toFixed(0),
+                        gold: gold.toFixed(0) 
+                    })
+        
+                    res.send(" <script> alert('Suprimentos trocados em ouro !!'); history.back() </script> ")
+                    
+                } else {
+                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                }
+        } 
+        
+        // Wood for Supplies
+        else if (radio_1 === 'Wood_replace' && radio_2 === 'Supplies_replace') {
+
+                if (wood >= 10) {
+
+                    wood -= value
+                    supplies += value/4 * 3
+        
+                    await knex('users').where({id: user_id}).update({ 
+                        wood: wood.toFixed(0),
+                        supplies: supplies.toFixed(0) 
+                    })
+        
+                    res.send(" <script> alert('Madeira trocados em suprimentos !!'); history.back() </script> ")
+                    
+                } else {
+                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                }
+
+        } 
+        
+        // Wood for Gold
+        else if (radio_1 === 'Wood_replace' && radio_2 === 'Gold_replace') {
+
+                if (wood >= 10) {
+
+                    wood -= value
+                    gold += value/4 * 3
+        
+                    await knex('users').where({id: user_id}).update({ 
+                        wood: wood.toFixed(0),
+                        gold: gold.toFixed(0)
+                    })
+        
+                    res.send(" <script> alert('Madeira trocados em ouro !!'); history.back() </script> ")
+                    
+                } else {
+                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                }
+        } 
+
+    } 
 
 module.exports = { 
     exchange
