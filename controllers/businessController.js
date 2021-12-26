@@ -15,7 +15,7 @@ const exchange = async (req, res, next) => {
 
         if (typeof radio_1 === "undefined" || typeof radio_2 === "undefined") {
 
-            res.send("<script> alert('preencha o campo'); history.back()</script>")
+            res.send("<script> alert('preencha o campo'); history.back() </script>")
 
         }
          
@@ -38,7 +38,7 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0)
                     })
     
-                    res.send(" <script> alert('Ouro trocados em suprimentos !!'); history.back() </script> ")
+                    res.send(" <script> location.href = '/Business/id'; </script> ")
 
                 } else {
                     res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
@@ -59,7 +59,7 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0)
                     })
 
-                    res.send(" <script> alert('Ouro trocados em madeira !!'); history.back() </script> ")
+                    res.send(" <script> location.href = '/Business/id'; </script> ")
                     
                 } else {
                     res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
@@ -79,7 +79,7 @@ const exchange = async (req, res, next) => {
                         wood: wood.toFixed(0)
                     })
 
-                    res.send(" <script> alert('Suprimentos trocados em madeira !!'); history.back() </script> ")
+                    res.send(" <script> location.href = '/Business/id'; </script> ")
                     
                 } else {
                     res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
@@ -99,7 +99,7 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0) 
                     })
         
-                    res.send(" <script> alert('Suprimentos trocados em ouro !!'); history.back() </script> ")
+                    res.send(" <script> location.href = '/Business/id'; </script> ")
                     
                 } else {
                     res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
@@ -119,7 +119,7 @@ const exchange = async (req, res, next) => {
                         supplies: supplies.toFixed(0) 
                     })
         
-                    res.send(" <script> alert('Madeira trocados em suprimentos !!'); history.back() </script> ")
+                    res.send(" <script> location.href = '/Business/id'; </script> ")
                     
                 } else {
                     res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
@@ -140,7 +140,7 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0)
                     })
         
-                    res.send(" <script> alert('Madeira trocados em ouro !!'); history.back() </script> ")
+                    res.send(" <script> location.href = '/Business/id'; </script> ")
                     
                 } else {
                     res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
