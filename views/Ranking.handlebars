@@ -1,45 +1,48 @@
+<style>
+    #ranking {
+        margin: 50px 80px;
+    }
+</style>
+
 <section class="section_actions">
 
-    <h1>Ranking</h1>
+    <h1 style="text-align: center;">Ranking</h1>
 
-    <div id="raking"></div>
+    <div id="ranking"></div>
 
 </section>
 
 <script>
 
-    async function rankingGetContent() {
-        
+    (async() => {
         try {
-            const response = await fetch('http://localhost:3000/ranking_users')
 
+            const response = await fetch('/ranking_users')
             const data = await response.json()
-
             rankingShow(data)
 
-        } catch (error) {
+        } catch (error) { console.log(error) }
+    })()
 
-            console.log(error)
-        }
-    }
-
-    rankingGetContent()
-
-    function rankingShow(users) {
+    const rankingShow = (users) => {
         
         let output = ''
         var indice = 1
 
         for (let user of users) {
-            output += `<table>
-                            <td> ${indice++} </td>
-                            <td> - </td>
-                            <td> ${user.u_name}</td>
-                            <td> Gold: ${user.gold}</td>
+            output += `<table style="width:50%">
+                            <tr>
+                                <td style="width:60%"> 
+                                    ${indice++} - &nbsp; ${user.u_name} 
+                                </td>
+                                <td style="width:60%"> pontos: 
+                                    ${user.gold}
+                                </td>
+                            <tr>
                         </table>`
         }
 
-        document.querySelector('#raking').innerHTML = output
+        document.querySelector('#ranking').innerHTML = output
     }
 
 </script>

@@ -1,0 +1,1 @@
+git commit -m "businessController refatorado, as viwes de main, Ranking e Workers as funções das chamadas Apis tambem refatoradas, fetchs frontend alterados para /endereçoDaApi sem o http://localhost:3000, para que o ngrok podesse acessar as rotas das Apis, tabela de ranking editada posicionamento" 

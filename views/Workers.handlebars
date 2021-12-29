@@ -57,34 +57,23 @@
 
 <script>
 
-    async function w_MainGetContent() {
-
+    (async() => {
         try {
-            const response = await fetch('http://localhost:3000/main_users')
-
+            const response = await fetch('/main_users')
             const data = await response.json()
-
             w_MainShow(data)
 
-        } catch (error) {
+        } catch (error) { console.log(error) }
+    })()
 
-            console.log(error)
-
-        }
-    }
-
-    w_MainGetContent()
-
-    function w_MainShow(users) {
+    const w_MainShow = (users) => {
 
         var workers
-
         users.map((item) => {
             return workers = item.workers
         })
 
         document.querySelector('#w_workes').innerHTML = workers
-
     }
 
 </script>

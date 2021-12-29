@@ -13,17 +13,23 @@ const exchange = async (req, res, next) => {
         var supplies = parseInt( user[0].supplies ) 
         var wood = parseInt( user[0].wood ) 
 
-        if (typeof radio_1 === "undefined" || typeof radio_2 === "undefined") {
+        if (radio_1 || radio_2 !== "undefined") { 
+            res.send(` <script> 
 
-            res.send("<script> alert('preencha o campo'); history.back() </script>")
+                            alert('Preencha os campos.'); 
+                            history.back();
 
+                        </script> `)
         }
          
-      
         if (radio_1 === radio_2) {
-            res.send("<script>alert('Valores iguais não podem ser trocados!'); history.back()</script>")
-        } 
+            res.send(` <script>
 
+                            alert('Valores iguais não podem ser trocados!'); 
+                            history.back();
+
+                        </script> `)
+        } 
 
         // Gold for Supplies 
         else if (radio_1 === 'Gold_replace' && radio_2 === 'Supplies_replace') {
@@ -38,10 +44,19 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0)
                     })
     
-                    res.send(" <script> location.href = '/Business/id'; </script> ")
+                    res.send(` <script> 
+
+                                    location.href = '/Business/id'; 
+
+                                </script> `)
 
                 } else {
-                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                    res.send(` <script> 
+
+                                    alert('Saldo Insuficiente.'); 
+                                    history.back();
+
+                                </script> `)
                 }
 
         } 
@@ -59,10 +74,19 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0)
                     })
 
-                    res.send(" <script> location.href = '/Business/id'; </script> ")
+                    res.send(` <script> 
+
+                                    location.href = '/Business/id'; 
+
+                                </script> `)
                     
                 } else {
-                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                    res.send(` <script> 
+
+                                    alert('Saldo Insuficiente.'); 
+                                    history.back();
+
+                                </script> `)
                 }
         } 
         
@@ -79,10 +103,19 @@ const exchange = async (req, res, next) => {
                         wood: wood.toFixed(0)
                     })
 
-                    res.send(" <script> location.href = '/Business/id'; </script> ")
+                    res.send(` <script> 
+
+                                    location.href = '/Business/id';
+
+                                </script> `)
                     
                 } else {
-                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                    res.send(` <script> 
+
+                                    alert('Saldo Insuficiente.'); 
+                                    history.back();
+
+                                </script> `)
                 }
         }
         
@@ -99,10 +132,19 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0) 
                     })
         
-                    res.send(" <script> location.href = '/Business/id'; </script> ")
+                    res.send(` <script> 
+
+                                    location.href = '/Business/id'; 
+
+                                </script> `)
                     
                 } else {
-                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                    res.send(` <script> 
+
+                                    alert('Saldo Insuficiente.'); 
+                                    history.back();
+
+                                </script> `)
                 }
         } 
         
@@ -119,10 +161,19 @@ const exchange = async (req, res, next) => {
                         supplies: supplies.toFixed(0) 
                     })
         
-                    res.send(" <script> location.href = '/Business/id'; </script> ")
+                    res.send(` <script> 
+
+                                    location.href = '/Business/id'; 
+
+                                </script> `)
                     
                 } else {
-                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                    res.send(` <script> 
+
+                                    alert('Saldo Insuficiente.'); 
+                                    history.back();
+
+                                </script> `)
                 }
 
         } 
@@ -140,15 +191,21 @@ const exchange = async (req, res, next) => {
                         gold: gold.toFixed(0)
                     })
         
-                    res.send(" <script> location.href = '/Business/id'; </script> ")
+                    res.send(` <script> 
+
+                                    location.href = '/Business/id'; 
+
+                                </script> `)
                     
                 } else {
-                    res.send(" <script> alert('Saldo Insuficiente.'); history.back() </script> ")
+                    res.send(` <script> 
+
+                                    alert('Saldo Insuficiente.'); 
+                                    history.back();
+
+                                </script> `)
                 }
         } 
-
     } 
 
-module.exports = { 
-    exchange
- }
+module.exports = { exchange }

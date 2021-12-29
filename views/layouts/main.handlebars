@@ -97,28 +97,18 @@
 {{{body}}}
 
 
-
 <script>
 
-    async function MainGetContent() {
-
+    (async() => {
         try {
-            const response = await fetch('http://localhost:3000/main_users')
-
+            const response = await fetch('/main_users')
             const data = await response.json()
-
             MainShow(data)
 
-        } catch (error) {
+        } catch (error) { console.log(error) }
+    })()
 
-            console.log(error)
-
-        }
-    }
-
-    MainGetContent()
-
-    function MainShow(users) {
+    const MainShow = (users) => {
 
         var gold, supplies, wood, origin
         var worker_producing_gold, worker_producing_supplies, worker_producing_wood
@@ -132,7 +122,6 @@
                    worker_producing_supplies = item.worker_producing_supplies,
                    worker_producing_wood = item.worker_producing_wood
         })
-
 
         document.querySelector('#gold').innerHTML = 'Ouro: ' + gold
         document.querySelector('#supplies').innerHTML = 'Suprimentos: ' + supplies

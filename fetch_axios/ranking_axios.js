@@ -1,7 +1,16 @@
 const axios = require('axios')
 const url = 'http://localhost:3000/ranking_users'
 
-// axios.get(url).then(data => {
-//     console.log(data.data)   
-// })
-// .catch(error => console.log(error))
+// function getRanking() {
+
+//     axios.get(url)
+//         .then(response => {
+//             const data = response.data   
+//             raking.textContent = JSON.stringify(data)
+
+//             console.log(data)
+//         })
+//         .catch(error => console.log(error))
+// }
+
+// getRanking() 
