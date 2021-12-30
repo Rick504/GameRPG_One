@@ -99,14 +99,14 @@
 
 <script>
 
-    (async() => {
+   setInterval (async() => {
         try {
             const response = await fetch('/main_users')
             const data = await response.json()
             MainShow(data)
 
         } catch (error) { console.log(error) }
-    })()
+    },30)
 
     const MainShow = (users) => {
 
@@ -132,14 +132,6 @@
         document.querySelector('#worker_producing_wood').innerHTML = '+ ' + worker_producing_wood
     }
 
-</script>
-
-<script>
-        const btnReload = () => {
-        setTimeout(() => {
-            window.location.reload(true)
-        }, 500)
-    }
 </script>
 
 </body>

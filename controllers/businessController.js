@@ -13,10 +13,10 @@ const exchange = async (req, res, next) => {
         var supplies = parseInt( user[0].supplies ) 
         var wood = parseInt( user[0].wood ) 
 
-        if (radio_1 || radio_2 !== "undefined") { 
+        if (radio_1 === "undefined" || radio_2 === "undefined") { 
             res.send(` <script> 
 
-                            alert('Preencha os campos.'); 
+                            alert('Preencha os campos.');
                             history.back();
 
                         </script> `)
@@ -39,16 +39,12 @@ const exchange = async (req, res, next) => {
                     gold -= value
                     supplies += value/4 * 3
     
-                    await knex('users').where({id: user_id}).update({ 
+                    const results = await knex('users').where({id: user_id}).update({ 
                         supplies: supplies.toFixed(0),
                         gold: gold.toFixed(0)
                     })
     
-                    res.send(` <script> 
-
-                                    location.href = '/Business/id'; 
-
-                                </script> `)
+                    return results
 
                 } else {
                     res.send(` <script> 
@@ -69,16 +65,12 @@ const exchange = async (req, res, next) => {
                     gold -= value
                     wood += value/4 * 3
 
-                    await knex('users').where({id: user_id}).update({ 
+                    const results = await knex('users').where({id: user_id}).update({ 
                         wood: wood.toFixed(0),
                         gold: gold.toFixed(0)
                     })
 
-                    res.send(` <script> 
-
-                                    location.href = '/Business/id'; 
-
-                                </script> `)
+                    return results
                     
                 } else {
                     res.send(` <script> 
@@ -98,16 +90,12 @@ const exchange = async (req, res, next) => {
                     supplies -= value
                     wood += value/4 * 3
 
-                    await knex('users').where({id: user_id}).update({ 
+                    const results = await knex('users').where({id: user_id}).update({ 
                         supplies: supplies.toFixed(0),
                         wood: wood.toFixed(0)
                     })
 
-                    res.send(` <script> 
-
-                                    location.href = '/Business/id';
-
-                                </script> `)
+                    return results
                     
                 } else {
                     res.send(` <script> 
@@ -127,16 +115,12 @@ const exchange = async (req, res, next) => {
                     supplies -= value
                     gold += value/4 * 3
         
-                    await knex('users').where({id: user_id}).update({ 
+                    const results = await knex('users').where({id: user_id}).update({ 
                         supplies: supplies.toFixed(0),
                         gold: gold.toFixed(0) 
                     })
         
-                    res.send(` <script> 
-
-                                    location.href = '/Business/id'; 
-
-                                </script> `)
+                    return results
                     
                 } else {
                     res.send(` <script> 
@@ -156,16 +140,12 @@ const exchange = async (req, res, next) => {
                     wood -= value
                     supplies += value/4 * 3
         
-                    await knex('users').where({id: user_id}).update({ 
+                    const results =await knex('users').where({id: user_id}).update({ 
                         wood: wood.toFixed(0),
                         supplies: supplies.toFixed(0) 
                     })
         
-                    res.send(` <script> 
-
-                                    location.href = '/Business/id'; 
-
-                                </script> `)
+                    return results
                     
                 } else {
                     res.send(` <script> 
@@ -186,16 +166,12 @@ const exchange = async (req, res, next) => {
                     wood -= value
                     gold += value/4 * 3
         
-                    await knex('users').where({id: user_id}).update({ 
+                    const results = await knex('users').where({id: user_id}).update({ 
                         wood: wood.toFixed(0),
                         gold: gold.toFixed(0)
                     })
         
-                    res.send(` <script> 
-
-                                    location.href = '/Business/id'; 
-
-                                </script> `)
+                    return results
                     
                 } else {
                     res.send(` <script> 
