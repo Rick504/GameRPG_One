@@ -5,8 +5,6 @@ const app = express()
 const http = require('http')
 const server = http.createServer(app)
 
-require('./fetch_axios/ranking_axios')
-
 
 // Connection Knex - settings ---------------------------------------//
 require("./models/config/database")

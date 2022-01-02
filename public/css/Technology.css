@@ -1,0 +1,74 @@
+body {
+    background-color: rgb(48, 10, 10);
+    color: cornsilk}
+#button_start{
+    background-color: rgb(7, 3, 3);
+    color: darkgray;
+    width: 100px;
+    padding: 10px;}
+a:link {
+    background-color: rgb(175, 70, 70);
+    color: cornsilk;
+    text-align: center;
+    position: absolute;
+    padding: 50px;}
+a[href="/unlock_trade"] {
+    top: 200px;
+    left: 150px;}
+a[href="/option_2"] {
+    top: 400px;
+    left: 150px;}
+a[href="/option_3"] {
+    top: 600px;
+    left: 150px;}
+a[href="/option_4"] {
+    top: 300px;
+    left: 500px;}
+a[href="/option_5"] {
+    top: 500px;
+    left: 500px;}
+a[href="/option_6"] {
+    top: 200px;
+    left: 800px;}
+a[href="/option_7"] {
+    top: 400px;
+    left: 800px;}
+a[href="/option_8"] {
+    top: 600px;
+    left: 800px;}
+a[href="/option_9"] {
+    top: 300px;
+    left: 1100px;}
+a[href="/option_10"] {
+    top: 500px;
+    left: 1100px;}
+a[href="/option_11"] {
+    top: 200px;
+    left: 1400px;}
+a[href="/option_12"] {
+    top: 400px;
+    left: 1400px;}
+a[href="/option_13"] {
+    top: 600px;
+    left: 1400px;}
+a[href="/option_14"] {
+    top: 300px;
+    left: 1700px;}
+a[href="/option_15"] {
+    top: 500px;
+    left: 1700px;}
+a[href="/option_16"] {
+    top: 200px;
+    left: 2000px;}
+a[href="/option_17"] {
+    top: 400px;
+    left: 2000px;}
+a[href="/option_18"] {
+    top: 600px;
+    left: 2000px;}
+a[href="/option_19"] {
+    top: 300px;
+    left: 2300px;}
+a[href="/option_20"] {
+    top: 500px;
+    left: 2300px;}

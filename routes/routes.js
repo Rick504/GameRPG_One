@@ -52,17 +52,6 @@ module.exports = (app) => {
     //************************************************************** */
 
 
-    //delete    
-    app.get("/delete/:id", (req, res) => {
-        if (req.session.loggedin == true) {
-            res.render('delete', { layout: false, data: dados_user })
-        }
-    })
-
-
-    //************************************************************** */
-
-
     //Logged
     app.get("/Logged/:id", (req, res) => {
         if (req.session.loggedin == true) {
@@ -113,8 +102,18 @@ module.exports = (app) => {
         }
     })
 
-    app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
+    //************************************************************** */
 
+
+    //delete    
+    app.get("/delete/:id", (req, res) => {
+        if (req.session.loggedin == true) {
+            res.render('delete', { layout: false, data: dados_user })
+        }
+    })
+
+    app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
+    
 
     //************************************************************** */
 

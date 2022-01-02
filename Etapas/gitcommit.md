@@ -1,1 +1,1 @@
-git commit -m " chamada ajax não estava fazendo com real time, paginas com chamada ajax e controllers que retornam dados foram refatorados, adicionei textos iformando o custo dos trabalhadores conforme a origem do jogador na pagina de compra de trabalhadores"
+git commit -m "exclui pasta fetch-axios, concentrei todo css do site no main.css, menos a pagina de login, cadastro, registerPerformed e Tecnology porque são paginas separdas com suas proprias caracteristicas e seus styles separados na pasta public"

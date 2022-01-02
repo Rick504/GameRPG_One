@@ -1,10 +1,24 @@
 body {
-  background-color: #2c3333;
+  background: #1d1b17;
   color: #457ffc;
+}
+
+h1 {
+  text-align: center;
 }
 
 h3 {
   text-align: center;
+}
+
+input[type="radio"] {
+  width: 30px;
+  height: 30px;
+}
+
+
+input[type="number"] {
+  height: 25px;
 }
 
 button {
@@ -34,6 +48,65 @@ button:hover {
 button:active {
   -webkit-transform: scale(0.99);
           transform: scale(0.99);
+}
+
+.icons_1 {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.icons_2 {
+  position: absolute;
+  top: 200px;
+  left: 600px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.inputs_number {
+  position: absolute;
+  top: 300px;
+  left: 350px;
+}
+
+#button_to_replace {
+  position: absolute;
+  top: 400px;
+  left: 350px;
+}
+
+#percentage {
+  color: red;
+  margin: 200px 530px;
+}
+
+#text1 {
+  position: absolute;
+  top: 240px;
+  left: 380px;
+}
+
+#ranking {
+  margin: 50px 80px;
+}
+
+.btns_workers {
+  margin-top: 60px; 
+  margin-left: 100px;
+}
+
+#w_workes {
+  text-align: center;
+  background-color: black;
+  color: blanchedalmond;
+  width: 30px;
 }
 
 #diamonds {
@@ -69,11 +142,11 @@ button:active {
 }
 
 .top_menu #opcion_1 {
-  background-color: #0e0a05;
+  background: linear-gradient(575deg, #0e0d0c, #292c0a);
   position: absolute;
   padding: 10px;
   border-radius: 15px;
-  width: 200px;
+  width: 230px;
   height: 140px;
   top: 10px;
   left: 50px;
@@ -83,6 +156,8 @@ button:active {
   position: relative;
   top: 30px;
   left: 30px;
+  width: 190px;
+  height: 80px;
 }
 
 .top_menu #opcion_1 #earnings_2 {
@@ -93,19 +168,20 @@ button:active {
 }
 
 .top_menu #opcion_1 .add_workers {
+  text-align: center;
   background-color: black;
-  width: 30px;
+  width: 50px;
   position: relative;
   top: -73px;
   left: 130px;
 }
 
 .opcion_2 {
-  background-color: #0e0a05;
+  background: linear-gradient(575deg, #0e0d0c, #292c0a);
   position: absolute;
   padding: 10px;
   border-radius: 15px;
-  width: 200px;
+  width: 230px;
   height: 140px;
   top: 10px;
   left: 600px;
