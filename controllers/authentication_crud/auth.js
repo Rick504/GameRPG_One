@@ -16,6 +16,7 @@ const auth_user = async (req, res) => {
                 //requisições do BD
                 req.session.loggedin = true
                 req.session.u_name = u_name
+                t_name = req.session.u_name
                 
                 //pegando Id do Usuario
                 user_id = results[0].id
@@ -24,7 +25,7 @@ const auth_user = async (req, res) => {
                 res.redirect('/Logged/' + user_id)
 
                 //Objeto Handlebars
-                dados_user = { user_id, u_name }
+                dados_user = { user_id, t_name }
 
                 //Vizualizar User Logado
                 console.table(dados_user)

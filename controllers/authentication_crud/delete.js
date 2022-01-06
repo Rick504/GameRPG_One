@@ -4,7 +4,7 @@ const del_user = async (req, res) => {
     
     if (req.session.loggedin === true) {
 
-        await knex('users').where({user_id: user_id}).del()
+        await knex('users').where({id: user_id}).del()
 
         res.redirect('/')
     }
