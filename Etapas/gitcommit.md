@@ -1,1 +1,0 @@
-git commit -m "exclui pasta fetch-axios, concentrei todo css do site no main.css, menos a pagina de login, cadastro, registerPerformed e Tecnology porque são paginas separdas com suas proprias caracteristicas e seus styles separados na pasta public"

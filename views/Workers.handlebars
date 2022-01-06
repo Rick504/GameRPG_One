@@ -67,5 +67,44 @@
             }
         }
 
+        //Colers alteradas ao econstar no botão
+        document.querySelector("[href='/purchase_gold']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("gold").style.color = "red";
+            document.getElementById("supplies").style.color = "red";
+            document.getElementById("w_workes").style.color = "green";
+        });
+        document.querySelector("[href='/purchase_gold']").addEventListener("mouseout", () => {
+            document.getElementById("gold").style.color = "#457ffc";
+            document.getElementById("supplies").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+
+        document.querySelector("[href='/updateWorkers_gold']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("worker_producing_gold").style.color = "green";
+            document.getElementById("w_workes").style.color = "red";
+        });
+        document.querySelector("[href='/updateWorkers_gold']").addEventListener("mouseout", () => {
+            document.getElementById("worker_producing_gold").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+    
+        document.querySelector("[href='/updateWorkers_supplies']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("worker_producing_supplies").style.color = "green";
+            document.getElementById("w_workes").style.color = "red";
+        });
+        document.querySelector("[href='/updateWorkers_supplies']").addEventListener("mouseout", () => {
+            document.getElementById("worker_producing_supplies").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+
+        document.querySelector("[href='/updateWorkers_wood']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("worker_producing_wood").style.color = "green";
+            document.getElementById("w_workes").style.color = "red";
+        });
+        document.querySelector("[href='/updateWorkers_wood']").addEventListener("mouseout", () => {
+            document.getElementById("worker_producing_wood").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+
 </script>
 

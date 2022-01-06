@@ -19,7 +19,7 @@ module.exports = (app) => {
     //**********************  TESTES  ***************************** */
 
 
-    app.get('/psql', async (req, res) => {
+    app.get('/users', async (req, res) => {
         const rows = await knex.table('users')
         res.send(rows)
     })

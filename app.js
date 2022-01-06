@@ -6,10 +6,6 @@ const http = require('http')
 const server = http.createServer(app)
 
 
-// Connection Knex - settings ---------------------------------------//
-require("./models/config/database")
-
-
 // Session - settings ---------------------------------------//
 app.use(session({ secret: "secret", resave: true, saveUninitialized: true }))
 
