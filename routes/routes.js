@@ -3,56 +3,54 @@ const express = require("express")
 const urlencodeParser = express.urlencoded({ extended: false })
 const knex = require('../models/config/conn_knex')
 
-const insertAPI = require("../controllers/APIs main/registration_performed")
-const deleteAPI = require("../controllers/APIs main/delete")
-const workersController = require("../controllers/workersController")
+// Controllers APIS
+const auth = require("../controllers/authentication_crud/auth")
+const insertAPI = require("../controllers/authentication_crud/registration_performed")
+const deleteAPI = require("../controllers/authentication_crud/delete")
 const businessController = require("../controllers/businessController")
 const rankingController = require("../controllers/rankingController")
-const auth = require("../controllers/APIs main/auth")
+const mainController = require("../controllers/mainController")
+const workersController = require("../controllers/workersController")
 
 
 module.exports = (app) => {
 
+
     //**********************  TESTES  ***************************** */
 
-    app.get('/psql', async (req, res) => {
+
+    app.get('/users', async (req, res) => {
         const rows = await knex.table('users')
         res.send(rows)
     })
 
-    //**********************  APIS  ***************************** */
+
+    //**********************  ROTAS  ***************************** */
 
 
-    app.get("/purchase_gold", workersController.workers_purchase_gold)
-    app.get("/updateWorkers_gold", workersController.updateWorkers_gold)
-    app.get("/updateWorkers_supplies", workersController.updateWorkers_supplies)
-    app.get("/updateWorkers_wood", workersController.updateWorkers_wood)
-    app.post("/Business/to_replace", urlencodeParser, businessController.exchange)
-    app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
+    //Login
+    app.get("/", (req, res) => {
+        res.render('login', { layout: false })
+        req.session.destroy()
+    })
+
     app.post("/auth", auth.auth_user)
+
+
+    //************************************************************** */
+
+
+    //Cadastrar
+    app.get("/register", (req, res) => {
+        res.render('register', { layout: false })
+        req.session.destroy()
+    })
+
     app.post("/registration_performed", urlencodeParser, insertAPI.insert_user)
 
 
-    //**********************  Rotas  ***************************** */
+    //************************************************************** */
 
-    //Login
-    app.get("/", async (req, res) => {
-        res.render('login', { layout: false })
-        await req.session.destroy()
-    })
-
-    //Cadastrar
-    app.get("/register", async (req, res) => {
-        res.render('register', { layout: false })
-        await req.session.destroy()
-    })
-
-    //delete    
-    app.get("/delete/:id", (req, res) => {
-        if (req.session.loggedin == true) {
-            res.render('delete', { layout: false, data: dados_user })
-        }
-    })
 
     //Logged
     app.get("/Logged/:id", (req, res) => {
@@ -64,12 +62,27 @@ module.exports = (app) => {
         }
     })
 
+    app.get("/main_users", mainController.mainFunc)
+
+
+    //************************************************************** */
+
+
     //Trabalhadores
     app.get("/Workers/:id", (req, res) => {
         if (req.session.loggedin == true) {
             res.render('Workers', { data: dados_user })
         }
     })
+
+    app.get("/purchase_gold", workersController.buy_workers)
+    app.get("/updateWorkers_gold", workersController.buy_worker_producing_gold)
+    app.get("/updateWorkers_supplies", workersController.buy_updateWorkers_supplies)
+    app.get("/updateWorkers_wood", workersController.buy_updateWorkers_wood)
+
+
+    //************************************************************** */
+
 
     //Tecnologia
     app.get("/Technology/:id", (req, res) => {
@@ -78,6 +91,10 @@ module.exports = (app) => {
         }
     })
 
+
+    //************************************************************** */
+
+
     //Suporte
     app.get("/Support/:id", (req, res) => {
         if (req.session.loggedin == true) {
@@ -85,8 +102,35 @@ module.exports = (app) => {
         }
     })
 
+    //************************************************************** */
+
+
+    //delete    
+    app.get("/delete/:id", (req, res) => {
+        if (req.session.loggedin == true) {
+            res.render('delete', { layout: false, data: dados_user })
+        }
+    })
+
+    app.get("/del_acount/:id", urlencodeParser, deleteAPI.del_user)
+    
+
+    //************************************************************** */
+
+
     //Ranking
-    app.get("/Ranking/:id", rankingController.allPlayers)
+    app.get("/Ranking/:id", (req, res) => {
+        if (req.session.loggedin == true) {
+            res.render('Ranking', { data: dados_user })
+        }
+    })
+
+    
+    app.get("/ranking_users", rankingController.rakingFunc)
+
+
+    //************************************************************** */
+
 
     //Profile
     app.get("/Profile/:id", (req, res) => {
@@ -95,12 +139,19 @@ module.exports = (app) => {
         }
     })
 
+
+    //************************************************************** */
+
+
     //Menssagens
     app.get("/Menssages/:id", (req, res) => {
         if (req.session.loggedin == true) {
             res.render('Menssages', { data: dados_user })
         }
     })
+
+    //************************************************************** */
+
 
     //Manual
     app.get("/Manual/:id", (req, res) => {
@@ -109,12 +160,20 @@ module.exports = (app) => {
         }
     })
 
+
+    //************************************************************** */
+
+
     //Histórico
     app.get("/Historic/:id", (req, res) => {
         if (req.session.loggedin == true) {
             res.render('Historic', { data: dados_user })
         }
     })
+
+
+    //************************************************************** */
+
 
     //Clã
     app.get("/Clan/:id", (req, res) => {
@@ -123,6 +182,9 @@ module.exports = (app) => {
         }
     })
 
+    //************************************************************** */
+
+
     //Comercio
     app.get("/Business/:id", (req, res) => {
         if (req.session.loggedin == true) {
@@ -130,12 +192,22 @@ module.exports = (app) => {
         }
     })
 
+    app.post("/Business/to_replace", urlencodeParser, businessController.exchange)
+
+
+
+    //************************************************************** */
+
+
     //Diamantes
     app.get("/Diamonds/:id", (req, res) => {
         if (req.session.loggedin == true) {
             res.render('Diamonds', { data: dados_user })
         }
     })
+
+    //************************************************************** */
+
 
     //Exercito
     app.get("/Armys/:id", (req, res) => {

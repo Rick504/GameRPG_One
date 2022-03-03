@@ -1,23 +1,14 @@
 const knex = require('../models/config/conn_knex')
 
-const allPlayers = async (req, res) => {
-    if (req.session.loggedin == true) {
+const rakingFunc = async (req, res) => {
 
-        const columns = await knex.column('u_name', 'gold').select().from('users').orderBy('gold')
+    var rows = await knex('users').column('u_name', 'gold')
 
-        const c = columns.map((columns, indice) => {
-            
-            return `${indice + 1} - ${columns.u_name} Gold: ${columns.gold} \n`
-        })
+    await rows.sort((a, b) => {
+        return b.gold - a.gold
+     })
 
-        dados_user.ranking = c.join('')
-
-        res.render('Ranking', { data: dados_user })
-        console.log(dados_user.ranking)
-
-    }
+    await res.send(rows)
 }
 
-module.exports = { 
-    allPlayers
- }
+module.exports = { rakingFunc }

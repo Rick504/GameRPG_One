@@ -1,152 +1,232 @@
 const knex = require('../models/config/conn_knex')
 
 //comprar trabalhadores
-const workers_purchase_gold = async (req,res,next) => {
+const buy_workers = async (req,res,next) => {
 
-      if (workers >= 0 && gold >= 2 && supplies >= 13) {
+    var user = await knex('users').where({id: user_id}).column('gold', 'supplies','workers','origin')
 
-          const less_gold = 2
-          const less_supplies = 13
-          const add_worker = 1
+    function verification_origin () {
+        switch (user[0].origin) {
 
-          const current_worker   =  parseInt(workers)   +  parseInt(add_worker)
-          const current_gold     =  parseInt(gold)      -  parseInt(less_gold)
-          const current_supplies =  parseInt(supplies)  -  parseInt(less_supplies)
-
-          await knex.where({id: user_id})
-                    .update({
-                        workers: current_worker,
-                        gold: current_gold,
-                        supplies: current_supplies
-                    }).table('users')
-
-          // variaveis do Banco e handlebars
-          workers   = current_worker
-          gold      = current_gold
-          supplies  = current_supplies
-
-          dados_user.workers   = current_worker
-          dados_user.gold      = current_gold
-          dados_user.supplies  = current_supplies
-
-
-        } else {
-            workers = workers
-            gold    = gold
-            supplies= supplies
+            case 'Magic':
+                origin_magic()
+                break;
+            
+            case 'Researcher':
+                origin_researcher()
+                break;
+        
+            case 'War':
+                origin_war()
+                break;
         }
+    }
 
+    verification_origin()
+
+    async function origin_magic() {
+
+        var gold = user[0].gold
+        var supplies = user[0].supplies
+        var workers = user[0].workers
+    
+          if (workers >= 0 && gold >= 2 && supplies >= 13) {
+    
+                const [less_gold, less_supplies, add_worker] = [3, 12, 1]
+        
+                const current_worker   =  parseInt(workers)   +  parseInt(add_worker)
+                const current_gold     =  parseInt(gold)      -  parseInt(less_gold)
+                const current_supplies =  parseInt(supplies)  -  parseInt(less_supplies)
+        
+                const result = await knex('users').where({id: user_id})
+                                        .update({
+                                            workers: current_worker,
+                                            gold: current_gold,
+                                            supplies: current_supplies
+                                        })
+                return result
+
+            }  else {
+                res.send(`  <script> 
+
+                                alert ('Sem Saldo para compra de trabalhadores'); 
+                                history.back();
+                                
+                            </script>`)
+            }
+
+    }
+
+    async function origin_researcher() {
+
+        var gold = user[0].gold
+        var supplies = user[0].supplies
+        var workers = user[0].workers
+    
+          if (workers >= 0 && gold >= 2 && supplies >= 13) {
+    
+                const [less_gold, less_supplies, add_worker] = [2, 13, 1]
+
+                const current_worker   =  parseInt(workers)   +  parseInt(add_worker)
+                const current_gold     =  parseInt(gold)      -  parseInt(less_gold)
+                const current_supplies =  parseInt(supplies)  -  parseInt(less_supplies)
+
+                const result = await knex('users').where({id: user_id})
+                                    .update({
+                                        workers: current_worker,
+                                        gold: current_gold,
+                                        supplies: current_supplies
+                                    })
+                return result
+
+            } else {
+                res.send(`  <script> 
+
+                                alert ('Sem Saldo para compra de trabalhadores'); 
+                                history.back();
+                                
+                            </script>`)
+            }
+
+            
+    }
+
+    async function origin_war() {
+
+        var gold = user[0].gold
+        var supplies = user[0].supplies
+        var workers = user[0].workers
+    
+          if (workers >= 0 && gold >= 2 && supplies >= 13) {
+    
+                const [less_gold, less_supplies, add_worker] = [4, 15, 1]
+        
+                const current_worker   =  parseInt(workers)   +  parseInt(add_worker)
+                const current_gold     =  parseInt(gold)      -  parseInt(less_gold)
+                const current_supplies =  parseInt(supplies)  -  parseInt(less_supplies)
+        
+                const result = await knex('users').where({id: user_id})
+                                        .update({
+                                            workers: current_worker,
+                                            gold: current_gold,
+                                            supplies: current_supplies
+                                        })
+
+                return result   
+
+            }  else {
+                res.send(`  <script> 
+
+                                alert ('Sem Saldo para compra de trabalhadores'); 
+                                history.back();
+                                
+                            </script>`)
+            }
+    }
 }
 
 //usar em gold
-const updateWorkers_gold = async (req,res) => {
+const buy_worker_producing_gold = async (req,res,next) => {
 
-  if (workers > 0) {
+    var user = await knex('users').where({id: user_id}).column('workers', 'worker_producing_gold')
 
-      add_gold = '1'
+    var workers = user[0].workers
+    var worker_producing_gold = user[0].worker_producing_gold
 
-      const current_worker =  parseInt(workers)  -  parseInt(1)
-      const current_gold   =  parseInt(worker_producing_gold)  +  parseInt(add_gold)
+        if (workers > 0) {
 
+            add_gold = '1'
 
-      await knex.where({id: user_id})
-                .update({
-                    workers: current_worker,
-                    worker_producing_gold: current_gold
-                }).table('users')
+                const current_worker =  parseInt(workers)  -  parseInt(1)
+                const current_gold   =  parseInt(worker_producing_gold)  +  parseInt(add_gold)
 
 
-      // variaveis do Banco e handlebars
-      worker_producing_gold  = current_gold
-      workers = current_worker
+                const result = await knex('users').where({id: user_id})
+                                        .update({
+                                            workers: current_worker,
+                                            worker_producing_gold: current_gold
+                                        })
 
-      dados_user.worker_producing_gold = current_gold
-      dados_user.workers = current_worker
+                return result
+                    
+            } else {
+                res.send(`  <script> 
 
+                                alert ('Sem Trabalhadores'); 
+                                history.back();
 
-    } else {
-      workers  = workers
-      gold     = gold
-      supplies = supplies
-      wood     = wood
-    }
+                            </script>`)
+            }
 }
 
-//usar em supplies
-const updateWorkers_supplies = async (req,res) => {
+// //usar em supplies
+const buy_updateWorkers_supplies = async (req,res,next) => {
 
-  if (workers > 0) {
+    var user = await knex('users').where({id: user_id}).column('workers', 'worker_producing_supplies')
 
-      add_supplies = '8'
+    var workers = user[0].workers
+    var worker_producing_supplies = user[0].worker_producing_supplies
 
-      const current_worker   = parseInt(workers)  -  parseInt(1)
-      const current_supplies = parseInt(worker_producing_supplies)  +  parseInt(add_supplies)
+        if (workers > 0) {
 
-      await knex.where({id: user_id})
-                .update({
-                    workers: current_worker,
-                    worker_producing_supplies: current_supplies
-                }).table('users')
-      
+                add_supplies = '8'
 
-      // variaveis do Banco e handlebars
-      worker_producing_supplies = current_supplies
-      workers = current_worker
+                const current_worker   = parseInt(workers)  -  parseInt(1)
+                const current_supplies = parseInt(worker_producing_supplies)  +  parseInt(add_supplies)
 
-      dados_user.worker_producing_supplies = current_supplies
-      dados_user.workers = current_worker
+                const result = await knex('users').where({id: user_id})
+                                        .update({
+                                            workers: current_worker,
+                                            worker_producing_supplies: current_supplies
+                                        })
+                return result
 
+            } else {
+                res.send(`  <script> 
 
-
-    } else {
-        workers  = workers
-        gold     = gold
-        supplies = supplies
-        wood     = wood
-    }
-
+                                alert ('Sem Trabalhadores'); 
+                                history.back();
+                                
+                            </script>`)
+            }
 }
 
-//usar em wood
-const updateWorkers_wood = async (req,res) => {
+// //usar em wood
+const buy_updateWorkers_wood = async (req,res,next) => {
 
-  if (workers > 0) {
+    var user = await knex('users').where({id: user_id}).column('workers', 'worker_producing_wood')
 
-      add_wood = '5'
+    var workers = user[0].workers
+    var worker_producing_wood = user[0].worker_producing_wood
 
-      const current_worker = parseInt(workers)  -  parseInt(1)
-      const current_wood   = parseInt(worker_producing_wood)  +  parseInt(add_wood)
+        if (workers > 0) {
 
-      await knex.where({id: user_id})
-                .update({
-                    workers: current_worker,
-                    worker_producing_wood: current_wood
-                }).table('users')
+            add_wood = '5'
 
+            const current_worker = parseInt(workers)  -  parseInt(1)
+            const current_wood   = parseInt(worker_producing_wood)  +  parseInt(add_wood)
 
-      // variaveis do Banco
-      worker_producing_wood = current_wood
-      workers = current_worker
+            const result = await knex('users').where({id: user_id})
+                                    .update({
+                                        workers: current_worker,
+                                        worker_producing_wood: current_wood
+                                    })
+                return result
 
-      //handlebars
-      dados_user.worker_producing_wood = current_wood
-      dados_user.workers = current_worker
+            } else {
+                res.send(`  <script> 
 
-
-
-    } else {
-      workers  = workers
-      gold     = gold
-      supplies = supplies
-      wood     = wood
-    }
-
+                                alert ('Sem Trabalhadores'); 
+                                history.back();
+                                
+                            </script>`)
+            }
 }
 
 //exportar tudo
 module.exports = {
-  workers_purchase_gold, 
-  updateWorkers_gold,
-  updateWorkers_supplies,
-  updateWorkers_wood
+    buy_workers, 
+    buy_worker_producing_gold,
+    buy_updateWorkers_supplies,
+    buy_updateWorkers_wood
 }

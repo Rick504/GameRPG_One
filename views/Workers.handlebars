@@ -1,58 +1,110 @@
-
 {{#data}}
-
-{{!-- section --}}
-
 <section class="section_actions">
-<h1 style="text-align: center;">Trabalhadores</h1>
+    <h1>Trabalhadores</h1>
 
-    <div style="margin-top: 100px; margin-left: 100px;">
+    <div class="btns_workers">
 
-        <a href="/purchase_gold" id="my-checkbox" > 
-            <button onclick="btnReload()"> Comprar trabalhador </button>
+        <a href="/purchase_gold">
+            <button> Comprar trabalhador </button>
         </a>
 
-        <p >Custo do trabalhador: 2 Ouro, 13 Suprimentos. </p>
+        <div id="cost_workers"></div>
 
         <p>Total de Trabalhadores Parados: </p>
-        
-        <div style="color: cornsilk;">{{workers}}</div>
 
-        <a href="/updateWorkers_gold" id="my-checkbox"> 
-            <br><br> 
-            <button onclick="btnReload()"> Produzir Ouro </button>
+        <div id="w_workes"></div><br>
+
+        <a href="/updateWorkers_gold">
+            <button> Produzir +1 Ouro </button>
         </a>
 
-        <p> Coloque Trabalhadores para produzir Ouro, cada trabalhador produz 1 Ouro por turno.
-            <a href="/updateWorkers_supplies" id="my-checkbox">
-            <br><br> 
-            <button onclick="btnReload()"> Produzir Suprimentos </button>
+        <p> Coloque Trabalhadores para produzir Ouro, cada trabalhador produz 1 Ouro por turno. </p>
+
+        <a href="/updateWorkers_supplies">
+            <button> Produzir +8 Suprimentos </button>
         </a>
 
-        <p> Coloque Trabalhadores para produzir Suprimentos, cada trabalhador produz 8 Suprimentos por turno.
+        <p> Coloque Trabalhadores para produzir Suprimentos, cada trabalhador produz 8 Suprimentos por turno. </p>
 
-            <a href="/updateWorkers_wood" id="my-checkbox"> 
-            <br><br> 
-            <button onclick="btnReload()"> Produzir Madeira </button>
+        <a href="/updateWorkers_wood">
+            <button> Produzir +5 Madeira </button>
         </a>
 
-        <p> Coloque Trabalhadores para produzir Madeira, cada trabalhador produz 5 Madeira por turno.
-    
+        <p> Colque Trabalhadores para produzir Madeira, cada trabalhador produz 5 Madeira por turno. </p>
+
     </div>
-</section>
-{{!-- section --}}
-
 {{/data}}
 
 <script>
-    const btnReload = () => {
-        setTimeout(() => {
-            window.location.reload(true)
-        }, 500)
-    }
+
+    //Chamada Ajax
+        setInterval (async() => {
+            try {
+                const response = await fetch('/main_users')
+                const data = await response.json()
+                w_MainShow(data)
+
+            } catch (error) { console.log(error) }
+        },30)
+
+        const w_MainShow = (users) => {
+
+            var workers
+            users.map((item) => {
+                return workers = item.workers, origin = item.origin
+            })
+
+            document.querySelector('#w_workes').innerHTML = workers
+
+
+            //Add Texto a div cost workers (custo dos trabalhadores conforme a origem)
+            if (origin === 'Magic') {
+                document.querySelector('#cost_workers').innerHTML = 'Custo do trabalhador: <b> 3 </b> ouros, <b> 12 </b> suprimentos.';
+            } else if (origin === 'Researcher') {
+                document.querySelector('#cost_workers').innerHTML = 'Custo do trabalhador: <b> 2 </b> ouros, <b> 13 </b> suprimentos.';
+            } else if (origin === 'War') {
+                document.querySelector('#cost_workers').innerHTML = 'Custo do trabalhador: <b> 4 </b> ouros, <b> 15 </b> suprimentos.';
+            }
+        }
+
+        //Colers alteradas ao econstar no botão
+        document.querySelector("[href='/purchase_gold']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("gold").style.color = "red";
+            document.getElementById("supplies").style.color = "red";
+            document.getElementById("w_workes").style.color = "green";
+        });
+        document.querySelector("[href='/purchase_gold']").addEventListener("mouseout", () => {
+            document.getElementById("gold").style.color = "#457ffc";
+            document.getElementById("supplies").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+
+        document.querySelector("[href='/updateWorkers_gold']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("worker_producing_gold").style.color = "green";
+            document.getElementById("w_workes").style.color = "red";
+        });
+        document.querySelector("[href='/updateWorkers_gold']").addEventListener("mouseout", () => {
+            document.getElementById("worker_producing_gold").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+    
+        document.querySelector("[href='/updateWorkers_supplies']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("worker_producing_supplies").style.color = "green";
+            document.getElementById("w_workes").style.color = "red";
+        });
+        document.querySelector("[href='/updateWorkers_supplies']").addEventListener("mouseout", () => {
+            document.getElementById("worker_producing_supplies").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+
+        document.querySelector("[href='/updateWorkers_wood']").addEventListener("mouseover", () => { w_workes
+            document.getElementById("worker_producing_wood").style.color = "green";
+            document.getElementById("w_workes").style.color = "red";
+        });
+        document.querySelector("[href='/updateWorkers_wood']").addEventListener("mouseout", () => {
+            document.getElementById("worker_producing_wood").style.color = "#457ffc";
+            document.getElementById("w_workes").style.color = "white";
+        });
+
 </script>
-
-
-
-
 
