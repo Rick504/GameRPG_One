@@ -13,7 +13,7 @@ services:
     build: .
     #restart: always
     ports:
-     - "3323:3323"
+     - "3333:3333"
     depends_on:
      - db
     environment:

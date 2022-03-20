@@ -12,6 +12,6 @@ app.use(express.json())
 // Routers -------------------------------------//
 require("./routes")(app)
   
-app.listen(3323, () => {
-    console.log('listening on *:3323');
+app.listen(3333, () => {
+    console.log('listening on localhost:3333');
 })

@@ -3,7 +3,7 @@ const knex = require('../../config/conn_knex')
 const insert_user = async (req, res) => {
 
         const dados_user = {
-            u_name: req.body.u_name,
+            user_name: req.body.user_name,
             email: req.body.email,
             password: req.body.password,
             origin: req.body.origin,

@@ -2,12 +2,12 @@ const knex = require('../../config/conn_knex')
 
 const auth_user = async (req, res) => {
         
-        let { u_name, password } = req.body
+        let { user_name, password } = req.body
 
-        if (u_name && password) {
+        if (user_name && password) {
 
             var results = await knex('users').where({
-                u_name: u_name,
+                user_name: user_name,
                 password: password
             })
 
@@ -15,20 +15,16 @@ const auth_user = async (req, res) => {
 
                 //requisições do BD
                 req.session.loggedin = true
-                req.session.u_name = u_name
-                t_name = req.session.u_name
-                
-                //pegando Id do Usuario
-                user_id = results[0].id
+                req.session.user_name = user_name
+                user_name = req.session.user_name
+                user_id = results[0].user_id
 
                 //redirecionar para Logged com id
                 res.redirect('http://localhost:3000/Logged/' + user_id)
 
-                //Objeto Handlebars
-                dados_user = { user_id, t_name }
-
                 //Vizualizar User Logado
-                console.table(dados_user)
+                dados_user = { user_id, user_name }
+                console.log(dados_user)
 
                 } else {
                     res.send(`  <script>
