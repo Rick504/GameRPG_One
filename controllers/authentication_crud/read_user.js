@@ -1,11 +1,11 @@
-const knex = require('../config/conn_knex')
+const knex = require('../../config/conn_knex')
 
-const mainFunc = async (req, res) => {
+const read_user = async (req, res) => {
 
     var rows = await knex('users')
-                        .where({id: user_id})
+                        .where({user_id: user_id})
                         .column(
-                            'u_name', 
+                            'user_name', 
                             'gold', 
                             'supplies',
                             'wood', 
@@ -19,4 +19,4 @@ const mainFunc = async (req, res) => {
     await res.send(rows)
 }
 
-module.exports = { mainFunc }
+module.exports = { read_user }

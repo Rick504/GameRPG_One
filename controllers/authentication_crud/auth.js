@@ -23,8 +23,10 @@ const auth_user = async (req, res) => {
                 res.redirect('http://localhost:3000/Logged/' + user_id)
 
                 //Vizualizar User Logado
-                dados_user = { user_id, user_name }
-                console.log(dados_user)
+                data_user = { user_id, user_name }
+
+                console.log('Logged in user: ')
+                console.log(data_user)
 
                 } else {
                     res.send(`  <script>

@@ -1,20 +1,21 @@
 const knex = require('../../config/conn_knex')
 
-const insert_user = async (req, res) => {
+const create_user = async (req, res) => {
 
-        const dados_user = {
+        const data_user = {
             user_name: req.body.user_name,
             email: req.body.email,
             password: req.body.password,
             origin: req.body.origin,
         }
 
-        await knex('users').insert(dados_user)
+        await knex('users').insert(data_user)
 
         res.redirect('http://localhost:3000/registration_performed')
 
-        console.log(dados_user)
+        console.log('Registered user: ')
+        console.log(data_user)
     }
 
 
-module.exports = { insert_user }
+module.exports = { create_user }

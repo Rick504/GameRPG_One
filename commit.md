@@ -1,1 +1,1 @@
-git commit -m "inserido os tabelas postgres atualizadas, port do server atualizado para rodar em 3333"
+git commit -m ""
