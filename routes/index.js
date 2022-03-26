@@ -4,6 +4,7 @@ const urlencodeParser = express.urlencoded({ extended: false })
 
 const users = require("../controllers/authentication_crud/users")
 const auth = require("../controllers/authentication_crud/auth")
+const logout = require("../controllers/authentication_crud/logout")
 const create_user = require("../controllers/authentication_crud/create_user")
 const read_user = require("../controllers/authentication_crud/read_user")
 const put_user = require("../controllers/authentication_crud/put_user")
@@ -20,13 +21,13 @@ module.exports = (app) => {
         .get('/users', users.users)
 
         //ROTAS
-        .get("/", (req, res) => { req.session.destroy() })
+        .get("/logout", logout.logout)
+        .post("/auth", auth.auth_user)
         .get("/purchase_gold", workersController.buy_workers)
         .get("/updateWorkers_gold", workersController.buy_worker_producing_gold)
         .get("/updateWorkers_supplies", workersController.buy_updateWorkers_supplies)
         .get("/updateWorkers_wood", workersController.buy_updateWorkers_wood)
         .get("/ranking_users", rankingController.rakingFunc)
-        .post("/auth", auth.auth_user)
         .post("/Business/to_replace", urlencodeParser, businessController.exchange)
 
         //CRUD

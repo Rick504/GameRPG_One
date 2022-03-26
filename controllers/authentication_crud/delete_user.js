@@ -5,7 +5,8 @@ const knex = require('../../config/conn_knex')
 
 const delete_user = async (req, res) => {
     
-    if (req.session.loggedin === true) {
+    if (req.session.loggedin) {
+        
         try {
             await knex('users').where({ user_id: user_id }).del()
 

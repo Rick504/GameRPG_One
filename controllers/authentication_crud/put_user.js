@@ -8,7 +8,8 @@ const put_user = async (req, res) => {
             password: req.body.password,
         }
 
-        if (req.session.loggedin === true) {
+        if (req.session.loggedin) {
+            
             try {
 
                 await knex('users')

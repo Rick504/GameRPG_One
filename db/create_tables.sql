@@ -1,35 +1,44 @@
-CREATE TABLE IF NOT EXISTS "users" (
-    "user_id" serial NOT NULL PRIMARY KEY,
+-- DROP TABLE IF EXISTS "warriors_magic";
+-- DROP TABLE IF EXISTS "warriors_researcher";
+-- DROP TABLE IF EXISTS "warriors_war";
+-- DROP TABLE IF EXISTS "info_game";
+-- DROP TABLE IF EXISTS "users";
+
+CREATE TABLE "users" (
+    user_id INT GENERATED ALWAYS AS IDENTITY,
     "user_name" VARCHAR(45) UNIQUE NOT NULL,
     "email" VARCHAR(50) UNIQUE NOT NULL,
-    "password" VARCHAR(150) NOT NULL,
-    "origin" VARCHAR(20) NOT NULL,
-    "gold" INT DEFAULT 1 NOT NULL,
-    "supplies" INT DEFAULT 5 NOT NULL,
-    "wood" INT DEFAULT 5 NOT NULL,
-    "workers" INT DEFAULT 0 NOT NULL,
-    "diamonds" INT DEFAULT 100 NOT NULL,
-    "worker_producing_gold" INT DEFAULT 5 NOT NULL,
-    "worker_producing_supplies" INT DEFAULT 11 NOT NULL,
-    "worker_producing_wood" INT DEFAULT 2 NOT NULL,
-    "level" INT DEFAULT 1 NOT NULL,
-    "clan" VARCHAR(30),
-    "technology_points" INT DEFAULT 2 NOT NULL,
-    "id_table_origin" INT DEFAULT 1
+    "password" VARCHAR(150) NOT null,
+    PRIMARY KEY(user_id)
 );
 
--- INSERT INTO "users" ("user_name","email","password","origin", "id_table_origin", "level") 
--- values ('Gustavo', 'userteste1@gmail.com', '321321321', 'Magic', 1, 1);
--- INSERT INTO "users" ("user_name","email","password","origin", "id_table_origin", "level") 
--- values ('Tami', 'userteste2@gmail.com', '321321321', 'Researcher', 3, 3);
--- INSERT INTO "users" ("user_name","email","password","origin", "id_table_origin", "level") 
--- values ('Rick', 'userteste3@gmail.com', '321321321', 'War', 6, 6);
+CREATE TABLE "info_game" (
+	  id_info_game serial UNIQUE,
+    "origin" VARCHAR(20) NOT NULL,
+    "gold" INT DEFAULT 1,
+    "supplies" INT DEFAULT 5,
+    "wood" INT DEFAULT 5,
+    "workers" INT DEFAULT 0,
+    "armys" INT DEFAULT 2,
+    "worker_producing_gold" INT DEFAULT 5,
+    "worker_producing_supplies" INT DEFAULT 11,
+    "worker_producing_wood" INT DEFAULT 2,
+    "diamonds" INT DEFAULT 100,
+    "level" INT DEFAULT 1,
+    "clan" VARCHAR(30),
+    "technology_points" INT DEFAULT 2,
+    "id_table_origin" INT DEFAULT 1,
+  	CONSTRAINT fk_users_info FOREIGN KEY(id_info_game) 
+	  REFERENCES "users" (user_id) 
+    on delete cascade on update cascade 
+ );
 
-CREATE TABLE IF NOT EXISTS "warriors_magic" ( 
-    "id" INT PRIMARY KEY, 
+CREATE TABLE "warriors_magic" ( 
+    "id" INT, 
     "warrior" VARCHAR(50), 
     "atk" INT NOT NULL,
-    "def" INT NOT NULL
+    "def" INT NOT NULL,
+  	PRIMARY KEY("id")
 );
 
 INSERT INTO "warriors_magic" (id,"warrior","atk","def") values (1,'Aprendizes de Eris', 9, 10);
@@ -43,11 +52,12 @@ INSERT INTO "warriors_magic" (id,"warrior","atk","def") values (8,'Magos de Pier
 INSERT INTO "warriors_magic" (id,"warrior","atk","def") values (9,'Magos de Linus', 90, 88);
 INSERT INTO "warriors_magic" (id,"warrior","atk","def") values (10,'Magos Supremos', 110, 100);
 
-CREATE TABLE IF NOT EXISTS "warriors_researcher" ( 
-    "id" INT PRIMARY KEY,
+CREATE TABLE "warriors_researcher" ( 
+    "id" INT, 
     "warrior" VARCHAR(50), 
     "atk" INT NOT NULL,
-    "def" INT NOT NULL
+    "def" INT NOT NULL,
+  	PRIMARY KEY("id")
 );
 
 INSERT INTO "warriors_researcher" (id,"warrior","atk","def") values (1,'Guerreiros do comandante Arzur', 10, 5);
@@ -61,11 +71,12 @@ INSERT INTO "warriors_researcher" (id,"warrior","atk","def") values (8,'Guerreir
 INSERT INTO "warriors_researcher" (id,"warrior","atk","def") values (9,'Guerreiros do comandante Cingétorix', 87, 70);
 INSERT INTO "warriors_researcher" (id,"warrior","atk","def") values (10,'Guerreiros ELITE', 105, 93);
 
-CREATE TABLE IF NOT EXISTS "warriors_war" ( 
-    "id" INT PRIMARY KEY, 
+CREATE TABLE "warriors_war" ( 
+    "id" INT, 
     "warrior" VARCHAR(50), 
     "atk" INT NOT NULL,
-    "def" INT NOT NULL
+    "def" INT NOT NULL,
+  	PRIMARY KEY("id")
 );
 
 INSERT INTO "warriors_war" (id,"warrior","atk","def") values (1,'Guerreiros do comandante Théos', 15, 10);
@@ -77,4 +88,4 @@ INSERT INTO "warriors_war" (id,"warrior","atk","def") values (6,'Guerreiros do c
 INSERT INTO "warriors_war" (id,"warrior","atk","def") values (7,'Guerreiros do comandante Celina', 60, 53);
 INSERT INTO "warriors_war" (id,"warrior","atk","def") values (8,'Guerreiros do comandante Ícarus', 71, 66);
 INSERT INTO "warriors_war" (id,"warrior","atk","def") values (9,'Guerreiros do comandante Orion', 90, 83);
-INSERT INTO "warriors_war" (id,"warrior","atk","def") values (10,'Guerreiros do ELITE', 120, 100);
+INSERT INTO "warriors_war" (id,"warrior","atk","def") values (10,'Guerreiros ELITE', 120, 101);
