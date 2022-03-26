@@ -13,10 +13,12 @@ const read_user = async (req, res) => {
                             'worker_producing_gold',
                             'worker_producing_supplies',
                             'worker_producing_wood',
-                            'workers'
+                            'workers',
+                            'level',
+                            'clan'
                             )
-
-    await res.send(rows)
+                            
+    await res.send(rows[0])
 }
 
 module.exports = { read_user }
