@@ -24,14 +24,14 @@ const read_user = async (req, res) => {
                                 'level',
                                 'clan'
                                 )
+                            
                                 
-        await res.send(rows[0])
-
-//         res.status(200).json({ messege: 'Datas User successfully !!'})
+         await res.status(200).send(rows[0])
 
 //     } catch (error) {
 
 //         res.status(404).json({ error: error })
+
 //     }
 // }
 
