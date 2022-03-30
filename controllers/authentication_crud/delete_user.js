@@ -5,7 +5,7 @@ const knex = require('../../config/conn_knex')
 
 const delete_user = async (req, res) => {
     
-    if (req.session.loggedin) {
+    if (req.session.cookie._expires !== null && req.session.cookie.key === "is8-2inD-a83-dhuw-de") {
         
         try {
             await knex('users').where({ user_id: user_id }).del()

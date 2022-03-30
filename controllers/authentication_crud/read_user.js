@@ -1,12 +1,10 @@
 const knex = require('../../config/conn_knex')
 
 const read_user = async (req, res) => {
-    
-    console.log("session vindo de read_user: " + await req.session.username)
 
-    // if (req.session.loggedin) {
+    if (req.session.cookie._expires !== null && req.session.cookie.key === "is8-2inD-a83-dhuw-de") {
             
-    //     try {
+        try {
 
         var rows = await knex('users')
                             .innerJoin('info_game', 'users.user_id', 'info_game.id_info_game')
@@ -28,12 +26,12 @@ const read_user = async (req, res) => {
                                 
          await res.status(200).send(rows[0])
 
-//     } catch (error) {
+    } catch (error) {
 
-//         res.status(404).json({ error: error })
+        res.status(404).json({ error: error })
 
-//     }
-// }
+    }
+}
 
 }
 

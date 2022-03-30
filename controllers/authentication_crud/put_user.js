@@ -8,7 +8,7 @@ const put_user = async (req, res) => {
             password: req.body.password,
         }
 
-        if (req.session.loggedin) {
+        if (req.session.cookie._expires !== null && req.session.cookie.key === "is8-2inD-a83-dhuw-de") {
             
             try {
 
