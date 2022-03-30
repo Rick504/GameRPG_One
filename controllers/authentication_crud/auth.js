@@ -6,27 +6,22 @@ const auth_user = async (req, res) => {
 
         if (user_name && password) {
 
-            var results = await knex('users').where({
+            var Banco = await knex('users').where({
                 user_name: user_name,
                 password: password
             })
 
-            if (results.length > 0) {
+            if (Banco.length > 0) {
 
-                //requisições do BD
+                //Session Express
                 req.session.loggedin = true
-                req.session.user_name = user_name
-                user_name = req.session.user_name
-                user_id = results[0].user_id
+                req.session.username = user_name
+                console.log(req.session)
+
+                user_id = Banco[0].user_id
 
                 //redirecionar para Logged com id
                 res.redirect('http://localhost:3000/Logged/' + user_id)
-
-                //Vizualizar User Logado
-                data_user = { user_id, user_name }
-
-                console.log('Logged in user: ')
-                console.log(data_user)
 
                 } else {
                     res.send(`  <script>
@@ -38,6 +33,7 @@ const auth_user = async (req, res) => {
                 }
 
                 res.end()
+                
     }
 }
 

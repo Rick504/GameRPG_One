@@ -1,11 +1,26 @@
 const express = require("express")
-const session = require("express-session")
+const cookieParser = require("cookie-parser");
+const session = require('express-session');
 const cors = require('cors')
 const app = express()
 
 
-// Session - settings ---------------------------------------//
-app.use(session({ secret: "secret", resave: false, saveUninitialized: true }))
+// Session/cookieParser - settings ---------------------------------------//
+app.use(cookieParser())
+app.use(session({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    resave : false , 
+    saveUninitialized : false ,
+    cookie: {
+        httpOnly: true,
+        maxAge: 3600000,
+    }
+}));
+
+
+// Express - settings -------------------------------------//
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 
 // Cors - settings ---------------------------------------//
@@ -19,15 +34,10 @@ app.use((req, res, next) => {
 })
 
 
-// Express - settings -------------------------------------//
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-
-
 // Routers -------------------------------------//
+app.use('/', require('./routes/authentication'))
 app.use('/', require('./routes/index'))
 app.use('/', require('./routes/crud'))
-app.use('/', require('./routes/authentication'))
 app.use('/', require('./routes/testes'))
   
 

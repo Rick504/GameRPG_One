@@ -1,8 +1,8 @@
 const knex = require('../../config/conn_knex')
 
 const read_user = async (req, res) => {
-
-    console.log("session: " + req.session.loggedin)
+    
+    console.log("session vindo de read_user: " + await req.session.username)
 
     // if (req.session.loggedin) {
             
