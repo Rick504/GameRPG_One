@@ -21,7 +21,7 @@ const auth_user = async (req, res) => {
                 user_id = Banco[0].user_id
 
                 //redirecionar para Logged com id
-                res.redirect('http://localhost:3000/Logged/' + user_id)
+                res.redirect('http://localhost:3000/logged/home')
 
                 } else {
                     res.send(`  <script>
