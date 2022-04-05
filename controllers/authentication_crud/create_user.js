@@ -6,14 +6,11 @@ const create_user = async (req, res) => {
             user_name: req.body.user_name,
             email: req.body.email,
             password: req.body.password,
-        }
-
-        const origin = {
             origin: req.body.origin,
         }
 
         await knex('users').insert(data_user)
-        await knex('info_game').insert(origin)
+        await knex('info_game').insert({level: 1})
 
         res.redirect('http://localhost:3000/registration_performed')
 
