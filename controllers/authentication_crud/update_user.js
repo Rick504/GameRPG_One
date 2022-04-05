@@ -1,6 +1,6 @@
 const knex = require('../../config/conn_knex')
 
-const put_user = async (req, res) => {
+const update_user = async (req, res) => {
 
         const update_data_user = {
             user_name: req.body.user_name,
@@ -32,4 +32,4 @@ const put_user = async (req, res) => {
     }
 
 
-module.exports = { put_user }
+module.exports = { update_user }
