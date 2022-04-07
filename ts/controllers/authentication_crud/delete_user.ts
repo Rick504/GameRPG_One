@@ -10,9 +10,7 @@ const delete_user = async (req: Request, res: Response) => {
         
     //     try {
 
-            const user_id = { 
-                user_id: req.params 
-            }
+            const { user_id } = req.params;
     
             await knex('users').where({ user_id: user_id }).del()
 

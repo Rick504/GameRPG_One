@@ -7,9 +7,7 @@ const read_user = async (req: Request, res: Response) => {
             
     //     try {
 
-        const user_id = { 
-            user_id: req.params 
-        }
+        const { user_id } = req.params;
 
         var rows = await knex('users')
                             .innerJoin('info_game', 'users.user_id', 'info_game.id_info_game')
@@ -37,6 +35,5 @@ const read_user = async (req: Request, res: Response) => {
 
     // }
 }
-
 
 export default read_user

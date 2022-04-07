@@ -9,9 +9,7 @@ const update_user = async (req: Request, res: Response) => {
             password: req.body.password,
         }
 
-        const user_id = { 
-            user_id: req.params 
-        }
+        const { user_id } = req.params;
 
         // if (req.session.cookie._expires !== null && req.session.cookie.key === "is8-2inD-a83-dhuw-de") {
             

@@ -1,5 +1,5 @@
-import express, { Router } from "express"
-const urlencodeParser = express.urlencoded({ extended: false })
+import { Router, urlencoded } from "express"
+const urlencodeParser = urlencoded({ extended: false })
 const routes = Router();
 
 import create_user from "../controllers/authentication_crud/create_user"
