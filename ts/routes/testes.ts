@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const routes = Router();
 
-import users  from "../controllers/testes/users";
+import users from "../controllers/testes/users";
 
 routes.get('/users', users)
 
