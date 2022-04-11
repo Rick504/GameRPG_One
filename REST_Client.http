@@ -1,13 +1,27 @@
 // Extenção - REST Client
 
+//users
 GET http://localhost:3333/users
 Content-Type: application/json
 ###
 
+//auth
 POST http://localhost:3333/auth
 Content-Type: application/json
 
 {
-    "name":"rick",
+    "name":"tami",
     "password":"321321321"
+}
+###
+
+//create_user
+POST http://localhost:3333/create_user
+Content-Type: application/json
+
+{
+	"user_name": "rick",
+	"email": "rick@gmail.com",
+	"password": "321321321",
+	"origin": "War"
 }

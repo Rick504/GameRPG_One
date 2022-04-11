@@ -3,6 +3,8 @@ import session from "express-session"
 import { Request, Response, NextFunction } from 'express';
 import cors from 'cors'
 import testes from './routes/testes';
+import auth from './routes/auth';
+import crud from './routes/crud';
 const app = express()
 
 
@@ -34,7 +36,7 @@ app.use(express.json())
 
 
 // Routers -------------------------------------//
-app.use(testes);
+app.use(testes, auth, crud);
   
 
 app.listen(3333, () => {

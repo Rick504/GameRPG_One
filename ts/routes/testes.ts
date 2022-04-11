@@ -3,6 +3,8 @@ const routes = Router();
 
 import users from "../controllers/testes/users";
 
-routes.get('/users', users)
+routes
+    
+    .get('/users', users)
 
 export default routes;
