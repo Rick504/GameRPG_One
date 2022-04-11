@@ -20,9 +20,9 @@ app.use(session({
 // Cors - settings ---------------------------------------//
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers": "Authorization')
-    res.header('Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE')
-    res.header('Content-Type": "application/json;charset=UTF-8')
+    res.header('Access-Control-Allow-Headers', 'Authorization')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
     app.use(cors())
     next()
 })
