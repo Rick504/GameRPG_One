@@ -1,27 +1,10 @@
 <template>
   <div class="home">
-    <input type="text" v-model="userName">
-    <input type="password" v-model="userPassword">
-    <button @click="login">Entrar</button>
+    <nav>
+      <router-link to="/home">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
+    <router-view/>
   </div>
 </template>
 
-<script>
-
-export default {
-  name: 'HomeView',
-  components: {
-  },
-  data() {
-    return {
-      userName: null,
-      userPassword: null
-    }
-  },
-  methods: {
-    login() {
-
-    }
-  },
-}
-</script>
