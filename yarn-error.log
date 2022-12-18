@@ -1,0 +1,26 @@
+Arguments: 
+  /home/one/.nvm/versions/node/v16.16.0/bin/node /usr/share/yarn/bin/yarn.js add axios
+
+PATH: 
+  /home/one/.sdkman/candidates/java/current/bin:/home/one/.nvm/versions/node/v16.16.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/one/.local/share/JetBrains/Toolbox/scripts
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.16.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/home/one/Documentos/Pasta Pessoal/Projetos_pessoais/GameRPG_One/node_modules/asynckit'
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
