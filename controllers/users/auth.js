@@ -1,7 +1,7 @@
 const knex = require('../../config/conn_knex')
 
 const auth_user = async (req, res) => {
-        
+
         let { user_name, password } = req.body
 
         if (user_name && password) {
@@ -22,18 +22,20 @@ const auth_user = async (req, res) => {
 
                 //redirecionar para Logged com id
                 res.redirect('http://localhost:3000/logged/home')
+                console.log("Usuário logado com sucesso!!")
 
                 } else {
                     res.send(`  <script>
 
-                                    alert('Nome e / ou password incorretos!'); 
+                                    alert('Nome e / ou password incorretos!');
                                     history.back();
-                                    
+
                                 </script>`)
+                    console.log("Usuário e senha invalido!!")
                 }
 
                 res.end()
-                
+
     }
 }
 

@@ -34,8 +34,6 @@ app.use(express.json())
 
 // Routers -------------------------------------//
 app.use('/', require('./routes/index'))
-app.use('/', require('./routes/crud'))
-app.use('/', require('./routes/authentication'))
 app.use('/', require('./routes/testes'))
 
 
