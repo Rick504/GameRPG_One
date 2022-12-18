@@ -5,11 +5,11 @@ const app = express()
 
 
 // Session - settings ---------------------------------------//
-app.use(session({  
+app.use(session({
     secret: "secret",
-    resave: true, 
+    resave: true,
     saveUninitialized: true,
-    cookie: { 
+    cookie: {
         key: "is8-2inD-a83-dhuw-de", // chave criada por mim
         maxAge: 360000 // 3hrs para expirar
     }
@@ -37,8 +37,8 @@ app.use('/', require('./routes/index'))
 app.use('/', require('./routes/crud'))
 app.use('/', require('./routes/authentication'))
 app.use('/', require('./routes/testes'))
-  
 
-app.listen(3333, () => {
-    console.log('listening on localhost:3333');
+
+app.listen(3000, () => {
+    console.log('listening on localhost:3000');
 })
