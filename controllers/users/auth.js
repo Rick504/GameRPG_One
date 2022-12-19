@@ -20,18 +20,10 @@ const auth_user = async (req, res) => {
 
                 user_id = Banco[0].user_id
 
-                //redirecionar para Logged com id
-                res.redirect('http://localhost:3000/logged/home')
-                console.log("Usuário logado com sucesso!!")
-
+                //redirecionar para Logged
+                res.render('home.handlebars')
                 } else {
-                    res.send(`  <script>
-
-                                    alert('Nome e / ou password incorretos!');
-                                    history.back();
-
-                                </script>`)
-                    console.log("Usuário e senha invalido!!")
+                    res.render('index.handlebars')
                 }
 
                 res.end()
