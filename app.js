@@ -2,7 +2,6 @@ const express = require("express")
 const session = require("express-session")
 const cors = require('cors')
 const app = express()
-const bodyParser = require('body-parser')
 
 // HandLebars
 const handlebars = require('express-handlebars');
@@ -10,10 +9,6 @@ app.set('view engine', 'handlebars');
 app.engine('handlebars', handlebars({
 layoutsDir: __dirname + '/views/layouts',
 }));
-
-// bodyParser
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 // Session - settings ---------------------------------------//
 app.use(session({

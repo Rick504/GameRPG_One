@@ -14,11 +14,14 @@ const logout = require("../controllers/users/logout")
 
 router
 
-        // Routes Views
+        // ---------------------------- Routes Views
+
+        // Login
         .get('/', (req, res) => {
             res.render('main', {layout : 'index'});
         })
 
+        // Home
         .get('/home', (req, res) => {
             const session = req.session.loggedin
             if(!session) {
@@ -27,10 +30,12 @@ router
             res.render('main', {layout : 'home'})
         })
 
+        // Login Expirado
         .get('/loginExpires', (req, res) => {
             res.render('main', {layout : 'loginExpires'})
         })
 
+        // ------------------------------- APIs
         .get("/read_user", read_user.read_user)
         .get("/logout", logout.logout)
         //.get("/purchase_gold", workersController.buy_workers)
