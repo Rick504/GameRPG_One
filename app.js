@@ -1,13 +1,14 @@
 const express = require("express")
 const session = require("express-session")
+const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const app = express()
 
-// HandLebars
+// HandLebars - settings -------------------------------------//
 const handlebars = require('express-handlebars');
-app.set('view engine', 'handlebars');
-app.engine('handlebars', handlebars({
-layoutsDir: __dirname + '/views/layouts',
+    app.set('view engine', 'handlebars');
+    app.engine('handlebars', handlebars({
+    layoutsDir: __dirname + '/views/layouts',
 }));
 
 // Session - settings ---------------------------------------//
@@ -31,17 +32,18 @@ app.use((req, res, next) => {
     next()
 })
 
+// CookieParser - settings --------------------------------//
+app.use(cookieParser());
 
 // Express - settings -------------------------------------//
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
 // Routers -------------------------------------//
 app.use('/', require('./routes/index'))
 app.use('/', require('./routes/testes'))
 
-
+// port - settings ------------------------------------//
 app.listen(3000, () => {
     console.log('listening on localhost:3000');
 })
