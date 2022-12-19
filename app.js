@@ -26,7 +26,6 @@ app.use(session({
     }
 }))
 
-
 // Cors - settings ---------------------------------------//
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')

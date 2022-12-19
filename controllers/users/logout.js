@@ -2,8 +2,8 @@ const logout = async (req, res) => {
 
     req.session.destroy()
 
-    res.redirect('http://localhost:3000/')
-    console.log("Usuário deslogado!!")
+    res.redirect('/')
+    // console.log("Usuário deslogado!!")
 
 }
 

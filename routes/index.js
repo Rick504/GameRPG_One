@@ -14,8 +14,21 @@ const logout = require("../controllers/users/logout")
 
 router
 
+        // Routes Views
         .get('/', (req, res) => {
             res.render('main', {layout : 'index'});
+        })
+
+        .get('/home', (req, res) => {
+            const session = req.session.loggedin
+            if(!session) {
+                res.render('main', {layout : 'loginExpires'})
+            }
+            res.render('main', {layout : 'home'})
+        })
+
+        .get('/loginExpires', (req, res) => {
+            res.render('main', {layout : 'loginExpires'})
         })
 
         .get("/read_user", read_user.read_user)

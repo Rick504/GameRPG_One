@@ -16,14 +16,14 @@ const auth_user = async (req, res) => {
                 //Session Express
                 req.session.loggedin = true
                 req.session.username = user_name
-                console.log(req.session)
+                // console.log(req.session)
 
                 user_id = Banco[0].user_id
 
-                //redirecionar para Logged
-                res.render('home.handlebars')
+                //redirecionar para home
+                res.redirect('/home');
                 } else {
-                    res.render('index.handlebars')
+                    res.redirect('/');
                 }
 
                 res.end()
