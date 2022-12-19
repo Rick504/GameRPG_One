@@ -8,7 +8,7 @@ app.set('view engine', 'handlebars');
 app.engine('handlebars', handlebars({
 layoutsDir: __dirname + '/views/layouts',
 }));
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 // Session - settings ---------------------------------------//
 app.use(session({
