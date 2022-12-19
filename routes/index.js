@@ -14,6 +14,10 @@ const logout = require("../controllers/users/logout")
 
 router
 
+        .get('/', (req, res) => {
+            res.render('main', {layout : 'index'});
+        })
+
         .get("/read_user", read_user.read_user)
         .get("/logout", logout.logout)
         //.get("/purchase_gold", workersController.buy_workers)
