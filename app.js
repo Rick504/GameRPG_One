@@ -4,12 +4,8 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const app = express()
 
-// HandLebars - settings -------------------------------------//
-const handlebars = require('express-handlebars');
-    app.set('view engine', 'handlebars');
-    app.engine('handlebars', handlebars({
-    layoutsDir: __dirname + '/views/layouts',
-}));
+// ejs
+app.set('view engine', 'ejs')
 
 // Session - settings ---------------------------------------//
 app.use(session({

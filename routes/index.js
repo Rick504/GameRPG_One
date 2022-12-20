@@ -18,21 +18,21 @@ router
 
         // Login
         .get('/', (req, res) => {
-            res.render('main', {layout : 'index'});
+            res.render("../views/index")
         })
 
         // Home
         .get('/home', (req, res) => {
             const session = req.session.loggedin
             if(!session) {
-                res.render('main', {layout : 'loginExpires'})
+                res.render("../views/loginExpires")
             }
-            res.render('main', {layout : 'home'})
+            res.render("../views/home")
         })
 
         // Login Expirado
         .get('/loginExpires', (req, res) => {
-            res.render('main', {layout : 'loginExpires'})
+            res.render("../views/loginExpires")
         })
 
         // ------------------------------- APIs
