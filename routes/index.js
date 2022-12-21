@@ -11,35 +11,14 @@ const update_user = require("../controllers/users/update_user")
 const delete_user = require("../controllers/users/delete_user")
 const auth = require("../controllers/users/auth")
 const logout = require("../controllers/users/logout")
+const users = require("../controllers/testes/users")
 
 router
+        // Teste ------------//
+        .get('/users', users.users)
 
-        // ---------------------------- Routes Views
+        // ------------------------------- APIs ---------------------------------- //
 
-        // Login
-        .get('/', (req, res) => {
-            res.render("../views/index", {
-                errorLogin: req.session.flash
-            })
-        })
-
-        // Home
-        .get('/home', (req, res) => {
-            const session = req.session.loggedin
-            if(!session) {
-                res.render("../views/loginExpires")
-            }
-            res.render("../views/home", {
-                userName: req.session.username
-            })
-        })
-
-        // Login Expirado
-        .get('/loginExpires', (req, res) => {
-            res.render("../views/loginExpires")
-        })
-
-        // ------------------------------- APIs
         .get("/read_user", read_user.read_user)
         .get("/logout", logout.logout)
         //.get("/purchase_gold", workersController.buy_workers)

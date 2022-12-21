@@ -21,10 +21,10 @@ const auth_user = async (req, res) => {
                 user_id = Banco[0].user_id
 
                 //redirecionar para home
-                res.redirect('/home');
+                res.redirect('/home')
                 } else {
                     req.flash('error')
-                    res.redirect('/');
+                    res.redirect('/')
                 }
 
                 res.end()

@@ -5,11 +5,11 @@ const flash = require('connect-flash');
 const cors = require('cors')
 const app = express()
 
-// ejs
+// ejs - settings -----------------------------------------//
 app.set('view engine', 'ejs')
 
-// flash
-app.use(flash());
+// flash - settings ---------------------------------------//
+app.use(flash())
 
 // Session - settings ---------------------------------------//
 app.use(session({
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 })
 
 // CookieParser - settings --------------------------------//
-app.use(cookieParser());
+app.use(cookieParser())
 
 // Express - settings -------------------------------------//
 app.use(express.urlencoded({ extended: true }))
@@ -41,9 +41,9 @@ app.use(express.json())
 
 // Routers -------------------------------------//
 app.use('/', require('./routes/index'))
-app.use('/', require('./routes/testes'))
+app.use('/', require('./routes/pages'))
 
 // port - settings ------------------------------------//
 app.listen(3000, () => {
-    console.log('listening on localhost:3000');
+    console.log('listening on localhost:3000')
 })
