@@ -1,11 +1,15 @@
 const express = require("express")
 const session = require("express-session")
 const cookieParser = require('cookie-parser')
+const flash = require('connect-flash');
 const cors = require('cors')
 const app = express()
 
 // ejs
 app.set('view engine', 'ejs')
+
+// flash
+app.use(flash());
 
 // Session - settings ---------------------------------------//
 app.use(session({

@@ -18,7 +18,9 @@ router
 
         // Login
         .get('/', (req, res) => {
-            res.render("../views/index")
+            res.render("../views/index", {
+                errorLogin: req.session.flash
+            })
         })
 
         // Home
@@ -27,7 +29,9 @@ router
             if(!session) {
                 res.render("../views/loginExpires")
             }
-            res.render("../views/home")
+            res.render("../views/home", {
+                userName: req.session.username
+            })
         })
 
         // Login Expirado

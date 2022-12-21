@@ -23,6 +23,7 @@ const auth_user = async (req, res) => {
                 //redirecionar para home
                 res.redirect('/home');
                 } else {
+                    req.flash('error')
                     res.redirect('/');
                 }
 
