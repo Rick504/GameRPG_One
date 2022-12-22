@@ -10,9 +10,12 @@ const create_user = async (req, res) => {
         }
 
         await knex('users').insert(data_user)
-        await knex('info_game').insert({level: 1})
+        // await knex('info_game').insert({level: 1})
 
-        res.redirect('http://localhost:3000/registration_performed')
+        req.session.loggedin = true
+        req.session.username = data_user.user_name
+
+        // res.redirect(`/home/${data_user.user_name}`)
 
         console.log('Registered user: ')
         console.log(data_user.user_name)

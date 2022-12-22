@@ -27,7 +27,7 @@ router
         //.get("/updateWorkers_wood", workersController.buy_updateWorkers_wood)
         //.get("/ranking_users", rankingController.rakingFunc)
 
-        .post("/create_user", urlencodeParser, create_user.create_user)
+        .post("/create_user", create_user.create_user)
         .post("/auth", auth.auth_user)
         //.post("/Business/to_replace", urlencodeParser, businessController.exchange)
 

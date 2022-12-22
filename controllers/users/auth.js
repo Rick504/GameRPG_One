@@ -16,12 +16,9 @@ const auth_user = async (req, res) => {
                 //Session Express
                 req.session.loggedin = true
                 req.session.username = user_name
-                // console.log(req.session)
-
-                user_id = Banco[0].user_id
 
                 //redirecionar para home
-                res.redirect('/home')
+                res.redirect(`/home/${user_name}`)
                 } else {
                     req.flash('error')
                     res.redirect('/')

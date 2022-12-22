@@ -10,10 +10,16 @@ router
         })
     })
 
+    // Login Expirado -------------------//
+    .get('/loginExpires', (req, res) => { res.render("../views/loginExpires") })
+
+    // Cadastrar Usuário
+    .get('/register', (req, res) => { res.render("../views/register") })
+
     // Home -----------------------------//
-    .get('/home', (req, res) => {
-        const session = req.session.loggedin
-        if(!session) {
+    .get('/home/:params', (req, res) => {
+        const loggedin = req.session.loggedin
+        if(!loggedin) {
             res.render("../views/login/loginExpires")
         }
         res.render("../views/home", {
@@ -21,7 +27,5 @@ router
         })
     })
 
-     // Login Expirado -------------------//
-     .get('/loginExpires', (req, res) => { res.render("../views/loginExpires") })
 
 module.exports = router
