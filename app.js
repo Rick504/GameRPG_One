@@ -3,7 +3,11 @@ const session = require("express-session")
 const cookieParser = require('cookie-parser')
 const flash = require('connect-flash');
 const cors = require('cors')
+const dotenv = require('dotenv');
 const app = express()
+
+// Config Variaveis Globais -------------------------------//
+dotenv.config();
 
 // ejs - settings -----------------------------------------//
 app.set('view engine', 'ejs')
@@ -44,6 +48,7 @@ app.use('/', require('./routes/index'))
 app.use('/', require('./routes/pages'))
 
 // port - settings ------------------------------------//
-app.listen(3000, () => {
-    console.log('listening on localhost:3000')
+let PORT = process.env.PORT;
+app.listen(PORT, () => {
+    console.log(`listening on localhost:${PORT}`)
 })
