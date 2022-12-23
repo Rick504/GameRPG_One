@@ -21,7 +21,7 @@ router
     })
 
     // Home -----------------------------//
-    .get('/home/:params', (req, res) => {
+    .get('/home', (req, res) => {
         const session = req.session
         if(!session.loggedin) {
             res.render("../views/login/loginExpires")

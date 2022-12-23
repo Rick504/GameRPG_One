@@ -18,7 +18,7 @@ const auth_user = async (req, res) => {
                 req.session.username = user_name
 
                 //redirecionar para home
-                res.redirect(`/home/${user_name}`)
+                res.redirect('/home')
                 } else {
                     req.flash('error')
                     res.redirect('/')

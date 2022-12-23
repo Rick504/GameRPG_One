@@ -15,7 +15,7 @@ const create_user = async (req, res) => {
         req.session.loggedin = true
         req.session.username = data_user.user_name
 
-        res.redirect(`/home/${data_user.user_name}`)
+        res.redirect('/home')
 
         console.log('Registered user: ')
         console.log(data_user.user_name)
