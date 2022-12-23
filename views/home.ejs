@@ -1,8 +1,33 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<h1>Home</h1>
 <a href="/logout">Sair</a>
+<div class="container">
+    <div class="row">
+        <div class="col-2 border border-4">
+            <div class="d-flex justify-content-center">
+                <!-- <img src="..." class="rounded-circle" alt="imagem de Origem"> -->
+                <%= userName %>
+            </div>
+            <div>
+                <a href="/profile">Perfil</a>
+            </div>
+            <div>
+                <a href="/support">Suporte</a>
+            </div>
+        </div>
+        <div class="col-9 offset-1 border border-4">
+            Menu
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 mt-3 border border-4">
 
-<div>
-    Bem vindo <%= userName %>
+        </div>
+        <div class="col-9 offset-1 mt-3 border border-4">
+            Interação com o jogo
+        </div>
+    </div>
 </div>
+
+
+
