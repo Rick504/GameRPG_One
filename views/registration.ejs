@@ -18,6 +18,9 @@
                             autofocus="true"
                             type="text"
                             name="user_name"
+                            minlength="4"
+                            maxlength="24"
+                            required
                         >
                            <%# O nome de usuário deve ter no mínimo 4 caracteres!
                             O nome de usuário não pode exceder 24 caracteres!
@@ -28,20 +31,45 @@
                             especiais. %>
                     <label>Senha</label>
                     <div class="form-element">
-                        <input type="password" name="password">
+                        <input
+                            type="password"
+                            name="password"
+                            minlength="4"
+                            required
+                        >
                         <%# A senha deve ter pelo menos 4 caracteres! %>
                     <label>E-Mail</label>
                     <div class="form-element">
-                        <input type="email" name="email" required>
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                        >
                         <%# Por favor, insira um endereço de e-mail válido. %>
                     </div>
                     <label>Origem</label>
                     <div class="form-element mt-2 mb-3">
-                        <input id="War" type="radio" name="origin" value="War">
+                        <input
+                            id="War"
+                            type="radio"
+                            name="origin"
+                            value="War"
+                        >
                         <label for="War">Guerra</label>
-                        <input id="Researcher" type="radio" name="origin" value="Researcher" checked>
+                        <input
+                            id="Researcher"
+                            type="radio"
+                            name="origin"
+                            value="Researcher"
+                            checked
+                        >
                         <label for="Researcher">Pesquisador</label>
-                        <input id="Magic" type="radio" name="origin" value="Magic">
+                        <input
+                            id="Magic"
+                            type="radio"
+                            name="origin"
+                            value="Magic"
+                        >
                         <label for="Magic">Mágico</label>
                     </div>
                     <div class="terms">
@@ -51,10 +79,15 @@
                                 <a href="linkTermos" target="_blank">Termos e Condições</a> e a
                                 <a href="linkTermos" target="_blank">Política de Privacidade deDados</a>.
                             </span>
-                            <%# É preciso aceitar os termos de uso. %>
                     </div>
                     <div class="d-flex justify-content-center mt-4">
-                        <button type="submit" class="btn btn-success" disabled>Registrar</button>
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            disabled
+                        >
+                            Registrar
+                        </button>
                     </div>
             </form>
         </div>
