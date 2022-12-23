@@ -18,8 +18,8 @@ app.use(flash())
 // Session - settings ---------------------------------------//
 app.use(session({
     secret: "secret",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     cookie: {
         key: "is8-2inD-a83-dhuw-de", // chave criada por mim
         maxAge: 360000 // 3hrs para expirar
