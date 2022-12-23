@@ -11,7 +11,7 @@
         </div>
     </div>
         <div class="row">
-            <form method="post" action="/create_user" class="offset-4 col-3">
+            <form method="post" action="/create_user" class="offset-4 col-3" autocomplete="off">
                     <label>Nome deJogador</label>
                     <div class="form-element">
                         <input
@@ -54,9 +54,18 @@
                             <%# É preciso aceitar os termos de uso. %>
                     </div>
                     <div class="d-flex justify-content-center mt-4">
-                        <button type="submit" class="btn btn-success">Registrar</button>
+                        <button type="submit" class="btn btn-success" disabled>Registrar</button>
                     </div>
             </form>
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script>
+        $("input:checkbox").change( function() {
+            $(this).is(":checked") ?
+                $('button[type="submit"]').removeAttr('disabled') :
+                $('button[type="submit"]').attr('disabled', 'disabled')
+            }
+        )
+    </script>

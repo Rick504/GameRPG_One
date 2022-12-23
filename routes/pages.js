@@ -16,8 +16,8 @@ router
     })
 
     // Cadastrar Usuário
-    .get('/register', (req, res) => {
-        res.render("../views/register")
+    .get('/registration', (req, res) => {
+        res.render("../views/registration")
     })
 
     // Home -----------------------------//
