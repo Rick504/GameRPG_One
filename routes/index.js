@@ -19,7 +19,6 @@ router
         .get('/users', users.users)
 
         // ------------------------------- APIs ---------------------------------- //
-
         .get("/read_user", read_user.read_user)
         .get("/logout", logout.logout)
         //.get("/purchase_gold", workersController.buy_workers)
@@ -32,9 +31,8 @@ router
         .post("/auth", auth.auth_user)
         .post("/update_user_email", update_user_email.update_user_email)
         .post("/update_user_password", update_user_password.update_user_password)
+        .post("/delete_user", delete_user.delete_user)
         //.post("/Business/to_replace", urlencodeParser, businessController.exchange)
-
-        .delete("/delete_user/:id", urlencodeParser, delete_user.delete_user)
 
 
 module.exports = router

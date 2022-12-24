@@ -5,21 +5,17 @@ const knex = require('../../config/conn_knex')
 
 const delete_user = async (req, res) => {
 
+    let session = req.session
+
     if (req.session.cookie._expires !== null) {
 
-        try {
-            await knex('users').where({ user_id: user_id }).del()
+            await knex('users')
+                            .where({ user_id: session.userId })
+                            .del()
 
-            console.log('Deleted user_id: ' + user_id)
+            console.log('Deleted user_id: ' + session.userId)
 
             res.redirect('/')
-
-            res.status(200).json({ messege: 'User deleted successfully !!'})
-
-        } catch (error) {
-
-            res.status(404).json({ error: error })
-        }
     }
 
     res.end()
