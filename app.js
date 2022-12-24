@@ -6,6 +6,8 @@ const cors = require('cors')
 const dotenv = require('dotenv');
 const app = express()
 
+app.use(express.static(__dirname + '/public'))
+
 // Config Variaveis Globais -------------------------------//
 dotenv.config();
 
