@@ -27,7 +27,14 @@ router
 
     // Atualizar Senha do Usuário
     .get('/updateAccontPassword', (req, res) => {
-        res.render("../views/accont/updateAccontPassword")
+        res.render("../views/accont/updateAccontPassword", {
+            errorUpdatePassword: req.session.flash
+        })
+    })
+
+    // Menssagem de sucesso
+    .get('/updatePasswordSuccess', (req, res) => {
+        res.render("../views/msgSuccess/updatePasswordSuccess")
     })
 
     //Suporte

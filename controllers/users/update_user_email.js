@@ -1,11 +1,10 @@
 const knex = require('../../config/conn_knex')
 
-const update_user = async (req, res) => {
+const update_user_email = async (req, res) => {
 
-        const update_data_user = {
-            email: req.body.email,
-            password: req.body.password,
-            password_2: req.body.password_2
+        // email_confirm: req.body.email_confirm,
+        const dataUser = {
+            email: req.body.email
         }
 
         if (req.session.cookie._expires !== null && req.session.cookie.key === "is8-2inD-a83-dhuw-de") {
@@ -13,11 +12,11 @@ const update_user = async (req, res) => {
             try {
 
                 await knex('users')
-                                .where({ user_id: user_id })
-                                .update(update_data_user)
+                                .where({ user_name: user_name })
+                                .update(dataUser)
 
                 console.log('Updated user data: ')
-                console.log(update_data_user)
+                console.log(dataUser)
                 res.redirect('/home')
 
                 res.status(200).json({ messege: 'User update successfully !!'})
@@ -32,4 +31,4 @@ const update_user = async (req, res) => {
     }
 
 
-module.exports = { update_user }
+module.exports = { update_user_email }

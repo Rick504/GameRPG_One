@@ -7,7 +7,8 @@ const router = express.Router()
 //const workersController = require("../controllers/workersController")
 const create_user = require("../controllers/users/create_user")
 const read_user = require("../controllers/users/read_user")
-const update_user = require("../controllers/users/update_user")
+const update_user_email = require("../controllers/users/update_user_email")
+const update_user_password = require("../controllers/users/update_user_password")
 const delete_user = require("../controllers/users/delete_user")
 const auth = require("../controllers/users/auth")
 const logout = require("../controllers/users/logout")
@@ -29,9 +30,9 @@ router
 
         .post("/create_user", create_user.create_user)
         .post("/auth", auth.auth_user)
+        .post("/update_user_email", update_user_email.update_user_email)
+        .post("/update_user_password", update_user_password.update_user_password)
         //.post("/Business/to_replace", urlencodeParser, businessController.exchange)
-
-        .put("/update_user/:id", update_user.update_user)
 
         .delete("/delete_user/:id", urlencodeParser, delete_user.delete_user)
 
