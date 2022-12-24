@@ -2,31 +2,25 @@ const knex = require('../../config/conn_knex')
 
 const update_user_email = async (req, res) => {
 
-        // email_confirm: req.body.email_confirm,
-        const dataUser = {
-            email: req.body.email
-        }
+        let session = req.session
+        let userBody = req.body
+        // console.log(session)
 
-        if (req.session.cookie._expires !== null) {
+        let email_confirm = userBody.email_confirm
+        let email = userBody.email
 
-            try {
+        if (email === email_confirm) {
+            if (req.session.cookie._expires !== null) {
+                    await knex('users')
+                                    .where({ user_id: session.userId })
+                                    .update({ email: userBody.email })
 
-                await knex('users')
-                                .where({ user_name: user_name })
-                                .update(dataUser)
-
-                console.log('Updated user data: ')
-                console.log(dataUser)
-                res.redirect('/home')
-
-                res.status(200).json({ messege: 'User update successfully !!'})
-
-            } catch (error) {
-
-                res.status(404).json({ error: error })
+                    res.redirect('/updateEmailSuccess')
             }
+        } else {
+            req.flash('error')
+            res.redirect('/updateAccontEmail')
         }
-
         res.end()
     }
 

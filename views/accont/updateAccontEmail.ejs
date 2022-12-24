@@ -2,6 +2,7 @@
 
 <style>
 .formRegister {margin-top: 10%;}
+.error-email { color: red; font-size: 14px; }
 </style>
 
 <a href="/profile">Voltar</a>
@@ -25,12 +26,17 @@
                     <label>Digite seu E-mail novamente</label>
                     <div class="form-element">
                         <input
-                            type="email_confirm"
+                            type="email"
                             name="email_confirm"
                             required
                         >
                         <%# Por favor, insira um endereço de e-mail válido. %>
                     </div>
+                    <% if (errorUpdateEmail) { %>
+                        <div class="error-email">
+                           Email inválido.
+                        </div>
+                    <% } %>
                     <div class="d-flex justify-content-center mt-4">
                         <button
                             type="submit"

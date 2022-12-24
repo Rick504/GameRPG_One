@@ -4,7 +4,7 @@ const update_user_password = async (req, res) => {
 
         let session = req.session
         let userBody = req.body
-        console.log(session)
+        // console.log(session)
 
         let userData = await knex('users').where({ user_id: session.userId })
         let db_password = userData[0].password
@@ -21,7 +21,6 @@ const update_user_password = async (req, res) => {
                                 .where({ user_id: session.userId })
                                 .update({ password: new_password })
 
-                console.log('Updated user password!!')
                 res.redirect('/updatePasswordSuccess')
 
             } else {
