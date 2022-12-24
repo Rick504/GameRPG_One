@@ -21,7 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        key: "is8-2inD-a83-dhuw-de", // chave criada por mim
+        key: "is8-2inD-a83-dhuw-de", // chave criada por mim - setar novamente nas apis depois e testar
         maxAge: 360000 // 3hrs para expirar
     }
 }))

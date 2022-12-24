@@ -7,7 +7,7 @@ const update_user_email = async (req, res) => {
             email: req.body.email
         }
 
-        if (req.session.cookie._expires !== null && req.session.cookie.key === "is8-2inD-a83-dhuw-de") {
+        if (req.session.cookie._expires !== null) {
 
             try {
 

@@ -6,16 +6,17 @@ const auth_user = async (req, res) => {
 
         if (user_name && password) {
 
-            var Banco = await knex('users').where({
+            var db = await knex('users').where({
                 user_name: user_name,
                 password: password
             })
 
-            if (Banco.length > 0) {
+            if (db.length > 0) {
 
                 //Session Express
                 req.session.loggedin = true
                 req.session.username = user_name
+                req.session.userId = db[0].user_id
 
                 //redirecionar para home
                 res.redirect('/home')
