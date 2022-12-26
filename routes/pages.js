@@ -36,9 +36,9 @@ router
         if(!session.loggedin)
             res.render("../views/login/expires")
         else if(req.query.fail)
-            res.render("../views/user/update/email", { message: 'E-mail inválido.' })
+            res.render("../views/account/update/email", { message: 'E-mail inválido.' })
         else
-            res.render("../views/user/update/email", { message: null })
+            res.render("../views/account/update/email", { message: null })
     })
 
     // Atualizar Senha do Usuário
@@ -47,9 +47,9 @@ router
         if(!session.loggedin)
             res.render("../views/login/expires")
         else if(req.query.fail)
-            res.render("../views/user/update/password", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
+            res.render("../views/account/update/password", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
         else
-            res.render("../views/user/update/password", { message: null })
+            res.render("../views/account/update/password", { message: null })
     })
 
     // Atualizar Email do Usuário
@@ -58,7 +58,7 @@ router
         if(!session.loggedin)
             res.render("../views/login/expires")
         else
-            res.render("../views/user/update/email/success")
+            res.render("../views/account/update/email/success")
     })
 
     // Menssagem de sucesso
@@ -67,7 +67,7 @@ router
         if(!session.loggedin)
             res.render("../views/login/expires")
         else
-            res.render("../views/user/update/password/success")
+            res.render("../views/account/update/password/success")
     })
 
     //Suporte
