@@ -1,7 +1,3 @@
--- DROP TABLE IF EXISTS "info_game";
--- DROP TABLE IF EXISTS "warriors";
--- DROP TABLE IF EXISTS "users";
-
 CREATE TABLE "users" (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     "user_name" VARCHAR(45) UNIQUE NOT NULL,
@@ -12,11 +8,11 @@ CREATE TABLE "users" (
     PRIMARY KEY(user_id)
 );
 
-CREATE TABLE "warriors" ( 
-    "id" INT, 
+CREATE TABLE "warriors" (
+    "id" INT,
     "level_warrior" INT,
     "origin_warrior" VARCHAR(50),
-    "warrior" VARCHAR(50), 
+    "warrior" VARCHAR(50),
     "atk" INT NOT NULL,
     "def" INT NOT NULL,
   	PRIMARY KEY("id")
@@ -78,7 +74,7 @@ INSERT INTO "warriors" VALUES (30, 10,'War','Guerreiros ELITE', 120, 101);
 ALTER TABLE info_game
 ADD CONSTRAINT Check_level CHECK ("level">=1 AND "level"<=10);
 
-ALTER TABLE users 
+ALTER TABLE users
 ADD CONSTRAINT Check_origin CHECK ("origin" = 'Magic' OR "origin" = 'Researcher' or "origin" = 'War');
 
 ALTER TABLE warriors

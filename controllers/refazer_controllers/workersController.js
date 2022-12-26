@@ -11,11 +11,11 @@ const buy_workers = async (req,res,next) => {
             case 'Magic':
                 origin_magic()
                 break;
-            
+
             case 'Researcher':
                 origin_researcher()
                 break;
-        
+
             case 'War':
                 origin_war()
                 break;
@@ -29,15 +29,15 @@ const buy_workers = async (req,res,next) => {
         var gold = user[0].gold
         var supplies = user[0].supplies
         var workers = user[0].workers
-    
+
           if (workers >= 0 && gold >= 2 && supplies >= 13) {
-    
+
                 const [less_gold, less_supplies, add_worker] = [3, 12, 1]
-        
+
                 const current_worker   =  parseInt(workers)   +  parseInt(add_worker)
                 const current_gold     =  parseInt(gold)      -  parseInt(less_gold)
                 const current_supplies =  parseInt(supplies)  -  parseInt(less_supplies)
-        
+
                 const result = await knex('users').where({id: user_id})
                                         .update({
                                             workers: current_worker,
@@ -47,11 +47,11 @@ const buy_workers = async (req,res,next) => {
                 return result
 
             }  else {
-                res.send(`  <script> 
+                res.send(`  <script>
 
-                                alert ('Sem Saldo para compra de trabalhadores'); 
+                                alert ('Sem Saldo para compra de trabalhadores');
                                 history.back();
-                                
+
                             </script>`)
             }
 
@@ -62,9 +62,9 @@ const buy_workers = async (req,res,next) => {
         var gold = user[0].gold
         var supplies = user[0].supplies
         var workers = user[0].workers
-    
+
           if (workers >= 0 && gold >= 2 && supplies >= 13) {
-    
+
                 const [less_gold, less_supplies, add_worker] = [2, 13, 1]
 
                 const current_worker   =  parseInt(workers)   +  parseInt(add_worker)
@@ -80,15 +80,15 @@ const buy_workers = async (req,res,next) => {
                 return result
 
             } else {
-                res.send(`  <script> 
+                res.send(`  <script>
 
-                                alert ('Sem Saldo para compra de trabalhadores'); 
+                                alert ('Sem Saldo para compra de trabalhadores');
                                 history.back();
-                                
+
                             </script>`)
             }
 
-            
+
     }
 
     async function origin_war() {
@@ -96,15 +96,15 @@ const buy_workers = async (req,res,next) => {
         var gold = user[0].gold
         var supplies = user[0].supplies
         var workers = user[0].workers
-    
+
           if (workers >= 0 && gold >= 2 && supplies >= 13) {
-    
+
                 const [less_gold, less_supplies, add_worker] = [4, 15, 1]
-        
+
                 const current_worker   =  parseInt(workers)   +  parseInt(add_worker)
                 const current_gold     =  parseInt(gold)      -  parseInt(less_gold)
                 const current_supplies =  parseInt(supplies)  -  parseInt(less_supplies)
-        
+
                 const result = await knex('users').where({id: user_id})
                                         .update({
                                             workers: current_worker,
@@ -112,14 +112,14 @@ const buy_workers = async (req,res,next) => {
                                             supplies: current_supplies
                                         })
 
-                return result   
+                return result
 
             }  else {
-                res.send(`  <script> 
+                res.send(`  <script>
 
-                                alert ('Sem Saldo para compra de trabalhadores'); 
+                                alert ('Sem Saldo para compra de trabalhadores');
                                 history.back();
-                                
+
                             </script>`)
             }
     }
@@ -148,11 +148,11 @@ const buy_worker_producing_gold = async (req,res,next) => {
                                         })
 
                 return result
-                    
-            } else {
-                res.send(`  <script> 
 
-                                alert ('Sem Trabalhadores'); 
+            } else {
+                res.send(`  <script>
+
+                                alert ('Sem Trabalhadores');
                                 history.back();
 
                             </script>`)
@@ -182,11 +182,11 @@ const buy_updateWorkers_supplies = async (req,res,next) => {
                 return result
 
             } else {
-                res.send(`  <script> 
+                res.send(`  <script>
 
-                                alert ('Sem Trabalhadores'); 
+                                alert ('Sem Trabalhadores');
                                 history.back();
-                                
+
                             </script>`)
             }
 }
@@ -214,18 +214,18 @@ const buy_updateWorkers_wood = async (req,res,next) => {
                 return result
 
             } else {
-                res.send(`  <script> 
+                res.send(`  <script>
 
-                                alert ('Sem Trabalhadores'); 
+                                alert ('Sem Trabalhadores');
                                 history.back();
-                                
+
                             </script>`)
             }
 }
 
 //exportar tudo
 module.exports = {
-    buy_workers, 
+    buy_workers,
     buy_worker_producing_gold,
     buy_updateWorkers_supplies,
     buy_updateWorkers_wood
