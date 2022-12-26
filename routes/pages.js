@@ -15,66 +15,66 @@ router
      .get('/home', (req, res) => {
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/login/loginExpires")
+            res.render("../views/login/expires")
         else
             res.render("../views/home", { userName: req.session.username })
     })
 
     // Login Expirado -------------------//
-    .get('/loginExpires', (req, res) => {
-        res.render("../views/loginExpires")
+    .get('/expires', (req, res) => {
+        res.render("../views/expires")
     })
 
     // Cadastrar Usuário
     .get('/registration', (req, res) => {
-        res.render("../views/accont/registration")
+        res.render("../views/registration")
     })
 
     // Atualizar Email do Usuário
-    .get('/updateAccontEmail', (req, res) => {
+    .get('/update/email', (req, res) => {
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/login/loginExpires")
+            res.render("../views/login/expires")
         else if(req.query.fail)
-            res.render("../views/accont/updateAccontEmail", { message: 'E-mail inválido.' })
+            res.render("../views/user/update/email", { message: 'E-mail inválido.' })
         else
-            res.render("../views/accont/updateAccontEmail", { message: null })
+            res.render("../views/user/update/email", { message: null })
     })
 
     // Atualizar Senha do Usuário
-    .get('/updateAccontPassword', (req, res) => {
+    .get('/update/password', (req, res) => {
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/login/loginExpires")
+            res.render("../views/login/expires")
         else if(req.query.fail)
-            res.render("../views/accont/updateAccontPassword", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
+            res.render("../views/user/update/password", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
         else
-            res.render("../views/accont/updateAccontPassword", { message: null })
+            res.render("../views/user/update/password", { message: null })
     })
 
     // Atualizar Email do Usuário
-    .get('/updateEmailSuccess', (req, res) => {
+    .get('/update/email/success', (req, res) => {
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/login/loginExpires")
+            res.render("../views/login/expires")
         else
-            res.render("../views/msgSuccess/updateEmailSuccess")
+            res.render("../views/user/update/email/success")
     })
 
     // Menssagem de sucesso
-    .get('/updatePasswordSuccess', (req, res) => {
+    .get('/update/password/success', (req, res) => {
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/login/loginExpires")
+            res.render("../views/login/expires")
         else
-            res.render("../views/msgSuccess/updatePasswordSuccess")
+            res.render("../views/user/update/password/success")
     })
 
     //Suporte
     .get('/support', (req, res) => {
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/login/loginExpires")
+            res.render("../views/login/expires")
         else
             res.render("../views/support")
     })
@@ -83,7 +83,7 @@ router
     .get('/profile', (req, res) => {
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/login/loginExpires")
+            res.render("../views/login/expires")
         else
             res.render("../views/profile")
     })

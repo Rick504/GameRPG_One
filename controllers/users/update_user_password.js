@@ -21,14 +21,14 @@ const update_user_password = async (req, res) => {
                                 .where({ user_id: session.userId })
                                 .update({ password: new_password })
 
-                res.redirect('/updatePasswordSuccess')
+                res.redirect('/update/password/success')
 
             } else {
-                res.render("../views/login/loginExpires")
+                res.render("../views/login/expires")
             }
 
         }  else {
-            res.redirect('/updateAccontPassword/?fail=true')
+            res.redirect('/update/password/?fail=true')
         }
         res.end()
     }

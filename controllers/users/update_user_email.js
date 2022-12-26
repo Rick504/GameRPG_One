@@ -15,10 +15,10 @@ const update_user_email = async (req, res) => {
                                     .where({ user_id: session.userId })
                                     .update({ email: userBody.email })
 
-                    res.redirect('/updateEmailSuccess')
+                    res.redirect('/update/email/success')
             }
         } else {
-            res.redirect('/updateAccontEmail/?fail=true')
+            res.redirect('/update/email/?fail=true')
         }
         res.end()
     }
