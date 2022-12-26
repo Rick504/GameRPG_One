@@ -1,5 +1,4 @@
 const express = require("express")
-const urlencodeParser = express.urlencoded({ extended: false })
 const router = express.Router()
 
 //const businessController = require("../controllers/businessController")
@@ -32,7 +31,7 @@ router
         .post("/update_user_email", update_user_email.update_user_email)
         .post("/update_user_password", update_user_password.update_user_password)
         .post("/delete_user", delete_user.delete_user)
-        //.post("/Business/to_replace", urlencodeParser, businessController.exchange)
+        //.post("/Business/to_replace", businessController.exchange)
 
 
 module.exports = router

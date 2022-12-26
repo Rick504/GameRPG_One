@@ -6,6 +6,7 @@ const knex = require('../../config/conn_knex')
 const delete_user = async (req, res) => {
 
     let session = req.session
+    console.log(session)
 
     if (req.session.cookie._expires !== null) {
 
