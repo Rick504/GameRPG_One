@@ -18,8 +18,7 @@ const update_user_email = async (req, res) => {
                     res.redirect('/updateEmailSuccess')
             }
         } else {
-            req.flash('error')
-            res.redirect('/updateAccontEmail')
+            res.redirect('/updateAccontEmail/?fail=true')
         }
         res.end()
     }

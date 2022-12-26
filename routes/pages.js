@@ -5,7 +5,10 @@ router
 
     // Login -----------------------------//
     .get('/', (req, res) => {
-        res.render("../views/login/", { errorLogin: req.session.flash })
+        if(req.query.fail)
+            res.render("../views/login/", { message: 'Usuário ou senha incorretos. Tente novamente.' })
+        else
+            res.render("../views/login/", { message: null })
     })
 
     // Login Expirado -------------------//
@@ -20,12 +23,18 @@ router
 
     // Atualizar Email do Usuário
     .get('/updateAccontEmail', (req, res) => {
-        res.render("../views/accont/updateAccontEmail", { errorUpdateEmail: req.session.flash })
+        if(req.query.fail)
+            res.render("../views/accont/updateAccontEmail", { message: 'E-mail inválido.' })
+        else
+            res.render("../views/accont/updateAccontEmail", { message: null })
     })
 
     // Atualizar Senha do Usuário
     .get('/updateAccontPassword', (req, res) => {
-        res.render("../views/accont/updateAccontPassword", { errorUpdatePassword: req.session.flash })
+        if(req.query.fail)
+            res.render("../views/accont/updateAccontPassword", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
+        else
+            res.render("../views/accont/updateAccontPassword", { message: null })
     })
 
     // Atualizar Email do Usuário

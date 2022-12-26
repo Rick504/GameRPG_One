@@ -28,9 +28,9 @@
                         >
                         <%# Por favor, insira um endereço de e-mail válido. %>
                     </div>
-                    <% if (errorUpdateEmail) { %>
+                    <% if (message) { %>
                         <div class="msg-error">
-                           Email inválido.
+                            <%= message %>
                         </div>
                     <% } %>
                     <div class="d-flex justify-content-center mt-4">

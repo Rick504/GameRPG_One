@@ -13,9 +13,9 @@
                     <input type="text" name="user_name">
                     <input type="password" name="password" class="mt-3">
                 </div>
-                <% if (errorLogin) { %>
+                <% if (message) { %>
                     <div class="msg-error">
-                        Usuário ou senha incorretos. Tente novamente.
+                        <%= message %>
                     </div>
                 <% } %>
                 <br>

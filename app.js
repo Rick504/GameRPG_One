@@ -1,7 +1,6 @@
 const express = require("express")
 const session = require("express-session")
 const cookieParser = require('cookie-parser')
-const flash = require('connect-flash');
 const cors = require('cors')
 const dotenv = require('dotenv');
 const app = express()
@@ -14,18 +13,16 @@ dotenv.config();
 // ejs - settings -----------------------------------------//
 app.set('view engine', 'ejs')
 
-// flash - settings ---------------------------------------//
-app.use(flash())
-
 // Session - settings ---------------------------------------//
 app.use(session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: false,
+    secret: "secret", // armazenar em uma variavel de ambiente
+    resave: false, // a cada requisição salva a sessão novamente.
+    saveUninitialized: false, //salvar sessões anonimas.
     cookie: {
         key: "is8-2inD-a83-dhuw-de", // chave criada por mim - setar novamente nas apis depois e testar
-        maxAge: 360000 // 3hrs para expirar
+        maxAge: 30 * 60 * 1000 // 30 minutos -- 30 min * 60 segundos * 1000 milisegundos
     }
+    //store (sem uso no momento) - aqui é feita a conecção com algum banco de dados para salvar a sessão no banco caso seja necessario
 }))
 
 // Cors - settings ---------------------------------------//

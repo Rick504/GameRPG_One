@@ -28,8 +28,7 @@ const update_user_password = async (req, res) => {
             }
 
         }  else {
-            req.flash('error')
-            res.redirect('/updateAccontPassword')
+            res.redirect('/updateAccontPassword/?fail=true')
         }
         res.end()
     }
