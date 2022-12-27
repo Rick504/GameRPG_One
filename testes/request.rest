@@ -1,11 +1,12 @@
-GET http://localhost:3000/users HTTP/1.1
+GET http://localhost:3000/users
+Content-Type: application/json
 
 ###
 
 POST http://localhost:3000/auth
 Content-Type: application/json
 
-{"user_name":"testehj","password":"123123"}
+{"user_name":"teste","password":"teste"}
 
 ###
 
