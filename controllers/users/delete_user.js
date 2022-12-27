@@ -5,19 +5,25 @@ const knex = require('../../config/conn_knex')
 
 const delete_user = async (req, res) => {
 
-    let session = req.session
-    console.log(session)
+        const session = req.session
+        if(!session.loggedin)
+            res.render("../views/account/delete/error")
+        else {
 
-    if (req.session.cookie._expires !== null) {
+            if (req.session.cookie._expires !== null) {
 
-            await knex('users')
-                            .where({ user_id: session.userId })
-                            .del()
+                    await knex('users')
+                                    .where({ user_id: session.userId })
+                                    .del()
 
-            console.log('Deleted user_id: ' + session.userId)
+                    console.log('Deleted user_id: ' + session.userId)
 
-            res.redirect('/')
-    }
+                    res.redirect('/')
+            } else {
+                res.redirect('/support')
+            }
+        }
+
 
     res.end()
 }

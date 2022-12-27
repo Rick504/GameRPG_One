@@ -88,5 +88,20 @@ router
             res.render("../views/profile")
     })
 
+    //Erro ao deletar conta
+    .get('/delete/error', (req, res) => {
+        res.render("../views/account/delete/error")
+    })
+
+    //Erro ao atualizar e-mail conta
+    .get('/update/email/error', (req, res) => {
+        res.render("../views/account/update/email/error")
+    })
+
+    //Erro ao deletar conta
+    .get('/update/error', (req, res) => {
+        res.render("../views/account/update/password/error")
+    })
+
 
 module.exports = router
