@@ -1,11 +1,14 @@
 const knex = require('../../config/conn_knex')
+const bcrypt = require('bcrypt')
 
 const create_user = async (req, res) => {
+
+        const hashPassword = await bcrypt.hash(req.body.password, 10)
 
         const data_user = {
             user_name: req.body.user_name,
             email: req.body.email,
-            password: req.body.password,
+            password: hashPassword,
             origin: req.body.origin,
         }
 

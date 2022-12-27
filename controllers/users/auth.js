@@ -1,4 +1,5 @@
 const knex = require('../../config/conn_knex')
+const bcrypt = require('bcrypt')
 
 const auth_user = async (req, res) => {
 
@@ -6,17 +7,17 @@ const auth_user = async (req, res) => {
 
         if (user_name && password) {
 
-            var db = await knex('users').where({
-                user_name: user_name,
-                password: password
-            })
+            var dbUser = await knex('users').where({ user_name: user_name, }) // ou E-mail
+            let userData = dbUser[0]
 
-            if (db.length > 0) {
+            let isValidPassword = bcrypt.compareSync(password, userData.password)
+
+            if (isValidPassword) {
 
                 //Session Express
                 req.session.loggedin = true
                 req.session.username = user_name
-                req.session.userId = db[0].user_id
+                req.session.userId = userData.user_id
 
                 //redirecionar para home
                 res.redirect('/home')
