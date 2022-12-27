@@ -7,6 +7,8 @@ router
     .get('/', (req, res) => {
         if(req.query.fail)
             res.render("../views/login/", { message: 'Usuário ou senha incorretos. Tente novamente.' })
+        else if(req.query.userNotExist)
+            res.render("../views/login/", { message: 'Usuário não é cadastrado.' })
         else
             res.render("../views/login/", { message: null })
     })
@@ -99,7 +101,7 @@ router
     })
 
     //Erro ao deletar conta
-    .get('/update/error', (req, res) => {
+    .get('/update/password/error', (req, res) => {
         res.render("../views/account/update/password/error")
     })
 

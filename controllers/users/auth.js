@@ -10,21 +10,26 @@ const auth_user = async (req, res) => {
             var dbUser = await knex('users').where({ user_name: user_name, }) // ou E-mail
             let userData = dbUser[0]
 
-            let isValidPassword = bcrypt.compareSync(password, userData.password)
+            if (!dbUser.length > 0) {
+                res.redirect('/?userNotExist=true')
+            } else {
+                let isValidPassword = bcrypt.compareSync(password, userData.password)
 
-            if (isValidPassword) {
+                if (isValidPassword) {
 
-                //Session Express
-                req.session.loggedin = true
-                req.session.username = user_name
-                req.session.userId = userData.user_id
+                    //Session Express
+                    req.session.loggedin = true
+                    req.session.username = user_name
+                    req.session.userId = userData.user_id
 
-                //redirecionar para home
-                res.redirect('/home')
-                } else {
-                    res.redirect('/?fail=true')
-                }
-                res.end()
+                    //redirecionar para home
+                    res.redirect('/home')
+                    } else {
+                        res.redirect('/?fail=true')
+                    }
+            }
+
+        res.end()
     }
 }
 

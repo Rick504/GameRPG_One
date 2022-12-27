@@ -7,7 +7,7 @@ const delete_user = async (req, res) => {
 
         const session = req.session
         if(!session.loggedin)
-            res.render("../views/account/delete/error")
+            res.redirect('/delete/error')
         else {
 
             if (req.session.cookie._expires !== null) {

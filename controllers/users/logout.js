@@ -1,6 +1,9 @@
 const logout = async (req, res) => {
 
-    req.session.destroy()
+    const session = req.session
+    if(session) {
+        session.destroy()
+    }
 
     res.redirect('/')
     // console.log("Usuário deslogado!!")
