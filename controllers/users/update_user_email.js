@@ -17,7 +17,7 @@ const update_user_email = async (req, res) => {
                 if (req.session.cookie._expires !== null) {
                         await knex('users')
                                         .where({ user_id: session.userId })
-                                        .update({ email: userBody.email })
+                                        .update({ email: email })
 
                         res.redirect('/update/email/success')
                 }

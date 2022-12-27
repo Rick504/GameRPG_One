@@ -29,7 +29,21 @@ router
 
     // Cadastrar Usuário
     .get('/registration', (req, res) => {
-        res.render("../views/registration")
+        if(req.query.emailExists)
+            res.render("../views/registration", {
+                emailExists: 'Este e-mail já foi cadastrado.',
+                nameExists: null
+            })
+        else if (req.query.nameExists)
+            res.render("../views/registration", {
+                emailExists: null,
+                nameExists: 'Este nome já foi cadastrado.'
+            })
+        else
+            res.render("../views/registration", {
+                emailExists: null,
+                nameExists: null
+            })
     })
 
     // Atualizar Email do Usuário

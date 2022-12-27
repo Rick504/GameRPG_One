@@ -13,7 +13,7 @@
     </div>
         <div class="row">
             <form method="post" action="/create_user" class="offset-4 col-3" autocomplete="off">
-                    <label>Nome deJogador</label>
+                    <label>Nome do Jogador</label>
                     <div class="form-element">
                         <input
                             autofocus="true"
@@ -23,6 +23,11 @@
                             maxlength="24"
                             required
                         >
+                        <% if (nameExists) { %>
+                            <div class="msg-error">
+                                <%= nameExists %>
+                            </div>
+                        <% } %>
                            <%# O nome de usuário deve ter no mínimo 4 caracteres!
                             O nome de usuário não pode exceder 24 caracteres!
                             O nome de jogador contém caracteres inválidos.
@@ -46,6 +51,11 @@
                             name="email"
                             required
                         >
+                        <% if (emailExists) { %>
+                            <div class="msg-error">
+                                <%= emailExists %>
+                            </div>
+                        <% } %>
                         <%# Por favor, insira um endereço de e-mail válido. %>
                     </div>
                     <label>Origem</label>
