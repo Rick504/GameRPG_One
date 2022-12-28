@@ -28,7 +28,7 @@ const create_user = async (req, res) => {
                 origin: userBody.origin,
             }
 
-           let teste = await knex('users').insert(data_user)
+           await knex('users').insert(data_user)
             // await knex('info_game').insert({level: 1})
 
             req.session.loggedin = true

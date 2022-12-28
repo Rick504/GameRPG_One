@@ -11,3 +11,5 @@
 
 # { uid }
 
+# password do banco no .env
+
