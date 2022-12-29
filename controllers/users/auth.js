@@ -1,7 +1,7 @@
 const knex = require('../../config/conn_knex')
 const bcrypt = require('bcrypt')
 
-const auth_user = async (req, res) => {
+const auth = async (req, res) => {
 
         let { user_name, password } = req.body
 
@@ -33,4 +33,4 @@ const auth_user = async (req, res) => {
     }
 }
 
-module.exports = { auth_user }
+module.exports = { auth }

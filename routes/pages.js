@@ -51,8 +51,8 @@ router
         const session = req.session
         if(!session.loggedin)
             res.render("../views/login/expires")
-        else if(req.query.fail || req.query.emailExists)
-            res.render("../views/account/update/email", { message: 'E-mail inválido.' })
+        else if(req.query.fail)
+            res.render("../views/account/update/email", { message: 'E-mail inválido ou já existente.' })
         else
             res.render("../views/account/update/email", { message: null })
     })
