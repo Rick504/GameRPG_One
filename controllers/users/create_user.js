@@ -8,15 +8,17 @@ const create_user = async (req, res) => {
             let db_users = await knex('users')
 
             // verificando se existe esse email no banco
-            if (db_users[0].email === userBody.email) {
-                res.redirect('/registration?emailExists=true')
-                return res.end()
-            }
+            if (db_users.length > 0) {
+                if (db_users[0].email === userBody.email) {
+                    res.redirect('/registration?emailExists=true')
+                    return res.end()
+                }
 
-            // verificando se existe esse nome no banco
-            if (db_users[0].user_name === userBody.user_name) {
-                res.redirect('/registration?nameExists=true')
-                return res.end()
+                // verificando se existe esse nome no banco
+                if (db_users[0].user_name === userBody.user_name) {
+                    res.redirect('/registration?nameExists=true')
+                    return res.end()
+                }
             }
 
             const hashPassword = await bcrypt.hash(userBody.password, 10)
