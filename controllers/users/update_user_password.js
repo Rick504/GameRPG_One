@@ -5,14 +5,14 @@ const update_user_password = async (req, res) => {
 
         try {
             let session = req.session
-            if(!session.loggedin)
+            if(!session.authorized)
                     res.redirect('/update/password/error')
                 else {
 
                 let userBody = req.body
-                // console.log(session)
+                // console.log(session.user)
 
-                let userData = await knex('users').where({ user_id: session.userId })
+                let userData = await knex('users').where({ user_id: session.user.user_id })
                 let db_password = userData[0].password
 
                 let isValidPassword = bcrypt.compareSync(userBody.old_password, db_password)
@@ -27,7 +27,7 @@ const update_user_password = async (req, res) => {
                         if (session.cookie._expires !== null) {
 
                             await knex('users')
-                                            .where({ user_id: session.userId })
+                                            .where({ user_id: session.user.user_id })
                                             .update({ password: hashPassword })
 
                             res.redirect('/update/password/success')

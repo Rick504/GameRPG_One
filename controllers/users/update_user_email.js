@@ -4,7 +4,7 @@ const update_user_email = async (req, res) => {
 
         try {
             let session = req.session
-            if(!session.loggedin)
+            if(!session.authorized)
                 res.redirect('/update/email/error')
             else {
 
@@ -18,7 +18,7 @@ const update_user_email = async (req, res) => {
 
                         try {
                             await knex('users')
-                                            .where({ user_id: session.userId })
+                                            .where({ user_id: session.user.user_id })
                                             .update({ email: email })
 
                             res.redirect('/update/email/success')

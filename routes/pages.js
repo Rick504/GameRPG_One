@@ -16,10 +16,11 @@ router
      // Home -----------------------------//
      .get('/home', (req, res) => {
         const session = req.session
-        if(!session.loggedin)
+        console.log(session)
+        if(!session.authorized)
             res.render("../views/login/expires")
         else
-            res.render("../views/home", { userName: req.session.username })
+            res.render("../views/home", { userName: req.session.user.user_name })
     })
 
     // Login Expirado -------------------//
@@ -49,7 +50,7 @@ router
     // Atualizar Email do Usuário
     .get('/update/email', (req, res) => {
         const session = req.session
-        if(!session.loggedin)
+        if(!session.authorized)
             res.render("../views/login/expires")
         else if(req.query.fail)
             res.render("../views/account/update/email", { message: 'E-mail inválido ou já existente.' })
@@ -60,7 +61,7 @@ router
     // Atualizar Senha do Usuário
     .get('/update/password', (req, res) => {
         const session = req.session
-        if(!session.loggedin)
+        if(!session.authorized)
             res.render("../views/login/expires")
         else if(req.query.fail)
             res.render("../views/account/update/password", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
@@ -71,7 +72,7 @@ router
     // Atualizar Email do Usuário
     .get('/update/email/success', (req, res) => {
         const session = req.session
-        if(!session.loggedin)
+        if(!session.authorized)
             res.render("../views/login/expires")
         else
             res.render("../views/account/update/email/success")
@@ -80,7 +81,7 @@ router
     // Menssagem de sucesso
     .get('/update/password/success', (req, res) => {
         const session = req.session
-        if(!session.loggedin)
+        if(!session.authorized)
             res.render("../views/login/expires")
         else
             res.render("../views/account/update/password/success")
@@ -89,7 +90,7 @@ router
     //Suporte
     .get('/support', (req, res) => {
         const session = req.session
-        if(!session.loggedin)
+        if(!session.authorized)
             res.render("../views/login/expires")
         else
             res.render("../views/support")
@@ -98,7 +99,7 @@ router
     //Perfil
     .get('/profile', (req, res) => {
         const session = req.session
-        if(!session.loggedin)
+        if(!session.authorized)
             res.render("../views/login/expires")
         else
             res.render("../views/profile")

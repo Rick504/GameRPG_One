@@ -7,17 +7,18 @@ const delete_user = async (req, res) => {
 
     try {
         const session = req.session
-        if(!session.loggedin)
+        console.log(session)
+        if(!session.authorized)
             res.redirect('/delete/error')
         else {
 
             if (req.session.cookie._expires !== null) {
 
                     await knex('users')
-                                    .where({ user_id: session.userId })
+                                    .where({ user_id: session.user.user_id })
                                     .del()
 
-                    console.log('Deleted user_id: ' + session.userId)
+                    console.log('Deleted user_id: ' + session.user.user_id)
 
                     res.redirect('/')
             } else {
