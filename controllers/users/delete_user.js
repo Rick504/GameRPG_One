@@ -5,6 +5,7 @@ const knex = require('../../config/conn_knex')
 
 const delete_user = async (req, res) => {
 
+    try {
         const session = req.session
         if(!session.loggedin)
             res.redirect('/delete/error')
@@ -23,7 +24,9 @@ const delete_user = async (req, res) => {
                 res.redirect('/support')
             }
         }
-
+    } catch (err) {
+        res.redirect('/expires')
+    }
 
     res.end()
 }

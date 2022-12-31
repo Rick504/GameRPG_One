@@ -1,12 +1,17 @@
 const logout = async (req, res) => {
 
-    const session = req.session
-    if(session) {
-        session.destroy()
+    try {
+        const session = req.session
+        if(session) {
+            session.destroy()
+        }
+
+        res.redirect('/')
+        // console.log("Usuário deslogado!!")
+    } catch (err) {
+        res.redirect('/expires')
     }
 
-    res.redirect('/')
-    // console.log("Usuário deslogado!!")
 
 }
 

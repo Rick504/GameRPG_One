@@ -3,41 +3,46 @@ const bcrypt = require('bcrypt')
 
 const update_user_password = async (req, res) => {
 
-    let session = req.session
-    if(!session.loggedin)
-            res.redirect('/update/password/error')
-        else {
+        try {
+            let session = req.session
+            if(!session.loggedin)
+                    res.redirect('/update/password/error')
+                else {
 
-        let userBody = req.body
-        // console.log(session)
+                let userBody = req.body
+                // console.log(session)
 
-        let userData = await knex('users').where({ user_id: session.userId })
-        let db_password = userData[0].password
+                let userData = await knex('users').where({ user_id: session.userId })
+                let db_password = userData[0].password
 
-        let isValidPassword = bcrypt.compareSync(userBody.old_password, db_password)
+                let isValidPassword = bcrypt.compareSync(userBody.old_password, db_password)
 
-        let new_password = userBody.password
-        let password_confirm = userBody.password_confirm
+                let new_password = userBody.password
+                let password_confirm = userBody.password_confirm
 
-            if (isValidPassword && new_password === password_confirm) {
+                    if (isValidPassword && new_password === password_confirm) {
 
-                const hashPassword = await bcrypt.hash(new_password, 10)
+                        const hashPassword = await bcrypt.hash(new_password, 10)
 
-                if (session.cookie._expires !== null) {
+                        if (session.cookie._expires !== null) {
 
-                    await knex('users')
-                                    .where({ user_id: session.userId })
-                                    .update({ password: hashPassword })
+                            await knex('users')
+                                            .where({ user_id: session.userId })
+                                            .update({ password: hashPassword })
 
-                    res.redirect('/update/password/success')
+                            res.redirect('/update/password/success')
 
-                } else {
-                    res.render("../views/login/expires")
+                        } else {
+                            res.render("../views/login/expires")
+                        }
+
+                    }  else {
+                        res.redirect('/update/password/?fail=true')
+                    }
                 }
 
-            }  else {
-                res.redirect('/update/password/?fail=true')
-            }
+        } catch (err) {
+            res.redirect('/update/password/error')
         }
 
         res.end()
