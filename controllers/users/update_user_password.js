@@ -4,7 +4,10 @@ const bcrypt = require('bcrypt')
 const update_user_password = async (req, res) => {
 
         try {
-            let session = req.session
+            const session = req.session
+            const authorized = session.authorized
+            const notExpiredCookie = session.cookie._expires
+
             if(!session.authorized)
                     res.redirect('/update/password/error')
                 else {
@@ -24,7 +27,7 @@ const update_user_password = async (req, res) => {
 
                         const hashPassword = await bcrypt.hash(new_password, 10)
 
-                        if (session.cookie._expires !== null) {
+                        if (authorized && notExpiredCookie) {
 
                             await knex('users')
                                             .where({ user_id: session.user.user_id })

@@ -2,7 +2,11 @@ const knex = require('../../config/conn_knex')
 
 const read_user = async (req, res) => {
 
-    if (req.session.cookie._expires !== null) {
+    const session = req.session
+    const authorized = session.authorized
+    const notExpiredCookie = session.cookie._expires
+
+    if (authorized && notExpiredCookie) {
 
         try {
 

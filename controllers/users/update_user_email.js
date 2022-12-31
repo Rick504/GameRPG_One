@@ -3,7 +3,10 @@ const knex = require('../../config/conn_knex')
 const update_user_email = async (req, res) => {
 
         try {
-            let session = req.session
+            const session = req.session
+            const authorized = session.authorized
+            const notExpiredCookie = session.cookie._expires
+
             if(!session.authorized)
                 res.redirect('/update/email/error')
             else {
@@ -14,7 +17,7 @@ const update_user_email = async (req, res) => {
                 let email = userBody.email
 
                 if (email === email_confirm) {
-                    if (req.session.cookie._expires !== null) {
+                    if (authorized && notExpiredCookie) {
 
                         try {
                             await knex('users')
