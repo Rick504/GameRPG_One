@@ -5,9 +5,11 @@ router
 
     // Login -----------------------------//
     .get('/', (req, res) => {
-        if(req.query.fail)
+        const paramsUrl = req.query
+
+        if(paramsUrl.fail)
             res.render("../views/login/", { message: 'Usuário ou senha incorretos. Tente novamente.' })
-        else if(req.query.userNotExist)
+        else if(paramsUrl.userNotExist)
             res.render("../views/login/", { message: 'Usuário não é cadastrado.' })
         else
             res.render("../views/login/", { message: null })
@@ -16,11 +18,12 @@ router
      // Home -----------------------------//
      .get('/home', (req, res) => {
         const session = req.session
-        console.log(session)
+        // console.log(session)
+
         if(!session.authorized)
             res.render("../views/login/expires")
         else
-            res.render("../views/home", { userName: req.session.user.user_name })
+            res.render("../views/home", { userName: session.user.user_name })
     })
 
     // Login Expirado -------------------//
@@ -30,12 +33,14 @@ router
 
     // Cadastrar Usuário
     .get('/registration', (req, res) => {
-        if(req.query.emailExists)
+        const paramsUrl = req.query
+
+        if(paramsUrl.emailExists)
             res.render("../views/registration", {
                 emailExists: 'Este e-mail já foi cadastrado.',
                 nameExists: null
             })
-        else if (req.query.nameExists)
+        else if (paramsUrl.nameExists)
             res.render("../views/registration", {
                 emailExists: null,
                 nameExists: 'Este nome já foi cadastrado.'
@@ -50,9 +55,11 @@ router
     // Atualizar Email do Usuário
     .get('/update/email', (req, res) => {
         const session = req.session
+        const paramsUrl = req.query
+
         if(!session.authorized)
             res.render("../views/login/expires")
-        else if(req.query.fail)
+        else if(paramsUrl.fail)
             res.render("../views/account/update/email", { message: 'E-mail inválido ou já existente.' })
         else
             res.render("../views/account/update/email", { message: null })
@@ -61,9 +68,11 @@ router
     // Atualizar Senha do Usuário
     .get('/update/password', (req, res) => {
         const session = req.session
+        const paramsUrl = req.query
+
         if(!session.authorized)
             res.render("../views/login/expires")
-        else if(req.query.fail)
+        else if(paramsUrl.fail)
             res.render("../views/account/update/password", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
         else
             res.render("../views/account/update/password", { message: null })
@@ -72,6 +81,7 @@ router
     // Atualizar Email do Usuário
     .get('/update/email/success', (req, res) => {
         const session = req.session
+
         if(!session.authorized)
             res.render("../views/login/expires")
         else
@@ -81,6 +91,7 @@ router
     // Menssagem de sucesso
     .get('/update/password/success', (req, res) => {
         const session = req.session
+
         if(!session.authorized)
             res.render("../views/login/expires")
         else
@@ -90,6 +101,7 @@ router
     //Suporte
     .get('/support', (req, res) => {
         const session = req.session
+
         if(!session.authorized)
             res.render("../views/login/expires")
         else
@@ -99,6 +111,7 @@ router
     //Perfil
     .get('/profile', (req, res) => {
         const session = req.session
+
         if(!session.authorized)
             res.render("../views/login/expires")
         else

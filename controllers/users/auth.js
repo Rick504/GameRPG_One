@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const auth = async (req, res) => {
 
         try {
+            let session = req.session
             let { user_name, password } = req.body
 
             if (user_name && password) {
@@ -19,16 +20,16 @@ const auth = async (req, res) => {
                     if (isValidPassword) {
 
                         //Session Express
-                        req.session.authorized = true
-                        req.session.user = user
+                        session.authorized = true
+                        session.user = user
 
-                        console.log(req.session)
+                        // console.log(session)
 
                         //redirecionar para home
                         res.redirect('/home')
-                        } else {
-                            res.redirect('/?fail=true')
-                        }
+                    } else {
+                        res.redirect('/?fail=true')
+                    }
                 }
             }
         } catch (err) {

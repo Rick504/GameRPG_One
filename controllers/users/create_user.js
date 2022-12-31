@@ -5,6 +5,7 @@ const create_user = async (req, res) => {
 
         try {
             let userBody = req.body
+            let session = req.session
             let db_users = await knex('users')
 
             // verificando se existe esse email no banco
@@ -37,8 +38,8 @@ const create_user = async (req, res) => {
             let user = dbUser[0]
 
             //Session Express
-            req.session.authorized = true
-            req.session.user = user
+            session.authorized = true
+            session.user = user
 
             res.redirect('/home')
 

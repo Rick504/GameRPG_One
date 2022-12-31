@@ -15,7 +15,7 @@ const { logout } = require("../controllers/users/logout")
 const { users } = require("../controllers/testes/users")
 
 router
-        // Teste ------------------------------------------------------------------//
+// Teste ------------------------------------------------------------------//
         .get('/users', users)
 
         // ------------------------------- APIs ---------------------------------- //

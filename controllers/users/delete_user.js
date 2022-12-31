@@ -1,6 +1,3 @@
-// Quando testar API em postman comentar a linha do res.redirect('/')
-// e autenticar primeiramente a conta na rota de /auth antes deletar, caso contrario não funciona
-
 const knex = require('../../config/conn_knex')
 
 const delete_user = async (req, res) => {
