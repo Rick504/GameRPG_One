@@ -1,3 +1,9 @@
+-- ("level" BETWEEN 1 ADD 10) aceita somente numeros entre 1 e 10
+-- serial - gerado automaticamente
+-- Primary Key (chave unica que não pode se repetirar)
+-- GENERATED ALWAYSinstrui o PostgreSQL a sempre gerar um valor para a coluna de identidade. Se você tentar inserir (ou atualizar) valores na GENERATED ALWAYS AS IDENTITYcoluna, o PostgreSQL emitirá um erro.
+-- ON DELETE CASCADE é para especificar se você deseja que as linhas sejam excluídas em uma tabela filho quando as linhas correspondentes forem excluídas na tabela pai. Se você não especificar exclusões em cascata, o comportamento padrão do servidor de banco de dados impedirá que você exclua dados em uma tabela se outras tabelas fizerem referência a eles.
+
 CREATE TABLE "users" (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     "user_name" VARCHAR(45) UNIQUE NOT NULL,

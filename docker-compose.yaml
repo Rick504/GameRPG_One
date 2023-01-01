@@ -2,6 +2,7 @@ version: '3.1'
 services:
 #POSTGRES
   db:
+    image: game-db
     build: ./db
     #restart: always
     ports:
@@ -10,6 +11,7 @@ services:
       POSTGRES_PASSWORD: 123
 #NODE
   node:
+    image: game-node
     build: .
     #restart: always
     ports:

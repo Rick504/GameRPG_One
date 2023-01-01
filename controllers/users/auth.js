@@ -24,6 +24,8 @@ const auth = async (req, res) => {
                         session.user = user
 
                         // console.log(session)
+                        let teste = await knex('info_game')
+                        console.log(teste)
 
                         //redirecionar para home
                         res.redirect('/home')
