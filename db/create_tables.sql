@@ -11,6 +11,7 @@ CREATE TABLE "users" (
     "password" VARCHAR(150) NOT null,
     "origin" VARCHAR(20) NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     PRIMARY KEY(user_id)
 );
 
@@ -39,6 +40,7 @@ CREATE TABLE "info_game" (
   "diamonds" INT DEFAULT 100,
   "clan" VARCHAR(30),
   "technology_points" INT DEFAULT 2,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   FOREIGN KEY(id_info_game) REFERENCES "users"(user_id) on delete cascade on update cascade,
   FOREIGN KEY(id_table_origin) REFERENCES "warriors"(id) on delete cascade on update cascade
  );
