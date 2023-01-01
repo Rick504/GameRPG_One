@@ -1,11 +1,11 @@
 -- ("level" BETWEEN 1 ADD 10) aceita somente numeros entre 1 e 10
 -- serial - gerado automaticamente
--- Primary Key (chave unica que não pode se repetirar)
--- GENERATED ALWAYSinstrui o PostgreSQL a sempre gerar um valor para a coluna de identidade. Se você tentar inserir (ou atualizar) valores na GENERATED ALWAYS AS IDENTITYcoluna, o PostgreSQL emitirá um erro.
+-- Primary Key (chave unica que não pode se repetir)
+-- GENERATED ALWAYS instrui o PostgreSQL a sempre gerar um valor para a coluna de identidade. Se você tentar inserir (ou atualizar) valores na GENERATED ALWAYS AS IDENTITYcoluna, o PostgreSQL emitirá um erro.
 -- ON DELETE CASCADE é para especificar se você deseja que as linhas sejam excluídas em uma tabela filho quando as linhas correspondentes forem excluídas na tabela pai. Se você não especificar exclusões em cascata, o comportamento padrão do servidor de banco de dados impedirá que você exclua dados em uma tabela se outras tabelas fizerem referência a eles.
 
 CREATE TABLE "users" (
-    user_id INT GENERATED ALWAYS AS IDENTITY,
+    user_id VARCHAR(40),
     "user_name" VARCHAR(45) UNIQUE NOT NULL,
     "email" VARCHAR(50) UNIQUE NOT NULL,
     "password" VARCHAR(150) NOT null,
@@ -16,34 +16,34 @@ CREATE TABLE "users" (
 );
 
 CREATE TABLE "warriors" (
-    "id" INT,
+    id INT,
     "level_warrior" INT,
     "origin_warrior" VARCHAR(50),
     "warrior" VARCHAR(50),
     "atk" INT NOT NULL,
     "def" INT NOT NULL,
-  	PRIMARY KEY("id")
+  	PRIMARY KEY(id)
 );
 
 CREATE TABLE "info_game" (
-	id_info_game serial UNIQUE,
-	id_table_origin INT DEFAULT 1,
+	id VARCHAR(40),
+	id_fk_warriors INT DEFAULT 1,
 	"level" INT DEFAULT 1,
-  "gold" INT DEFAULT 1,
-  "supplies" INT DEFAULT 5,
-  "wood" INT DEFAULT 5,
-  "workers" INT DEFAULT 0,
-  "armys" INT DEFAULT 2,
-  "worker_producing_gold" INT DEFAULT 5,
-  "worker_producing_supplies" INT DEFAULT 11,
-  "worker_producing_wood" INT DEFAULT 2,
-  "diamonds" INT DEFAULT 100,
-  "clan" VARCHAR(30),
-  "technology_points" INT DEFAULT 2,
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  FOREIGN KEY(id_info_game) REFERENCES "users"(user_id) on delete cascade on update cascade,
-  FOREIGN KEY(id_table_origin) REFERENCES "warriors"(id) on delete cascade on update cascade
- );
+    "gold" INT DEFAULT 1,
+    "supplies" INT DEFAULT 5,
+    "wood" INT DEFAULT 5,
+    "workers" INT DEFAULT 0,
+    "armys" INT DEFAULT 2,
+    "worker_producing_gold" INT DEFAULT 5,
+    "worker_producing_supplies" INT DEFAULT 11,
+    "worker_producing_wood" INT DEFAULT 2,
+    "diamonds" INT DEFAULT 100,
+    "clan" VARCHAR(30),
+    "technology_points" INT DEFAULT 2,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade,
+    FOREIGN KEY(id_fk_warriors) REFERENCES "warriors"(id) on delete cascade on update cascade
+   );
 
 INSERT INTO "warriors" VALUES (1, 1, 'Magic','Aprendizes de Eris', 9, 10);
 INSERT INTO "warriors" VALUES (2, 2, 'Magic','Aprendizes de Remus', 11, 4);

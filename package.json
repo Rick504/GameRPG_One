@@ -21,7 +21,8 @@
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
     "knex": "^0.95.12",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

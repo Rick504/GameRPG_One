@@ -9,7 +9,5 @@
 
 # formas de pagamento do produto no site, criar api
 
-# { uid }
-
-# password do banco no .env
+# se deletar usuario da table users precisa deletar informações da tabela info tbm
 
