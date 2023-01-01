@@ -39,10 +39,8 @@ CREATE TABLE "info_game" (
   "diamonds" INT DEFAULT 100,
   "clan" VARCHAR(30),
   "technology_points" INT DEFAULT 2,
-  CONSTRAINT fk_users_info FOREIGN KEY(id_info_game)
-  REFERENCES "users" (user_id) on delete cascade on update cascade,
-  CONSTRAINT fk_info_game_origin FOREIGN KEY(id_table_origin)
-  REFERENCES "warriors"(id) on delete cascade on update cascade
+  FOREIGN KEY(id_info_game) REFERENCES "users"(user_id) on delete cascade on update cascade,
+  FOREIGN KEY(id_table_origin) REFERENCES "warriors"(id) on delete cascade on update cascade
  );
 
 INSERT INTO "warriors" VALUES (1, 1, 'Magic','Aprendizes de Eris', 9, 10);

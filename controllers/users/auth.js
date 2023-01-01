@@ -9,7 +9,24 @@ const auth = async (req, res) => {
 
             if (user_name && password) {
 
-                var dbUser = await knex('users').where({ user_name: user_name, }) // ou E-mail
+                var dbUser = await knex('users').where({ user_name: user_name }) // ou E-mail
+                                                .innerJoin('info_game', 'users.user_id', 'info_game.id_info_game')
+                                                .column(
+                                                        'user_id',
+                                                        'user_name',
+                                                        'email',
+                                                        'password',
+                                                        'origin',
+                                                        'gold',
+                                                        'supplies',
+                                                        'wood',
+                                                        'worker_producing_gold',
+                                                        'worker_producing_supplies',
+                                                        'worker_producing_wood',
+                                                        'workers',
+                                                        'level',
+                                                        'clan'
+                                                    )
                 let user = dbUser[0]
 
                 if (!dbUser.length > 0) {
@@ -23,9 +40,7 @@ const auth = async (req, res) => {
                         session.authorized = true
                         session.user = user
 
-                        // console.log(session)
-                        let teste = await knex('info_game')
-                        console.log(teste)
+                        console.log('user',session)
 
                         //redirecionar para home
                         res.redirect('/home')
