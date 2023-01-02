@@ -76,6 +76,10 @@ INSERT INTO "warriors" VALUES (28, 8, 'War','Guerreiros do comandante Ícarus', 
 INSERT INTO "warriors" VALUES (29, 9, 'War','Guerreiros do comandante Orion', 90, 83);
 INSERT INTO "warriors" VALUES (30, 10,'War','Guerreiros ELITE', 120, 101);
 
+-- tem que inserir recebendo o mesmo valor do id pra fazer o inner join
+-- INSERT INTO "users" VALUES ('dsa-ewq-321dsa', 'cara', 'cara@cara','123123', 'War');
+-- INSERT INTO "info_game" (id) VALUES ('dsa-ewq-321dsa');
+
 -- CONSTRAINTS
 ALTER TABLE info_game
 ADD CONSTRAINT Check_level CHECK ("level">=1 AND "level"<=10);

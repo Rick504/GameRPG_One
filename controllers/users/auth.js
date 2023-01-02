@@ -10,25 +10,24 @@ const auth = async (req, res) => {
             if (user_name && password) {
 
                 var dbUser = await knex('users').where({ user_name: user_name }) // ou E-mail
-                                                // .innerJoin('info_game', 'users.user_id', 'info_game.id')
-                                                // .column(
-                                                //         'user_id',
-                                                //         'user_name',
-                                                //         'email',
-                                                //         'password',
-                                                //         'origin',
-                                                //         'gold',
-                                                //         'supplies',
-                                                //         'wood',
-                                                //         'worker_producing_gold',
-                                                //         'worker_producing_supplies',
-                                                //         'worker_producing_wood',
-                                                //         'workers',
-                                                //         'level',
-                                                //         'clan'
-                                                //     )
+                                                .innerJoin('info_game', 'users.user_id', 'info_game.id')
+                                                .column(
+                                                        'user_id',
+                                                        'user_name',
+                                                        'email',
+                                                        'password',
+                                                        'origin',
+                                                        'gold',
+                                                        'supplies',
+                                                        'wood',
+                                                        'worker_producing_gold',
+                                                        'worker_producing_supplies',
+                                                        'worker_producing_wood',
+                                                        'workers',
+                                                        'level',
+                                                        'clan'
+                                                    )
                 let user = dbUser[0]
-                console.log(dbUser)
 
                 if (!dbUser.length > 0) {
                     res.redirect('/?userNotExist=true')
@@ -41,7 +40,7 @@ const auth = async (req, res) => {
                         session.authorized = true
                         session.user = user
 
-                        // console.log('user',session)
+                        console.log('user',session)
 
                         //redirecionar para home
                         res.redirect('/home')

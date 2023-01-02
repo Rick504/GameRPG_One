@@ -34,7 +34,7 @@ const create_user = async (req, res) => {
             }
 
             await knex('users').insert(data_user)
-            await knex('info_game').insert({level: 1})
+            await knex('info_game').insert({id: data_user.user_id})
 
             var dbUser = await knex('users').where({ user_name: data_user.user_name }) // ou E-mail
             let user = dbUser[0]

@@ -2,7 +2,7 @@ const knex = require('../../config/conn_knex')
 
 const users = async (req, res) => {
 
-    const rows = await knex('info_game')
+    const rows = await knex('users')
     res.send(rows)
 }
 
