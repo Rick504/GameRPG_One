@@ -12,11 +12,11 @@ const { delete_user } = require("../controllers/users/delete_user")
 const { auth } = require("../controllers/users/auth")
 const { logout } = require("../controllers/users/logout")
 
-const { users } = require("../controllers/testes/users")
+const { testes } = require("../controllers/testes/testes")
 
 router
 // Teste ------------------------------------------------------------------//
-        .get('/users', users)
+        .get('/teste', testes)
 
         // ------------------------------- APIs ---------------------------------- //
         .get("/read_user", read_user)

@@ -9,11 +9,38 @@ CREATE TABLE "users" (
     "user_name" VARCHAR(45) UNIQUE NOT NULL,
     "email" VARCHAR(50) UNIQUE NOT NULL,
     "password" VARCHAR(150) NOT null,
-    "warrior" INT,
     "origin" VARCHAR(20) NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     PRIMARY KEY(user_id)
+);
+
+CREATE TABLE "info_game" (
+	id VARCHAR(40),
+	"level" INT DEFAULT 1,
+    "gold" INT DEFAULT 1,
+    "supplies" INT DEFAULT 5,
+    "wood" INT DEFAULT 5,
+    "workers" INT DEFAULT 0,
+    "armys" INT DEFAULT 2,
+    "warriors_lvl_1" INT DEFAULT 0,
+    "warriors_lvl_2" INT DEFAULT 0,
+    "warriors_lvl_3" INT DEFAULT 0,
+    "warriors_lvl_4" INT DEFAULT 0,
+    "warriors_lvl_5" INT DEFAULT 0,
+    "warriors_lvl_6" INT DEFAULT 0,
+    "warriors_lvl_7" INT DEFAULT 0,
+    "warriors_lvl_8" INT DEFAULT 0,
+    "warriors_lvl_9" INT DEFAULT 0,
+    "warriors_lvl_10" INT DEFAULT 0,
+    "worker_producing_gold" INT DEFAULT 5,
+    "worker_producing_supplies" INT DEFAULT 11,
+    "worker_producing_wood" INT DEFAULT 2,
+    "diamonds" INT DEFAULT 100,
+    "clan" VARCHAR(30),
+    "technology_points" INT DEFAULT 2,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
 );
 
 CREATE TABLE "warriors_magic" (
@@ -43,23 +70,19 @@ CREATE TABLE "warriors_war" (
   	PRIMARY KEY(id)
 );
 
-CREATE TABLE "info_game" (
-	id VARCHAR(40),
-	"level" INT DEFAULT 1,
-    "gold" INT DEFAULT 1,
-    "supplies" INT DEFAULT 5,
-    "wood" INT DEFAULT 5,
-    "workers" INT DEFAULT 0,
-    "armys" INT DEFAULT 2,
-    "worker_producing_gold" INT DEFAULT 5,
-    "worker_producing_supplies" INT DEFAULT 11,
-    "worker_producing_wood" INT DEFAULT 2,
-    "diamonds" INT DEFAULT 100,
-    "clan" VARCHAR(30),
-    "technology_points" INT DEFAULT 2,
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
-   );
+CREATE TABLE "training_troops" (
+    id VARCHAR(40),
+    "shifts" INT,
+    "total" INT,
+  	FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
+);
+
+CREATE TABLE "preparing_workers" (
+    id VARCHAR(40),
+    "shifts" INT,
+    "total" INT,
+  	FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
+);
 
 INSERT INTO "warriors_magic" VALUES (1, 1,'Aprendizes de Eris', 9, 10);
 INSERT INTO "warriors_magic" VALUES (2, 2,'Aprendizes de Remus', 11, 4);
