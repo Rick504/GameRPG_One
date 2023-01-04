@@ -1,9 +1,3 @@
--- ("level" BETWEEN 1 ADD 10) aceita somente numeros entre 1 e 10
--- serial - gerado automaticamente
--- Primary Key (chave unica que não pode se repetir)
--- GENERATED ALWAYS instrui o PostgreSQL a sempre gerar um valor para a coluna de identidade. Se você tentar inserir (ou atualizar) valores na GENERATED ALWAYS AS IDENTITYcoluna, o PostgreSQL emitirá um erro.
--- ON DELETE CASCADE é para especificar se você deseja que as linhas sejam excluídas em uma tabela filho quando as linhas correspondentes forem excluídas na tabela pai. Se você não especificar exclusões em cascata, o comportamento padrão do servidor de banco de dados impedirá que você exclua dados em uma tabela se outras tabelas fizerem referência a eles.
-
 CREATE TABLE "users" (
     user_id VARCHAR(40),
     "user_name" VARCHAR(45) UNIQUE NOT NULL,
@@ -72,18 +66,19 @@ CREATE TABLE "warriors_war" (
 
 CREATE TABLE "training_troops" (
     id VARCHAR(40),
-    "shifts" INT,
-    "total" INT,
+    "shifts_troops" INT,
+    "total_troops" INT,
   	FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
 );
 
 CREATE TABLE "preparing_workers" (
     id VARCHAR(40),
-    "shifts" INT,
-    "total" INT,
+    "shifts_workers" INT,
+    "total_workers" INT,
   	FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
 );
 
+-- INSERTS --
 INSERT INTO "warriors_magic" VALUES (1, 1,'Aprendizes de Eris', 9, 10);
 INSERT INTO "warriors_magic" VALUES (2, 2,'Aprendizes de Remus', 11, 4);
 INSERT INTO "warriors_magic" VALUES (3, 3,'Aprendizes de Wilfred', 20, 18);
@@ -115,11 +110,7 @@ INSERT INTO "warriors_war" VALUES (8, 8,'Guerreiros do comandante Ícarus', 71, 
 INSERT INTO "warriors_war" VALUES (9, 9,'Guerreiros do comandante Orion', 90, 83);
 INSERT INTO "warriors_war" VALUES (10, 10,'Guerreiros ELITE', 120, 101);
 
--- tem que inserir recebendo o mesmo valor do id pra fazer o inner join
--- INSERT INTO "users" VALUES ("dsa-ewq-321dsa", "cara", "cara@cara","123123", "War");
--- INSERT INTO "info_game" (id) VALUES ("dsa-ewq-321dsa");
-
--- CONSTRAINTS
+-- CONSTRAINTS --
 ALTER TABLE info_game
 ADD CONSTRAINT Check_level CHECK ("level">=1 AND "level"<=10);
 
