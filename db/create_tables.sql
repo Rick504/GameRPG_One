@@ -33,8 +33,7 @@ CREATE TABLE "info_game" (
     "diamonds" INT DEFAULT 100,
     "clan" VARCHAR(30),
     "technology_points" INT DEFAULT 2,
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE "warriors_magic" (
@@ -67,15 +66,13 @@ CREATE TABLE "warriors_war" (
 CREATE TABLE "training_troops" (
     id VARCHAR(40),
     "shifts_troops" INT,
-    "total_troops" INT,
-  	FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
+    "total_troops" INT
 );
 
 CREATE TABLE "preparing_workers" (
     id VARCHAR(40),
     "shifts_workers" INT,
-    "total_workers" INT,
-  	FOREIGN KEY(id) REFERENCES "users"(user_id) on delete cascade on update cascade
+    "total_workers" INT
 );
 
 -- INSERTS --
