@@ -1,5 +1,6 @@
 const express = require("express")
 const session = require("express-session")
+const { engine } = require('express-handlebars')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const dotenv = require('dotenv');
@@ -10,8 +11,10 @@ app.use(express.static(__dirname + '/public'))
 // Config Variaveis Globais -------------------------------//
 dotenv.config();
 
-// ejs - settings -----------------------------------------//
-app.set('view engine', 'ejs')
+// handlebars - settings -----------------------------------------//
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views')
 
 // Session - settings ---------------------------------------//
 app.use(session({

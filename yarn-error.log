@@ -1,5 +1,5 @@
 Arguments: 
-  /home/one/.nvm/versions/node/v16.16.0/bin/node /usr/share/yarn/bin/yarn.js add uuid
+  /home/one/.nvm/versions/node/v16.16.0/bin/node /usr/share/yarn/bin/yarn.js add --save express express-handlebars
 
 PATH: 
   /home/one/.sdkman/candidates/java/current/bin:/home/one/.nvm/versions/node/v16.16.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/one/.local/share/JetBrains/Toolbox/scripts
@@ -40,7 +40,8 @@ npm manifest:
       "express-session": "^1.17.2",
       "handlebars": "^4.7.7",
       "knex": "^0.95.12",
-      "pg": "^8.7.1"
+      "pg": "^8.7.1",
+      "uuid": "^9.0.0"
     },
     "devDependencies": {
       "@types/express": "^4.17.13",
@@ -2547,6 +2548,11 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
     integrity sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==
+  
+  uuid@^9.0.0:
+    version "9.0.0"
+    resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+    integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
   
   vary@^1, vary@~1.1.2:
     version "1.1.2"
