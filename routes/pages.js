@@ -23,12 +23,24 @@ router
         if(!session.authorized)
             res.render("../views/login/expires")
         else
-            res.render("../views/home", { userName: session.user.user_name })
+            res.render("../views/home", {
+                layout: 'game',
+                userName: session.user.user_name
+            })
     })
 
-    // Login Expirado -------------------//
-    .get('/expires', (req, res) => {
-        res.render("../views/expires")
+    // Home -----------------------------//
+    .get('/workers', (req, res) => {
+        const session = req.session
+        // console.log(session)
+
+        if(!session.authorized)
+            res.render("../views/login/expires")
+        else
+            res.render("../views/workers", {
+                layout: 'game',
+                userName: session.user.user_name
+            })
     })
 
     // Cadastrar Usuário
@@ -60,9 +72,13 @@ router
         if(!session.authorized)
             res.render("../views/login/expires")
         else if(paramsUrl.fail)
-            res.render("../views/account/update/email", { message: 'E-mail inválido ou já existente.' })
+            res.render("../views/account/update/email", {
+                message: 'E-mail inválido ou já existente.'
+            })
         else
-            res.render("../views/account/update/email", { message: null })
+            res.render("../views/account/update/email", {
+                message: null
+            })
     })
 
     // Atualizar Senha do Usuário
@@ -73,9 +89,13 @@ router
         if(!session.authorized)
             res.render("../views/login/expires")
         else if(paramsUrl.fail)
-            res.render("../views/account/update/password", { message: 'Senhas devem ser iguais ou senha antiga está incorreta.' })
+            res.render("../views/account/update/password", {
+                message: 'Senhas devem ser iguais ou senha antiga está incorreta.'
+            })
         else
-            res.render("../views/account/update/password", { message: null })
+            res.render("../views/account/update/password", {
+                message: null
+            })
     })
 
     // Atualizar Email do Usuário
@@ -133,5 +153,9 @@ router
         res.render("../views/account/update/password/error")
     })
 
+    // Login Expirado -------------------//
+    .get('/expires', (req, res) => {
+        res.render("../views/expires")
+    })
 
 module.exports = router

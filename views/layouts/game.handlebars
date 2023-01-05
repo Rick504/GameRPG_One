@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="/styles/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>layout game</h1>
+    <div class="d-flex justify-content-end">
+    <a href="/logout" class="btn btn-secondary">Sair</a>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 border border-4">
+                <div class="d-flex justify-content-center">
+                    <!-- <img src="..." class="rounded-circle" alt="imagem de Origem"> -->
+                    {{userName}}
+                </div>
+                <div>
+                    <a href="/profile" class="btn btn-dark mt-3">Perfil</a>
+                </div>
+                <div>
+                    <a href="/support" class="btn btn-dark mt-3">Suporte</a>
+                </div>
+            </div>
+            <div class="col-9 offset-1 border border-4">
+                Menu
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 mt-3 border border-4">
+                <div>
+                    <a href="/home" class="btn btn-dark mt-3">Inicil</a>
+                </div>
+                <div>
+                    <a href="/workers" class="btn btn-dark mt-3">Trabalhadores</a>
+                </div>
+            </div>
+                {{{body}}}
+            </div>
+    </div>
+
+</body>
+</html>
