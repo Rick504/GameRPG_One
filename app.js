@@ -1,6 +1,6 @@
 const express = require("express")
 const session = require("express-session")
-const { engine } = require('express-handlebars')
+// const { engine } = require('express-handlebars')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const dotenv = require('dotenv');
@@ -29,14 +29,12 @@ app.use(session({
 }))
 
 // Cors - settings ---------------------------------------//
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers": "Authorization')
-    res.header('Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE')
-    res.header('Content-Type": "application/json;charset=UTF-8')
-    app.use(cors())
-    next()
-})
+app.use(cors({
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }))
 
 // CookieParser - settings --------------------------------//
 app.use(cookieParser())
